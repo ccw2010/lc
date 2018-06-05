@@ -14,6 +14,39 @@ Return a deep copy of the list.
  * };
  */
 
+/*这道链表的深度拷贝题的难点就在于如何处理随机指针的问题，由于每一个节点都有一个随机指针，这个指针可以为空，
+也可以指向链表的任意一个节点，如果我们在每生成一个新节点给其随机指针赋值时，都要去遍历原链表的话，OJ上肯定会超时，
+所以我们可以考虑用Hash map来缩短查找时间，第一遍遍历生成所有新节点时同时建立一个原节点和新节点的哈希表，第二遍给
+随机指针赋值时，查找时间是常数级。*/
+
+class Solution {
+public:
+    RandomListNode *copyRandomList(RandomListNode *head) {
+        if (!head) return NULL;
+        RandomListNode *dst = new RandomListNode(head->label);
+        RandomListNode *cur = head->next;
+        RandomListNode *node = dst;
+        map<RandomListNode*, RandomListNode*> m;
+        m[head] = dst;
+        while (cur) {
+            RandomListNode *copy = new RandomListNode(cur->label);
+            node->next = copy;
+            m[cur] = copy;
+            node = node->next;
+            cur = cur->next;
+        }
+        node = dst;
+        src = head;
+        while (node) {
+            node->random = m[src->random];
+            node = node->next;
+            src = src->next;
+        }
+        return dst;
+    }
+};
+
+
 /*
 Here's how the 2nd algorithm goes.
 Consider l1 as a node on the 1st list and l2 as the corresponding node on 2nd list.
