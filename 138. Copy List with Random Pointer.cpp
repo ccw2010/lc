@@ -21,15 +21,15 @@ Return a deep copy of the list.
 
 class Solution {
 public:
-    RandomListNode *copyRandomList(RandomListNode *head) {
+    ListNode *copyRandomList(ListNode *head) {
         if (!head) return NULL;
-        RandomListNode *dst = new RandomListNode(head->label);
-        RandomListNode *cur = head->next;
-        RandomListNode *node = dst;
-        map<RandomListNode*, RandomListNode*> m;
+        ListNode *dst = new ListNode(head->label);
+        ListNode *cur = head->next;
+        ListNode *node = dst;
+        map<ListNode*, ListNode*> m;
         m[head] = dst;
         while (cur) {
-            RandomListNode *copy = new RandomListNode(cur->label);
+            ListNode *copy = new ListNode(cur->label);
             node->next = copy;
             m[cur] = copy;
             node = node->next;
@@ -73,12 +73,12 @@ Return the new head that we saved in step 2.
 
 class Solution {
 public:
-    RandomListNode* copyRandomList(RandomListNode *head) {
-        RandomListNode *newHead, *l1, *l2;
+    ListNode* copyRandomList(ListNode *head) {
+        ListNode *newHead, *l1, *l2;
         if (!head) return NULL;
 
         for (l1 = head; l1; l1 = l1->next) {
-            l2 = new RandomListNode(l1->label);
+            l2 = new ListNode(l1->label);
             l2->next = l1->random;
             l1->random = l2;
         }
