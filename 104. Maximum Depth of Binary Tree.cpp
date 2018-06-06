@@ -16,9 +16,9 @@ return its depth = 3.
 
 int maxDepth(TreeNode* root) {
     if (!root) return 0;
-    int d_left = maxDepth(root->left);
-    int d_right = maxDepth(root->right);
-    return max(d_left, d_right) + 1;
+    int left = maxDepth(root->left);
+    int right = maxDepth(root->right);
+    return max(left, right) + 1;
 }
 
 
