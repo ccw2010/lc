@@ -30,22 +30,22 @@ Output: -1->0->3->4->5
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-    ListNode* insertionSortList(ListNode* head) {
-        ListNode *dummy = new ListNode(-1);
-        ListNode *p = dummy;
-        ListNode *cur = head;
-        while (cur) {
-            ListNode *next = cur->next;
-            p = dummy;
-            while (p->next && p->next->val <= cur->val) {
-                p = p->next;
-            }
-            cur->next = p->next;
-            p->next = cur;
-            cur = next;
+ListNode* insertionSortList(ListNode* head) {
+    ListNode *dummy = new ListNode(-1);
+    ListNode *p = dummy;
+    ListNode *cur = head;
+    while (cur) {
+        ListNode *next = cur->next;
+        p = dummy;
+        while (p->next && p->next->val <= cur->val) {
+            p = p->next;
         }
-        return dummy->next;
+        cur->next = p->next;
+        p->next = cur;
+        cur = next;
     }
+    return dummy->next;
+}
 
 
 
