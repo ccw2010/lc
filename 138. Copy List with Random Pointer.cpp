@@ -21,28 +21,28 @@ Return a deep copy of the list.
 
 class Solution {
 public:
-    ListNode *copyRandomList(ListNode *head) {
-        if (!head) return NULL;
-        ListNode *dst = new ListNode(head->label);
-        ListNode *cur = head->next;
-        ListNode *node = dst;
+    ListNode* copyRandomList(ListNode *head){
+        if(!head) return NULL;
+        ListNode *newHead = new ListNode(head->label);
+        ListNode *src = head->next;
+        ListNode *dst = newHead;
         map<ListNode*, ListNode*> m;
-        m[head] = dst;
-        while (cur) {
-            ListNode *copy = new ListNode(cur->label);
-            node->next = copy;
-            m[cur] = copy;
-            node = node->next;
-            cur = cur->next;
-        }
-        node = dst;
-        src = head;
-        while (node) {
-            node->random = m[src->random];
-            node = node->next;
+        m[head] = newHead;
+        while(src){
+            ListNode *copy = new ListNode(src->label);
+            dst->next = copy;
+            m[src] = copy;
             src = src->next;
+            dst = dst->next;
         }
-        return dst;
+        dst = newHead;
+        src = head;
+        while(dst){
+            dst->random = m[src->random];
+            src = src->next;
+            dst = dst->next;
+        }
+        return newHead;
     }
 };
 
