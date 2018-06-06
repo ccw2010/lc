@@ -43,8 +43,10 @@ public:
         string s = tokens[i];
         unordered_set<string> ops{"+", "-", "*", "/"};
         if (ops.count(s)){
-            int n2 = dfs(tokens, --i);
-            int n1 = dfs(tokens, --i);
+            i--;
+            int n2 = dfs(tokens, i);
+            i--;
+            int n1 = dfs(tokens, i);
             if (s == "+") return n1 + n2;
             else if (s == "-") return n1 - n2;
             else if (s == "*") return n1 * n2;
