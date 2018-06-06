@@ -40,13 +40,14 @@ Explanation: The endWord "cog" is not in wordList, therefore no possible transfo
 class Solution {
 public:
     int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
-        if(std::find(wordList.begin(), wordList.end(), endWord) == wordList.end()){
+        if(std::find(L.begin(), L.end(), endWord) == L.end()){
             return 0;
         }
-        unordered_set<string> wordDict(wordList.begin(), wordList.end());
-        unordered_map<string, int> m;
+        unordered_set<string> s(L.begin(), L.end());
+        unordered_map<string, int> steps;
+        steps[beginWord] = 1;
+     
         queue<string> q;
-        m[beginWord] = 1;
         q.push(beginWord);
         while (!q.empty()) {
             string word = q.front(); 
@@ -55,12 +56,12 @@ public:
                 string newWord = word;
                 for (char c = 'a'; c <= 'z'; c++) {
                     newWord[i] = c;
-                    if (!wordDict.count(newWord)) continue;
+                    if (!s.count(newWord)) continue;
                     if (newWord == endWord) 
-                        return m[word] + 1;
-                    if (!m.count(newWord)) {
+                        return steps[word] + 1;
+                    if (!steps.count(newWord)) {
                         q.push(newWord);
-                        m[newWord] = m[word] + 1;
+                        steps[newWord] = steps[word] + 1;
                     }   
                 }
             }
@@ -68,3 +69,9 @@ public:
         return 0;
     }
 };
+
+
+
+
+
+
