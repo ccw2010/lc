@@ -35,7 +35,7 @@ right中的较大值加上当前结点值，因为我们返回值的定义是以
 class Solution {
 public:
     int maxPathSum(TreeNode *root) {
-       int res = INT_MIN;
+        int res = INT_MIN;
         dfs(root, res);
         return res;
     }
