@@ -28,20 +28,28 @@ to
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
+
+/* 这道题让我们翻转二叉树, 可以用递归和非递归两种方法来解。
+先来看递归的方法，写法非常简洁，交换当前左右节点，并直接调用递归即可 */
+
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
-        /* 这道题让我们翻转二叉树, 可以用递归和非递归两种方法来解。
-        先来看递归的方法，写法非常简洁，五行代码搞定，交换当前左右节点，并直接调用递归即可 */
         if (!root) return NULL;
         TreeNode* temp = root->right;
         root->right = invertTree(root->left);
         root->left = invertTree(temp);
         return root;
-        
-        
-        /*非递归的方法也不复杂，跟二叉树的层序遍历一样，需要用queue来辅助，先把根节点排入队列中，然后从队中取出来，
-        交换其左右节点，如果存在则分别将左右节点在排入队列中，以此类推直到队列中木有节点了停止循环，返回root即可*/
+    }
+};
+
+/*非递归的方法也不复杂，跟二叉树的层序遍历一样，需要用queue来辅助，先把根节点排入队列中，然后从队中取出来，
+交换其左右节点，如果存在则分别将左右节点在排入队列中，以此类推直到队列中木有节点了停止循环，返回root即可*/
+
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {     
         if (!root) return NULL;
         queue<TreeNode*> q;
         q.push(root);
