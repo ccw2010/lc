@@ -1,5 +1,4 @@
 /*204. Count Primes
-DescriptionHintsSubmissionsDiscussSolution
 
 Count the number of prime numbers less than a non-negative number, n.
 
@@ -47,3 +46,21 @@ public:
         return count(prime.begin(), prime.end(), true);
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
