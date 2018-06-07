@@ -18,7 +18,7 @@ vector<string> generateParenthesis(int n) {
 }
 void dfs(string paren, int left, int right, vector<string> &res) {
     if (left > right) return;
-    if (left == 0 && right == 0) res.push_back(paren);
+    else if (left == 0 && right == 0) res.push_back(paren);
     else {
         if (left > 0) dfs(paren + '(', left - 1, right, res);
         if (right > 0) dfs(paren + ')', left, right - 1, res);
