@@ -25,7 +25,6 @@ map数据结构的lower_bound()函数来找一个特定范围，就是大于或�
 nums[i]的差的绝对值会大于t (可自行带数检验)。然后检测后面的所有的数字，如果数的差的绝对值小于等于t，则返回
 true。最后遍历完整个数组返回false*/
 
-
 class Solution {
 public:
     bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
@@ -56,3 +55,8 @@ public:
         return false;
     }
 };
+
+
+
+
+
