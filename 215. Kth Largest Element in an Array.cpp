@@ -62,8 +62,8 @@ public:
             if (nums[i] < pivot && nums[j] > pivot) {
                 swap(nums[i++], nums[j--]);
             }
-            if (nums[i] >= pivot) i++;
-            if (nums[j] <= pivot) j--;
+            else if (nums[i] >= pivot) i++;
+            else if (nums[j] <= pivot) j--;
         }
         swap(nums[left], nums[j]);
         return j;
