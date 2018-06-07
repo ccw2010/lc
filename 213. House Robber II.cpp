@@ -26,11 +26,13 @@ public:
         vector<int> dp(R, 0);
         dp[L] = nums[L];
         dp[L + 1] = max(nums[L], nums[L + 1]);
-        for (int i=2; i< R; i++){
+        for (int i=L; i< R; i++){
             dp[i] = max(nums[i] + dp[i-2], dp[i-1]);
         }
         return dp[R-1];
     }
 };
+
+
 
 
