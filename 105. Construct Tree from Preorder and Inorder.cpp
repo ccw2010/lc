@@ -20,7 +20,6 @@ Return the following binary tree:
 相同元素，有了这个条件就可以在中序遍历中也定位出根节点的位置，并以根节点的位置将中序遍历拆分为左右两个部分，分别对其递归调用
 原函数*/
 
-
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
