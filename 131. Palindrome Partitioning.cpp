@@ -25,7 +25,7 @@ public:
         return res;
     }
     
-    void dfs(string& s, int start, vector<string>& solution, vector<vector<string> >& res) {
+    void dfs(string &s, int start, vector<string> &solution, vector<vector<string>> &res) {
         if(start == s.size()) {
             res.push_back(solution);
             return;
