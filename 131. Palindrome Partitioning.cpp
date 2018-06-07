@@ -19,7 +19,6 @@ class Solution {
 public:
     vector<vector<string>> partition(string s) {
         if(s.empty()) return {};
-        
         vector<vector<string>> res;
         vector<string> solution;
         dfs(s, 0, solution, res);
@@ -47,3 +46,16 @@ public:
         return true;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
