@@ -14,19 +14,22 @@
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode* new_head = new ListNode(0);
-        new_head -> next = head;
-        ListNode* prev = new_head;
-        ListNode* curr = head; 
-        while (curr && curr -> next) {
-            ListNode* temp = prev -> next;
-            prev -> next = curr -> next;
-            curr -> next = curr -> next -> next; 
-            prev -> next -> next = temp;
+        ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+        ListNode* pre = new_head;
+        ListNode* cur = head; 
+        while (cur && cur->next) {
+            ListNode* temp = prev->next;
+            pre->next = cur->next;
+            cur->next = cur->next->next; 
+            pre->next->next = temp;
         }
-        return new_head -> next;
+        return dummy->next;
     }
 };
+
+
+
 
 
 
