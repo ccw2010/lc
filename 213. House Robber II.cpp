@@ -25,7 +25,7 @@ public:
         if (R - L <= 1) return nums[L];
         vector<int> dp(R, 0);
         dp[L] = nums[L];
-        dp[L + 1] = max(nums[L], nums[L + 1]);
+        dp[L+1] = max(nums[L], nums[L+1]);
         for (int i=L; i< R; i++){
             dp[i] = max(nums[i] + dp[i-2], dp[i-1]);
         }
