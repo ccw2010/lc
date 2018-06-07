@@ -19,7 +19,6 @@ Output: 45
 坐标的较大值，右端点是两个矩形右顶点的较小值，同理，竖边的下端点是两个矩形下顶点纵坐标的较大值，上端点是两个矩形
 上顶点纵坐标的较小值*/
 
-
 class Solution {
 public:
     int computeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
@@ -36,3 +35,16 @@ public:
         }
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
