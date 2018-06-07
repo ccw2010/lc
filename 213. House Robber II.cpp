@@ -22,7 +22,7 @@ public:
     }
     
     int rob(vector<int>& nums, int L, int R){
-        if (R - L <= 1) return nums[L];
+        if (R <= L+1) return nums[L];
         vector<int> dp(R, 0);
         dp[L] = nums[L];
         dp[L+1] = max(nums[L], nums[L+1]);
