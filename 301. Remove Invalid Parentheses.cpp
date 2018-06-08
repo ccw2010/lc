@@ -33,7 +33,8 @@ public:
         queue<string> q{{s}};
         bool found = false;
         while (!q.empty()) {
-            string t = q.front(); q.pop();
+            string t = q.front(); 
+            q.pop();
             if (isValid(t)) {
                 res.push_back(t);
                 found = true;
@@ -50,13 +51,15 @@ public:
         }
         return res;
     }
-    bool isValid(string t) {
-        int cnt = 0;
-        for (int i = 0; i < t.size(); ++i) {
-            if (t[i] == '(') ++cnt;
-            else if (t[i] == ')' && --cnt < 0) return false;
+
+    bool isValid(string s) {
+        int count = 0;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(') count++;
+            else if (s[i] == ')') count--;
+            if (count<0) return false;
         }
-        return cnt == 0;
+        return count == 0;
     }
 };
 
@@ -70,37 +73,47 @@ public:
 此时cnt1的值就应该减1，因为已经删掉了一个左括号。同理，如果cnt2大于0，说明此时右括号多，而如果当前字符正好是右括号的时候，
 我们可以删掉当前右括号，继续调用递归，此时cnt2的值就应该减1，因为已经删掉了一个右括号*/
 
-vector<string> removeInvalidParentheses(string s) {
+class Solution {
+public:
+    vector<string> removeInvalidParentheses(string s) {
         vector<string> res;
-        int cnt1 = 0, cnt2 = 0;
+        int count1 = 0, count2 = 0;
         for (char c : s) {
-            cnt1 += (c == '(');
-            if (cnt1 == 0) cnt2 += (c == ')');
-            else cnt1 -= (c == ')');
+            if (c == '(') {
+                count1++;
+            }else if (c == ')') {
+                if(count1 == 0) count2++;
+                else count1--;
+            }
         }
-        helper(s, 0, cnt1, cnt2, res);
+        dfs(s, 0, count1, count2, res);
         return res;
     }
-    void helper(string s, int start, int cnt1, int cnt2, vector<string>& res) {
-        if (cnt1 == 0 && cnt2 == 0) {
-            if (isValid(s)) res.push_back(s);
+    
+    void dfs(string s, int start, int count1, int count2, vector<string>& res) {
+        if (count1 == 0 && count2 == 0 && isValid(s)) {
+            res.push_back(s);
             return;
         }
-        for (int i = start; i < s.size(); ++i) {
-            if (i != start && s[i] == s[i - 1]) continue;
-            if (cnt1 > 0 && s[i] == '(') {
-                helper(s.substr(0, i) + s.substr(i + 1), i, cnt1 - 1, cnt2, res);
+        for (int i = start; i < s.size(); i++) {
+            if (i > start && s[i] == s[i-1]) 
+                continue;
+            if (count1 > 0 && s[i] == '(') {
+                dfs(s.substr(0,i) + s.substr(i+1), i, count1-1, count2, res);
             }
-            if (cnt2 > 0 && s[i] == ')') {
-                helper(s.substr(0, i) + s.substr(i + 1), i, cnt1, cnt2 - 1, res);
+            if (count2 > 0 && s[i] == ')') {
+                dfs(s.substr(0,i) + s.substr(i+1), i, count1, count2-1, res);
             }
         }
     }
-    bool isValid(string t) {
-        int cnt = 0;
-        for (int i = 0; i < t.size(); ++i) {
-            if (t[i] == '(') ++cnt;
-            else if (t[i] == ')' && --cnt < 0) return false;
+    
+    bool isValid(string s) {
+        int count = 0;
+        for (int i = 0; i < s.size(); i++) {
+            if (s[i] == '(') count++;
+            else if (s[i] == ')') count--;
+            if (count<0) return false;
         }
-        return cnt == 0;
+        return count == 0;
     }
+};
