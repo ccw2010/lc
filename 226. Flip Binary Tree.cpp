@@ -1,6 +1,6 @@
-/*Invert a binary tree.
+/*Flip a binary tree.
 
-Invert a binary tree
+Flip a binary tree
 
      4
    /   \
