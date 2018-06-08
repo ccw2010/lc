@@ -26,7 +26,7 @@ public:
     ListNode* reverseList(ListNode* head) {
         ListNode* dummy = new ListNode(0);
         dummy->next = head;
-        ListNode* pre = new_head;
+        ListNode* pre = dummy;
         ListNode* cur = head; 
         while (cur && cur->next) {
             ListNode* temp = prev->next;
