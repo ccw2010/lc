@@ -50,8 +50,7 @@ public:
         if(l1->val <= l2->val){
             l1->next = merge(l1->next, l2);
             return l1;
-        }
-        else{
+        }else{
             l2->next = merge(l1, l2->next);
             return l2;
         }
