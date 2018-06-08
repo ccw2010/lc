@@ -16,9 +16,7 @@ Output: false
 
 /*
 这道题让我们判断一个数是否为2的次方数，而且要求时间和空间复杂度都为常数，那么对于这种玩数字的题，
-我们应该首先考虑位操作 Bit Operation。在LeetCode中，位操作的题有很多，比如比如 Repeated DNA Sequences，
-Single Number,  Single Number II， Grey Code， Reverse Bits，Bitwise AND of Numbers Range，
-Number of 1 Bits 和 Divide Two Integers 等等。那么我们来观察下2的次方数的二进制写法的特点：
+我们应该首先考虑位操作 Bit Operation。我们先来观察下2的次方数的二进制写法的特点：
 
 1    2      4      8       16 　　....
 1    10    100    1000    10000　....
@@ -37,3 +35,9 @@ public:
         return count == 1;
     }
 };
+
+
+
+
+
+
