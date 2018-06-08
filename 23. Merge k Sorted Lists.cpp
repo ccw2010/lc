@@ -32,7 +32,7 @@ this as an iterative divide-and-conquer solution.*/
 
 class Solution {
 public:
-    ListNode *mergeKLists(vector<ListNode*> &lists) {
+    ListNode* mergeKLists(vector<ListNode*> &lists) {
         if(lists.empty()) return NULL;
         while(lists.size() > 1){
             ListNode* mergedList = merge(lists[0], lists[1]);
@@ -43,7 +43,7 @@ public:
         return lists.front();
     }
   
-    ListNode *merge(ListNode *l1, ListNode *l2) {
+    ListNode* merge(ListNode *l1, ListNode *l2) {
         if(!l1) return l2;
         if(!l2) return l1;
         
