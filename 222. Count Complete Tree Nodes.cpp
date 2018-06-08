@@ -41,9 +41,9 @@ public:
             pRight = pRight->right;
         }
         if (hLeft == hRight) {
-        	return pow(2, hLeft) - 1;
+        return pow(2, hLeft) - 1;
         }else{
-        	return countNodes(root->left) + countNodes(root->right) + 1;
+        return countNodes(root->left) + countNodes(root->right) + 1;
         }
     }
 };
