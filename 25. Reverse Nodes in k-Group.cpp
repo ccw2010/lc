@@ -39,9 +39,9 @@ public:
             if (!cur) return head;
             cur = cur->next;
         }
-        ListNode *new_head = reverse(head, cur);
+        ListNode *newHead = reverse(head, cur);
         head->next = reverseKGroup(cur, k);
-        return new_head;
+        return newHead;
     }
     ListNode* reverse(ListNode* head, ListNode* tail) {
         ListNode *pre = tail;
