@@ -45,3 +45,12 @@ public:
         return min(last[0], min(last[1], last[2]));
     }
 };
+
+
+
+
+
+
+
+
+
