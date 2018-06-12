@@ -22,7 +22,6 @@ public:
         for (char c : (s+t))
             if (m[c]) return false;
         return true;
-        
     }
 };
 
