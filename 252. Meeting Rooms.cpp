@@ -25,14 +25,14 @@ public:
     bool canAttendMeetings(vector<Interval>& intervals) {
         map<int, int> m;
         for(int i = 0; i < intervals.size(); ++i){
-			m[intervals[i].start] = intervals[i].end; 
-		}
+	    m[intervals[i].start] = intervals[i].end; 
+	}
         /*in case [[8,11],[17,20],[17,20]]*/
-		if(m.size() < intervals.size()) 
+	if(m.size() < intervals.size()) 
             return false; 
         
-		int lastEnding = 0;
-		for (map<int,int>::iterator it=m.begin(); it!=m.end(); it++){ 
+	int lastEnding = 0;
+	for (map<int,int>::iterator it=m.begin(); it!=m.end(); it++){ 
             if(it->first < lastEnding) 
                 return false;
             lastEnding = it->second;
