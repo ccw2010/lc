@@ -13,8 +13,6 @@ Example 3:
 Input: "carerac"
 Output: true */
 
-
-
 class Solution {
 public:
     bool canPermutePalindrome(string s) {
@@ -27,3 +25,11 @@ public:
         return count==0 || (s.size()%2==1 && count==1);
     }
 };
+
+
+
+
+
+
+
+
