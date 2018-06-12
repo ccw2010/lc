@@ -34,11 +34,11 @@ public:
         TreeNode *p1 = root;
         TreeNode *p2 = root;
         while (p1) {
-            ++hLeft;
+            hLeft++;
             p1 = p1->left;
         }
         while (p2) {
-            ++hRight;
+            hRight++;
             p2 = p2->right;
         }
         if (hLeft == hRight) return pow(2, hLeft) - 1;
