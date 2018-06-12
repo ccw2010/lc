@@ -28,8 +28,8 @@ For k = 3, you should return: 3->2->1->4->5*/
  */
 
 /*这道题可使用递归来做，我们用head记录每段的开始位置，cur记录结束位置的下一个节点，然后我们调用reverse函数
-来将这段翻转，然后得到一个new_head，原来的head就变成了末尾，这时候后面接上递归调用下一段得到的新节点，返回
-new_head即可*/
+来将这段翻转，然后得到一个newHead，原来的head就变成了末尾，这时候后面接上递归调用下一段得到的新节点，返回
+newHead即可*/
 
 class Solution {
 public:
