@@ -37,7 +37,7 @@ public:
             if (abs(root->val - k) <= abs(res-k)) {
                 res = root->val;
             }
-            if (k < rootval){
+            if (k < root->val){
                 root = root->left;
             } else {
                 root = root->right;
