@@ -1,6 +1,5 @@
 /*286. Walls and Gates 
  
-
 You are given a m x n 2D grid initialized with these three possible values.
 
 -1 - A wall or an obstacle.
@@ -15,11 +14,14 @@ INF  -1  0  INF
 INF INF INF  -1
 INF  -1 INF  -1
   0  -1 INF INF
+  
 After running your function, the 2D grid should be:
   3  -1   0   1
   2   2   1  -1
   1  -1   2  -1
-  0  -1   3   4*/
+  0  -1   3   4
+  
+*/
  
 
 /* 这道题类似一种迷宫问题，规定了-1表示墙，0表示门，让求每个点到门的最近的曼哈顿距离，这其实类似于求距离场Distance Map的问题，
@@ -40,12 +42,14 @@ public:
         }
     }
     void dfs(vector<vector<int>>& rooms, int i, int j, int val) {
-        if (i < 0 || i >= rooms.size() || j < 0 || j >= rooms[i].size() || rooms[i][j] < val) return;
+        bool ivalid = (i >= 0 && i < rooms.size());
+        bool jvalid = (j >= 0 && j < rooms[i].size());
+        if (!ivalid || !jvalid || rooms[i][j] < val) return;
         rooms[i][j] = val;
-        dfs(rooms, i + 1, j, val + 1);
-        dfs(rooms, i - 1, j, val + 1);
-        dfs(rooms, i, j + 1, val + 1);
-        dfs(rooms, i, j - 1, val + 1);
+        dfs(rooms, i+1, j, val+1);
+        dfs(rooms, i-1, j, val+1);
+        dfs(rooms, i, j+1, val+1);
+        dfs(rooms, i, j-1, val+1);
     }
 };
 
