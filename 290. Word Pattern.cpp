@@ -30,9 +30,9 @@ public:
     bool wordPattern(string pattern, string str) {
         map<char, int> m1;
         map<string, int> m2;
-        istringstream in(str);
+        istringstream iss(str);
         int i = 0, n = pattern.size();
-        for (string word; in >> word; i++) {
+        for (string word; iss >> word; i++) {
             char c = pattern[i];
             if (i == n || m1[c] != m2[word])
                 return false;
@@ -42,5 +42,8 @@ public:
         return i == n;
     }
 };
+
+
+
 
 
