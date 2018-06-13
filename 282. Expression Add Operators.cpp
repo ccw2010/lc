@@ -52,19 +52,20 @@ public:
     }
 
     void dfs(string num, int target, long diff, long curNum, string solution, vector<string> &res) {
-        if (num.size() == 0 && curNum == target) {
+        int n = num.size();
+        if (n == 0 && curNum == target) {
             res.push_back(solution);
         }
-        for (int i = 1; i <= num.size(); i++) {
+        for (int i = 1; i <= n; i++) {
             string cur = num.substr(0, i);
             if (cur.size() > 1 && cur[0] == '0') return;
             string next = num.substr(i);
-            if (solution.size() > 0) {
+            if (solution.size()==0) {
+                dfs(next, target, stol(cur), stol(cur), cur, res);
+            } else {
                 dfs(next, target, stol(cur), curNum + stol(cur), solution + "+" + cur, res);
                 dfs(next, target, -stol(cur), curNum - stol(cur), solution + "-" + cur, res);
-                dfs(next, target, diff * stol(cur), curNum - diff + diff * stol(cur), solution + "*" + cur, res);
-            } else {
-                dfs(next, target, stol(cur), stol(cur), cur, res);
+                dfs(next, target, diff * stol(cur), curNum - diff + diff * stol(cur), solution + "*" + cur, res);  
             }
         }
     }
