@@ -1,6 +1,6 @@
 /*270. Closest Binary Search Tree Value
 Given a non-empty binary search tree and a target value, find the value in the BST that is closest
- to the target.
+to the target.
 
 Note:
 Given target value is a floating point.
@@ -31,12 +31,14 @@ public:
     int closestValue(TreeNode* root, double k) {
         int res = root->val;
         while (root) {
-            int rval = root->val;
-            if (abs(rval-k) <= abs(res-k)) {
-                res = rval;
+            int rootval = root->val;
+            if (abs(rootval-k) <= abs(res-k)) {
+                res = rootval;
             }
-            root = (k < rval )? root->left : root->right;
+            root = (k < rootval )? root->left : root->right;
         }
         return res;
     }
 };
+
+
