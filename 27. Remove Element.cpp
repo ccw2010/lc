@@ -19,14 +19,21 @@ Note that the order of those five elements can be arbitrary.
 It doesn't matter what values are set beyond the returned length.
 */
 
+/*这道题让我们移除一个数组中和给定值相同的数字，并返回新的数组的长度。这道题我们需要一个变量用来计数，然后遍历原数组，
+如果当前的值和给定值不同，我们就把当前值覆盖计数变量的位置，并将计数变量加1*/
+
 int removeElement(vector<int> &nums, int val){
 	if (nums.empty()) return 0;
-	int j = 0;
+	int res = 0;
 	for (int i=0; i<nums.size(); i++){
 		if (nums[i]!=val){
-			nums[j] = nums[i];
-			j++;
+			nums[res] = nums[i];
+			res++;
 		}
 	}
-	return j;
+	return res;
 }
+
+
+
+
