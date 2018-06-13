@@ -26,19 +26,26 @@ Output: 4
  * };
  */
 
+/*我们可以利用二分搜索树的特点[左<根<右]来快速定位，由于根节点是中间值，我们在往下遍历时，根据目标值和根节点
+的值大小关系来比较，如果目标值小于节点值，则我们应该找更小的值，于是我们到左子树去找，反之我们去右子树找*/
+
 class Solution {
 public:
     int closestValue(TreeNode* root, double k) {
         int res = root->val;
         while (root) {
-            int rootval = root->val;
-            if (abs(rootval-k) <= abs(res-k)) {
-                res = rootval;
+            if (abs(root->val - k) <= abs(res-k)) {
+                res = root->val;
             }
-            root = (k < rootval )? root->left : root->right;
+            if (k < rootval){
+                root = root->left;
+            } else {
+                root = root->right;
+            }
         }
         return res;
     }
 };
+
 
 
