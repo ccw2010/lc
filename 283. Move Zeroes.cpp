@@ -9,13 +9,15 @@ public:
         int n = nums.size();
         int j = 0;
         // move all the nonzero elements advance
-        for (int i = 0; i < n; i++) {
-            if (nums[i]) nums[j++] = nums[i];
+        for (auto n : nums) {
+            if (n) nums[j++] = n;
         }
         for (; j < n; j++) {
             nums[j] = 0;
         }
     }
 };
+
+
 
 
