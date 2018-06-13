@@ -28,8 +28,8 @@ class Solution {
 public:
     bool validTree(int n, vector<pair<int, int>>& edges) {
         vector<unordered_set<int>> graph(n, unordered_set<int>());
-        unordered_set<int> s{{0}};
-        queue<int> qraph{{0}};
+        unordered_set<int> visited{{0}};
+        queue<int> q{{0}};
         for (auto x : edges) {
             graph[x.first].insert(x.second);
             graph[x.second].insert(x.first);
@@ -38,13 +38,13 @@ public:
             int t = q.front(); 
             q.pop();
             for (auto x : graph[t]) {
-                if (s.count(x)) return false;
-                s.insert(x);
+                if (visited.count(x)) return false;
+                visited.insert(x);
                 q.push(x);
                 graph[x].erase(t);
             }
         }
-        return s.size() == n;
+        return visited.size() == n;
     }
 };
 
