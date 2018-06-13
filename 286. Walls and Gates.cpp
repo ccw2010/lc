@@ -63,8 +63,9 @@ public:
     void wallsAndGates(vector<vector<int>>& rooms) {
         if(rooms.empty()) return;
         queue<pair<int, int>> q;
-        vector<vector<int>> dirs{{0, -1}, {-1, 0}, {0, 1}, {1, 0}};
-        size_t row = rooms.size(), col = rooms[0].size();
+        vector<vector<int>> dirs{{0,-1}, {-1,0}, {0,1}, {1,0}};
+        size_t row = rooms.size();
+        size_t col = rooms[0].size();
         for (size_t i = 0; i < row; i++) {
             for (size_t j = 0; j < col; j++) {
                 if (rooms[i][j] == 0) q.push({i, j});   
@@ -77,7 +78,9 @@ public:
             for (size_t k = 0; k < dirs.size(); k++) {
                 int x = i + dirs[k][0];
                 int y = j + dirs[k][1];
-                if (x < 0 || x >= row || y < 0 || y >= col || rooms[x][y] < rooms[i][j] + 1) continue;
+                bool xvalid = (x > 0 && x < row);
+                bool yvalid = (y > 0 && y < col);
+                if (!xvalid || !yvalid || rooms[x][y] < rooms[i][j] + 1) continue;
                 rooms[x][y] = rooms[i][j] + 1;
                 q.push({x, y});
             }
