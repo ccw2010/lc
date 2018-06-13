@@ -16,14 +16,11 @@ is the same as [1, 0] and thus will not appear together in edges. */
 
 
 /*这道题给了我们一个无向图，让我们来判断其是否为一棵树，我们知道如果是树的话，所有的节点必须是连接的，也就是说
-必须是连通图，而且不能有环，所以我们的焦点就变成了验证是否是连通图和是否含有环。我们首先用DFS来做，根据pair来
-建立一个图的结构，用邻接链表来表示，还需要一个一位数组v来记录某个节点是否被访问过，然后我们用DFS来搜索节点0，
-遍历的思想是，当DFS到某个节点，先看当前节点是否被访问过，如果已经被访问过，说明环存在，直接返回false，如果未
-被访问过，我们现在将其状态标记为已访问过，然后我们到邻接链表里去找跟其相邻的节点继续递归遍历，注意我们还需要
-一个变量pre来记录上一个节点，以免回到上一个节点，这样遍历结束后，我们就把和节点0相邻的节点都标记为true，然后
-我们再看v里面是否还有没被访问过的节点，如果有，则说明图不是完全连通的，返回false，反之返回true*/
+必须是连通图，而且不能有环，所以我们的焦点就变成了验证是否是连通图和是否含有环。我们用BFS比较简洁，需要用queue
+来辅助遍历，这里我们用了一个set: visited来标记节点是否访问过，如果遍历到一个节点，在visited中没有，则加入
+visited，如果已经存在，则返回false，还有就是在遍历邻接链表的时候，遍历完成后需要将节点删掉: */
 
-
+// BFS
 class Solution {
 public:
     bool validTree(int n, vector<pair<int, int>>& edges) {
@@ -47,6 +44,44 @@ public:
         return visited.size() == n;
     }
 };
+
+
+/*下面来看DFS的方法，根据pair来建立一个图的结构，用邻接链表来表示，还需要一个一位数组v来记录某个节点是否被
+访问过，然后我们用DFS来搜索节点0，遍历的思想是，当DFS到某个节点，先看当前节点是否被访问过，如果已经被访问过，
+说明环存在，直接返回false，如果未被访问过，我们现在将其状态标记为已访问过，然后我们到邻接链表里去找跟其相邻
+的节点继续递归遍历，注意我们还需要一个变量pre来记录上一个节点，以免回到上一个节点，这样遍历结束后，我们就把
+和节点0相邻的节点都标记为true，然后再看visited里面是否还有没被访问过的节点，如果有，则说明图不是完全连通的，
+返回false，反之返回true*/
+
+// DFS
+class Solution {
+public:
+    bool validTree(int n, vector<pair<int, int>>& edges) {
+        vector<vector<int>> graph(n, vector<int>());
+        vector<bool> visited(n, false);
+        for (auto &x : edges) {
+            graph[x.first].push_back(x.second);
+            graph[x.second].push_back(x.first);
+        }
+        if (!valid(graph, visited, 0, -1)) return false;
+        for (auto v : visited) {
+            if (!v) return false;
+        }
+        return true;
+    }
+    bool valid(vector<vector<int>> &graph, vector<bool> &visited, int cur, int pre) {
+        if (visited[cur]) return false;
+        visited[cur] = true;
+        for (auto x : graph[cur]) {
+            if (x != pre) {
+                if (!valid(graph, visited, x, cur)) return false;
+            }
+        }
+        return true;
+    }
+};
+ 
+
 
 
 
