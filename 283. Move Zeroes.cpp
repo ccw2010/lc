@@ -6,13 +6,13 @@ non-zero elements. For example, given nums = [0, 1, 0, 3, 12], after calling the
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
-        int n = nums.size();
+        int len = nums.size();
         int j = 0;
         // move all the nonzero elements advance
         for (auto n : nums) {
             if (n) nums[j++] = n;
         }
-        for (; j < n; j++) {
+        for (; j < len; j++) {
             nums[j] = 0;
         }
     }
