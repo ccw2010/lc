@@ -85,8 +85,7 @@ public:
                 rooms[x][y] = rooms[i][j] + 1;
                 q.push({x, y});
             }
-        }
-        
+        } // end while loop
     }
 };
 
