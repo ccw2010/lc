@@ -31,7 +31,7 @@ int removeElement(vector<int> &nums, int val){
 			res++;
 		}
 	}
-	return res;
+	return res; 
 }
 
 
