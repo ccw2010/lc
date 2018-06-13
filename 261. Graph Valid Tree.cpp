@@ -27,21 +27,21 @@ is the same as [1, 0] and thus will not appear together in edges. */
 class Solution {
 public:
     bool validTree(int n, vector<pair<int, int>>& edges) {
-        vector<unordered_set<int>> g(n, unordered_set<int>());
+        vector<unordered_set<int>> graph(n, unordered_set<int>());
         unordered_set<int> s{{0}};
-        queue<int> q{{0}};
+        queue<int> qraph{{0}};
         for (auto x : edges) {
-            g[x.first].insert(x.second);
-            g[x.second].insert(x.first);
+            graph[x.first].insert(x.second);
+            graph[x.second].insert(x.first);
         }
         while (!q.empty()) {
             int t = q.front(); 
             q.pop();
-            for (auto x : g[t]) {
+            for (auto x : graph[t]) {
                 if (s.count(x)) return false;
                 s.insert(x);
                 q.push(x);
-                g[x].erase(t);
+                graph[x].erase(t);
             }
         }
         return s.size() == n;
