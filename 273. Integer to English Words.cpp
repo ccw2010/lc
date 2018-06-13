@@ -56,9 +56,9 @@ public:
 
         string res;
         if(units < 20){
-            res =  v1[units];
+            res = v1[units];
         }else{
-            res =  v2[units/10];
+            res = v2[units/10];
             if(tens) res = res + " " + v1[tens];
         }
         
