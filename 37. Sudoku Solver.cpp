@@ -19,11 +19,12 @@ public:
     }
     
     bool solve(vector<vector<char>>& board){
-        for(int i = 0; i < board.size(); i++){
-            for(int j = 0; j < board[0].size(); j++){
-                if(board[i][j] != '.') continue;
+        int row = board.size(), col = board[0].size();
+        for(int i = 0; i < row; i++){
+            for(int j = 0; j < col; j++){
+                if(isdigit(board[i][j])) continue;
                 for(char c = '1'; c <= '9'; c++){      // Try 1 through 9
-                    if(valid(board, i, j, c)){
+                    if(isvalid(board, i, j, c)){
                         board[i][j] = c;               // Put c for this cell
                         if(solve(board)) return true;  // If it's the solution return true
                         else board[i][j] = '.';        // Otherwise go back
@@ -35,7 +36,7 @@ public:
         return true;
     }
     
-    bool valid(vector<vector<char>>& board, int row, int col, char c){
+    bool isvalid(vector<vector<char>>& board, int row, int col, char c){
         for(int i = 0; i < 9; i++) {
             int x = 3 * (row / 3) + i / 3;
             int y = 3 * (col / 3) + i % 3;
