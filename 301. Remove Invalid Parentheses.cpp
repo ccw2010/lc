@@ -42,7 +42,7 @@ public:
             if (found) continue;
             for (int i = 0; i < t.size(); ++i) {
                 if (t[i] != '(' && t[i] != ')') continue;
-                string str = t.substr(0, i) + t.substr(i + 1);
+                string str = t.substr(0,i) + t.substr(i+1);
                 if (!visited.count(str)) {
                     q.push(str);
                     visited.insert(str);
