@@ -32,11 +32,10 @@ public:
     int coinChange(vector<int>& coins, int k) {
         vector<int> dp(k+1, k+1);
         dp[0] = 0;
-        int n = coins.size();
         for (int i = 1; i <= k; i++) {
-            for (int j = 0; j < n; j++) {
-                if (coins[j] <= i) {
-                    dp[i] = min(dp[i], dp[i - coins[j]] + 1);
+            for (int &c : coins) {
+                if (c <= i) {
+                    dp[i] = min(dp[i], dp[i - c] + 1);
                 }
             }
         }
