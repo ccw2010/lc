@@ -13,12 +13,12 @@ to be filled in), since each blank can have 9 choices. Details see comments insi
 
 class Solution {
 public:
-    void solveSudoku(vector<vector<char>>& board) {
+    void solveSudoku(vector<vector<char>> &board) {
         if(board.empty() || board[0].empty()) return;
         solve(board);
     }
     
-    bool solve(vector<vector<char>>& board){
+    bool solve(vector<vector<char>> &board){
         int row = board.size(), col = board[0].size();
         for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
@@ -36,7 +36,7 @@ public:
         return true;
     }
     
-    bool isvalid(vector<vector<char>>& board, int row, int col, char c){
+    bool isvalid(vector<vector<char>> &board, int row, int col, char c){
         for(int i = 0; i < 9; i++) {
             int x = 3 * (row / 3) + i / 3;
             int y = 3 * (col / 3) + i % 3;
