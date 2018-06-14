@@ -60,10 +60,10 @@ public:
         vector<int> f(n, nums[0]);
         vector<int> b(n, nums.back());
         for (int i = 1; i < n; i++) {
-            f[i] = min(f[i - 1], nums[i]);
+            f[i] = min(f[i-1], nums[i]);
         }
-        for (int i = n - 2; i >= 0; i--) {
-            b[i] = max(b[i + 1], nums[i]);
+        for (int i = n-2; i >= 0; i--) {
+            b[i] = max(b[i+1], nums[i]);
         }
         for (int i = 0; i < n; i++) {
             if (nums[i] > f[i] && nums[i] < b[i]) return true;
