@@ -39,11 +39,25 @@ public:
         for(int i = 0; i < 9; i++) {
             int x = 3 * (row / 3) + i / 3;
             int y = 3 * (col / 3) + i % 3;
-            if(board[i][col] != '.' && board[i][col] == c) return false;  // check row
-            if(board[row][i] != '.' && board[row][i] == c) return false;  // check column
-            if(board[x][y] != '.' && board[x][y] == c) return false;      // check 3*3 block
+            if(isdigit(board[i][col]) && board[i][col] == c) return false;  // check row
+            if(isdigit(board[row][i]) && board[row][i] == c) return false;  // check column
+            if(isdigit(board[x][y]) && board[x][y] == c) return false;      // check 3*3 block
         }
         return true;
     }
-        
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
