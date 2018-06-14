@@ -39,7 +39,7 @@ public:
         for (size_t i = 0; i < rowA; i++) {
             for (size_t k = 0; k < colA; k++) {
                 if (A[i][k] == 0) continue;
-                for (int j = 0; j < colB; ++j) {
+                for (int j = 0; j < colB; j++) {
                     if (B[k][j] == 0) continue;
                     res[i][j] += A[i][k] * B[k][j];
                 }            
