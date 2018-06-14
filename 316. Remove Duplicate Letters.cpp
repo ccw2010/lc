@@ -29,9 +29,9 @@ public:
     string removeDuplicateLetters(string s) {
         int m[256] = {0}, visited[256] = {0};
         string res = "0";
-        for (auto c : s) ++m[c];
+        for (auto c : s) m[c]++;
         for (auto c : s) {
-            --m[c];
+            m[c]--;
             if (visited[c]) continue;
             while (c < res.back() && m[res.back()]) {
                 visited[res.back()] = 0;
@@ -43,3 +43,13 @@ public:
         return res.substr(1);
     }
 };
+
+
+
+
+
+
+
+
+
+
