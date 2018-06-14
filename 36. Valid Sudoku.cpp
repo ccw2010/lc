@@ -24,8 +24,8 @@ public:
         int row = board.size(), col = board[0].size();   
         for(int i = 0; i < row; i++){
             for(int j = 0; j < col; j++){
-                if(board[i][j] != '.'){
-                    int num = board[i][j] - '0' - 1;
+                if(isdigit(board[i][j])){
+                    int num = board[i][j] - '1';
                     int k = 3 * (i / 3) + j / 3;
                     if(used1[i][num] || used2[j][num] || used3[k][num]){
                         return false;
