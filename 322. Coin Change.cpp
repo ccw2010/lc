@@ -35,7 +35,7 @@ public:
         for (int i = 1; i <= k; i++) {
             for (int &c : coins) {
                 if (c <= i) {
-                    dp[i] = min(dp[i], dp[i - c] + 1);
+                    dp[i] = min(dp[i], dp[i-c] + 1);
                 }
             }
         }
