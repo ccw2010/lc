@@ -9,6 +9,10 @@ You may assume k is always valid, 1 ≤ k ≤ number of unique elements.
 Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 */
 
+/* 这道题给了我们一个数组，让我们统计前k个高频的数字，那么对于这类的统计数字的问题，首先应该考虑用HashMap来做，
+建立数字和其出现次数的映射，然后再按照出现次数进行排序。我们可以用堆排序来做，使用一个最大堆来按照映射次数从大到小排列，
+在C++中使用priority_queue来实现，默认是最大堆 */
+
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
@@ -28,3 +32,15 @@ public:
         return res;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
