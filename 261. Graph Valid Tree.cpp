@@ -26,7 +26,8 @@ public:
     bool validTree(int n, vector<pair<int, int>>& edges) {
         vector<unordered_set<int>> graph(n, unordered_set<int>());
         unordered_set<int> visited{0};
-        queue<int> q{{0}};
+        queue<int> q;
+        q.push(0);
         for (auto x : edges) {
             graph[x.first].insert(x.second);
             graph[x.second].insert(x.first);
