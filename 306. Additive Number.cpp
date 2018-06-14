@@ -38,9 +38,9 @@ public:
         for (int i = 1; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 string s1 = num.substr(0, i);
-                string s2 = num.substr(i, j - i);
-                long d1 = atol(s1.c_str());
-                long d2 = atol(s2.c_str());
+                string s2 = num.substr(i, j-i);
+                long d1 = stol(s1);
+                long d2 = stol(s2);
                 if ((s1.size() >=2 && s1[0] == '0') || (s2.size() >=2 && s2[0] == '0')) 
                     continue;
                 long next = d1 + d2;
@@ -59,3 +59,7 @@ public:
         return false;
     }
 };
+
+
+
+
