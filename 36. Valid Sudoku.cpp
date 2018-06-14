@@ -17,10 +17,13 @@ public:
     bool isValidSudoku(vector<vector<char>>& board) {
         if (board.empty() || board[0].empty()) return false;
         
-        int used1[9][9] = {0}, used2[9][9] = {0}, used3[9][9] = {0};
+        int used1[9][9] = {0};
+        int used2[9][9] = {0};
+        int used3[9][9] = {0};
         
-        for(int i = 0; i < board.size(); i++){
-            for(int j = 0; j < board[i].size(); j++){
+        int row = board.size(), col = board[0].size();   
+        for(int i = 0; i < row; i++){
+            for(int j = 0; j < col; j++){
                 if(board[i][j] != '.'){
                     int num = board[i][j] - '0' - 1;
                     int k = 3 * (i / 3) + j / 3;
