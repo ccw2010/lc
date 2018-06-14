@@ -14,13 +14,15 @@ class Solution {
 public:
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         set<int> s(nums1.begin(), nums1.end());
-        set<int> ans;
+        set<int> res;
         for (auto n : nums2){
-            if (s.count(n)) ans.insert(n);
+            if (s.count(n)) res.insert(n);
         }
-        return vector<int>(ans.begin(), ans.end());
+        return vector<int>(res.begin(), res.end());
     }
 };
+
+
 
 
 
