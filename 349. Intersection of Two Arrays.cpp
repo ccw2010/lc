@@ -7,8 +7,8 @@ Note:
 Each element in the result must be unique.
 The result can be in any order. */
 
-/*这道题让我们找两个数组相同的部分，难度不算大，我们可以用个set把nums1都放进去，然后遍历nums2的元素，如果在set中存在，
-说明是公共部分，加入结果的set中，最后再把结果转为vector的形式即可：*/
+/*这道题让我们找两个数组相同的部分，难度不算大，我们可以用个set把nums1都放进去，然后遍历nums2的元素，
+如果在set中存在，说明是公共部分，加入结果的set中，最后再把结果转为vector的形式即可：*/
 
 class Solution {
 public:
