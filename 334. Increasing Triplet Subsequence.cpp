@@ -39,7 +39,7 @@ public:
 
 
 /*上面的解法不容易想出来，下面这种解法虽然不满足常数空间的要求，但是作为对暴力搜索的优化，也是一种非常好的解题思路。
-这个解法的思路是建立两个数组，forward数组和backward数组，其中forward[i]表示[0, i]之间最小的数，backward[i]表示
+这个解法的思路是建立两个数组，forward数组和backward数组，其中forward[i]表示[0,i]之间最小的数，backward[i]表示
 [i, n-1]之间最大的数，那么对于任意一个位置i，如果满足 forward[i] < nums[i] < backward[i]，则表示这个递增三元子
 序列存在，举个例子来看吧，比如：
 
