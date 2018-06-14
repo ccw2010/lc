@@ -25,25 +25,29 @@ class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int k) {
         int n = nums.size();
-        int idx = search(nums, 0, n - 1, k);
+        int idx = search(nums, 0, n-1, k);
         if (idx == -1) return {-1, -1};
         
         int left = idx, right = idx;
-        while (left > 0 && nums[left-1] == nums[idx]) 
+        while (left > 0 && nums[left-1] == nums[idx]) {
             left--;
-        while (right < n-1 && nums[right+1] == nums[idx]) 
+        }
+        while (right < n-1 && nums[right+1] == nums[idx]) {
             right++;
+        }
         return {left, right};
     }
+    
     int search(vector<int>& nums, int left, int right, int k) {
         if (left > right) return -1;
         int mid = left + (right - left) / 2;
-        if (nums[mid] == k) 
+        if (nums[mid] == k) {
             return mid;
-        else if (nums[mid] < k) 
+        } else if (nums[mid] < k) {
             return search(nums, mid + 1, right, k);
-        else 
+        } else {
             return search(nums, left, mid - 1, k);
+        }
     }
 };
 
