@@ -22,7 +22,19 @@ public:
 };
 
 
+/* 也可以写成迭代的样子，思路都是一样的 */
 
+class Solution {
+public:
+    int getSum(int a, int b) {
+        while (b) {
+            int carry = (a & b) << 1;
+            a = a ^ b;
+            b = carry;
+        }
+        return a;
+    }
+};
 
 
 
