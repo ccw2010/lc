@@ -26,9 +26,10 @@ public:
     string countAndSay(int n) {
         if (n <= 0) return "";
         string res = "1";
-        while (--n) {
+        while (n--) {
             string cur = "";
-            for (int i = 0; i < res.size(); ++i) {
+            size = res.size();
+            for (int i = 0; i < size; i++) {
                 int count = 1;
                 while (res[i] == res[i+1]) {
                     count++;
