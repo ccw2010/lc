@@ -24,11 +24,10 @@ public:
             for(int j = 0; j < col; j++){
                 if(isdigit(board[i][j])) continue;
                 for(char c = '1'; c <= '9'; c++){      // Try 1 through 9
-                    if(isvalid(board, i, j, c)){
-                        board[i][j] = c;               // Put c for this cell
-                        if(solve(board)) return true;  // If it's the solution return true
-                        else board[i][j] = '.';        // Otherwise go back
-                    }
+                    if(!isvalid(board, i, j, c)) continue;
+                    board[i][j] = c;                   // Put c for this cell
+                    if(solve(board)) return true;      // If it's the solution return true
+                    else board[i][j] = '.';            // Otherwise go back
                 }          
                 return false;
             }
@@ -40,9 +39,10 @@ public:
         for(int i = 0; i < 9; i++) {
             int x = 3 * (row / 3) + i / 3;
             int y = 3 * (col / 3) + i % 3;
-            if(isdigit(board[i][col]) && board[i][col] == c) return false;  // check row
-            if(isdigit(board[row][i]) && board[row][i] == c) return false;  // check column
-            if(isdigit(board[x][y])   && board[x][y] == c)   return false;  // check 3*3 block
+            /* Check row, column and 3*3 block */
+            if(board[i][col]==c || board[row][i]==c || board[x][y]==c){
+                return false; 
+            }
         }
         return true;
     }
