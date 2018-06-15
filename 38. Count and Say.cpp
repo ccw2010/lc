@@ -18,8 +18,10 @@ Input: 1. Output: "1"
 
 Example 2:
 Input: 4. Output: "1211"
-
 */
+
+/* 这道计数和读法问题还是第一次遇到，看似挺复杂，仔细一看，算法很简单，就是对于前一个数，
+找出相同元素的个数，把个数和该元素存到新的string里 */
 
 class Solution {
 public:
