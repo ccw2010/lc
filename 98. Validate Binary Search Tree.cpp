@@ -47,12 +47,12 @@ Explanation: The input is: [5,1,4,null,null,3,6]. The root node's value
 class Solution {
 public:
     bool isValidBST(TreeNode *root) {
-        return isValidBST(root, LONG_MIN, LONG_MAX);
+        return isValid(root, LONG_MIN, LONG_MAX);
     }
     bool isValidBST(TreeNode *root, long lower, long upper) {
         if (!root) return true;
         if (root->val <= lower || root->val >= upper) return false;
-        return isValidBST(root->left, lower, root->val) && isValidBST(root->right, root->val, upper);
+        return isValid(root->left, lower, root->val) && isValid(root->right, root->val, upper);
     }
 };
 
