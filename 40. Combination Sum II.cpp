@@ -31,10 +31,10 @@ A solution set is:
 
 class Solution {
 public:
-    vector<vector<int> > combinationSum2(vector<int> &num, int k) {
-        sort(num.begin(), num.end());
-        vector<vector<int> > res;
+    vector<vector<int>> combinationSum2(vector<int> &num, int k) {
+        vector<vector<int>> res;
         vector<int> solution;
+        sort(num.begin(), num.end());
         dfs(num, k, res, solution, 0);
         return res;
     }

@@ -29,10 +29,10 @@ A solution set is:
 // Accepted 16ms c++ solution use backtracking for Combination Sum:
 class Solution {
 public:
-    vector<vector<int> > combinationSum(vector<int> &nums, int k) {
-        sort(nums.begin(), nums.end());
-        vector<vector<int> > res;
+    vector<vector<int>> combinationSum(vector<int> &nums, int k) {  
+        vector<vector<int>> res;
         vector<int> solution;
+        sort(nums.begin(), nums.end());
         dfs(nums, k, res, solution, 0);
         return res;
     }
@@ -51,3 +51,19 @@ public:
         }
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
