@@ -39,9 +39,11 @@ public:
         return res;
     }
     void dfs(vector<int> &num, int k, vector<vector<int> > &res, vector<int> &solution, int begin) {
-        if (k < 0) return;
-        else if (k == 0) res.push_back(solution);
-        else {
+        if (k < 0) {
+          return;
+        } else if (k == 0) {
+          res.push_back(solution);
+        } else {
             for (int i = begin; i < num.size(); i++) {
                 if (i > begin && num[i] == num[i-1]) continue;
                 solution.push_back(num[i]);

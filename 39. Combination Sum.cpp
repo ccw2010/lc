@@ -26,6 +26,7 @@ A solution set is:
 */
 
 // c++ solution use DFS backtracking 
+// Accepted 16ms c++ solution use backtracking for Combination Sum:
 class Solution {
 public:
     vector<vector<int> > combinationSum(vector<int> &nums, int k) {
@@ -36,15 +37,17 @@ public:
         return res;
     }
 
-    void dfs(vector<int> &nums, int k, vector<vector<int> > &res, vector<int> &solution, int begin) {
-        if (!k) {
-            res.push_back(solution);
+    void dfs(vector<int> &nums, int k, vector<vector<int>> &res, vector<int> &solution, int begin) {
+        if (k<0){
             return;
-        }
-        for (int i = begin; i < nums.size() && k >= nums[i]; ++i) {
-            solution.push_back(nums[i]);
-            dfs(nums, k - nums[i], res, solution, i);
-            solution.pop_back();
+        } else if (k==0) {
+            res.push_back(solution);
+        } else {
+            for (int i = begin; i < nums.size() && nums[i]<=k; i++) {
+                solution.push_back(nums[i]);
+                dfs(nums, k - nums[i], res, solution, i);
+                solution.pop_back();
+            }
         }
     }
 };
