@@ -100,3 +100,11 @@ private:
  * SnakeGame obj = new SnakeGame(width, height, food);
  * int param_1 = obj.move(direction);
  */
+
+
+
+
+
+
+
+

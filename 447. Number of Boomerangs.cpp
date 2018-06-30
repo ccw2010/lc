@@ -21,3 +21,36 @@ abd, adb，那么是怎么算出来的呢，很简单，如果有n个点和a距�
 那么我们问题就变成了遍历所有点，让每个点都做一次点a，然后遍历其他所有点，统计和a距离相等的点有多少个，然后分别带入
 n(n-1)计算结果并累加到res中，只有当n大于等于2时，res值才会真正增加，参见代码如下：
 */
+
+
+class Solution {
+public:
+    int numberOfBoomerangs(vector<pair<int,int>>& points) {
+        int res = 0;
+        int n = points.size();
+        for (int i = 0; i < n; i++) {
+            unordered_map<int, int> m;
+            for (int j = 0; j < n; j++) {
+                int a = points[i].first - points[j].first;
+                int b = points[i].second - points[j].second;
+                m[a*a + b*b]++;
+            }
+            for (auto &x : m) {
+                res += x.second * (x.second - 1);
+            }
+        }
+        return res;  
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+

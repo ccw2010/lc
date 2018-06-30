@@ -26,27 +26,41 @@ The substring with start index = 1 is "ba", which is an anagram of "ab".
 The substring with start index = 2 is "ab", which is an anagram of "ab".
 */
 
+/*这道题给了我们两个字符串s和p，让我们在s中找字符串p的所有变位次的位置，所谓变位次就是字符种类个数均相同但是
+顺序可以不同的两个词，那么我们肯定首先就要统计字符串p中字符出现的次数，然后从s的开头开始，每次找p字符串长度个
+字符，来验证字符个数是否相同，如果不相同出现了直接break，如果一直都相同了，则将起始位置加入结果res中*/
 
 class Solution {
 public:
     vector<int> findAnagrams(string s, string p) {
+        if (s.empty()) return {};
         vector<int> res;
-        unordered_map<char, int> m;
-        for (char c : p) m[c]++;
-        int remaining = p.size();
-        
-        int i = 0, j = 0;
-        while (j < s.size()) {
-            if (m[s[j]] > 0) remaining--;
-            m[s[j]]--;
-            while (m[s[j]] < 0) { // this covers both duplicates and invalid char cases
-                m[s[i]]++;
-                if (m[s[i]] > 0) remaining++;
-                i++;
-            } 
-            if (remaining == 0) res.push_back(i);
-            j++;
+        vector<int> count(128, 0);
+        int ns = s.size(), np = p.size();
+        for (char c : p) ++count[c];
+        for (int i=0; i < ns; i++) {
+            bool success = true;
+            vector<int> tmp = count;
+            for (int j = i; j < i + np; j++) {
+                if (--tmp[s[j]] < 0) {
+                    success = false;
+                    break;
+                }
+            }
+            if (success) {
+                res.push_back(i); 
+            }
         }
         return res;
     }
 };
+
+
+
+
+
+
+
+
+
+

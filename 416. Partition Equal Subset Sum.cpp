@@ -54,7 +54,7 @@ public:
         if (sum & 1) return false;
         int k = sum >> 1;
 
-        vector<int> dp(k + 1, 0);
+        vector<int> dp(k+1, false);
         dp[0] = 1;
         for(auto n : nums) {
             for(int j = k; j >= n; j--){

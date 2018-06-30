@@ -19,10 +19,11 @@ Only three moves are needed (remember each move increments two elements):
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
-        int m = INT_MAX, ans = 0;
-        for (int n : nums) m = min(m, n);
-        for (int n : nums) ans += (n-m);
-        return ans;
+        int nmin = INT_MAX;
+        int res = 0;
+        for (int n : nums) nmin = min(nmin, n);
+        for (int n : nums) res += (n - nmin);
+        return res;
     }
 };
 
@@ -30,12 +31,13 @@ public:
 class Solution {
 public:
     int minMoves(vector<int>& nums) {
-        int m = INT_MAX, sum = 0;
+        int nmin = INT_MAX;
+        int sum = 0;
         for (int n : nums){
-            m = min(m, n);
+            nmin = min(nmin, n);
             sum += n;
         }
-        return sum - m * nums.size();
+        return sum - nmin * nums.size();
     }
 };
 
