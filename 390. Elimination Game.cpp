@@ -36,16 +36,21 @@ Denote L as traversing [1,...,n] from left to right,
 class Solution {
 public:
     int lastRemaining(int n) {
-        return dfs(n, true);    
+        return eliminate(n, true);    
     }
     
-    int dfs(int n, bool left2right) {
+    int eliminate(int n, bool left2right) {
         if (n == 1) return 1;
         if (left2right) {
-            return 2 * dfs(n / 2, false);
+            return 2 * eliminate(n / 2, false);
         } else {
-            return 2 * dfs(n / 2, true) - 1 + n % 2;
+            return 2 * eliminate(n / 2, true) - 1 + n % 2;
         }
     }
-
 };
+
+
+
+
+
+
