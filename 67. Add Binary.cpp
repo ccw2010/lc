@@ -1,12 +1,22 @@
-/*Given two binary strings, return their sum (also a binary string).
+/* 67. Add Binary
 
-For example,
-a = "11"
-b = "1"
-Return "100".*/
+Given two binary strings, return their sum (also a binary string).
 
-/*用了两个指针i,j分别指向a和b的末尾，然后每次取出一个字符，转为数字，若无法取出字符则按0处理，然后定义进位carry，初始化为0，
-将三者加起来，对2取余即为当前位的数字，对2取商即为当前进位的值，记得最后还要判断下carry，如果为1的话，要在结果最前面加上一个1*/
+The input strings are both non-empty and contains only characters 1 or 0.
+
+Example 1:
+Input: a = "11", b = "1"
+Output: "100"
+
+Example 2:
+Input: a = "1010", b = "1011"
+Output: "10101"
+
+*/
+
+/*用了两个指针i,j分别指向a和b的末尾，然后每次取出一个字符，转为数字，若无法取出字符则按0处理，
+然后定义进位carry，初始化为0，将三者加起来，对2取余即为当前位的数字，对2取商即为当前进位的值，
+记得最后还要判断下carry，如果为1的话，要在结果最前面加上一个1*/
 
 class Solution {
 public:

@@ -44,7 +44,7 @@ You should gather all requirements up front before implementing one.
 num, dot, exp, sign分别表示数字，小数点，自然底数和符号是否出现，numAfterE表示自然底数后面是否有数字，
 那么我们分别来看各种情况：
 
-- 空格： 我们需要排除的情况是，当前位置是空格而后面一位不为空格，但是之前有数字，小数点，自然底数或者符号出现时返回false。
+- 空格：我们需要排除的情况是，当前位置是空格而后面一位不为空格，但是之前有数字，小数点，自然底数或者符号出现时返回false。
 
 - 符号：符号前面如果有字符的话必须是空格或者是自然底数，标记sign为true。
 

@@ -17,8 +17,8 @@ rotate 2 steps to the right: 1->2->0->NULL
 rotate 3 steps to the right: 0->1->2->NULL
 rotate 4 steps to the right: 2->0->1->NULL*/
 
-/*先遍历整个链表获得链表长度n，然后此时把链表头和尾链接起来，在往后走 n - k % n 个节点就到达新链表的头结点前一个点，
-这时断开链表即可*/
+/*先遍历整个链表获得链表长度n，然后此时把链表头和尾链接起来，在往后走 n - k % n 个节点就到达新链表的头结点前
+一个点，这时断开链表即可*/
 
 /**
  * Definition for singly-linked list.
@@ -30,7 +30,7 @@ rotate 4 steps to the right: 2->0->1->NULL*/
  */
 class Solution {
 public:
-    ListNode *rotateRight(ListNode *head, int k) {
+    ListNode* rotateRight(ListNode *head, int k) {
         if (!head) return NULL;
         int len = 1;
         ListNode *cur = head;
