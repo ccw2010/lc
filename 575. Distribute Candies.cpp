@@ -1,4 +1,5 @@
-/* Given an integer array with even length, where different numbers in this array represent different 
+/* 575. Distribute Candies
+Given an integer array with even length, where different numbers in this array represent different 
 kinds of candies. Each number means one candy of the corresponding kind. You need to distribute these 
 candies equally in number to brother and sister. Return the maximum number of kinds of candies the 
 sister could gain.
@@ -30,6 +31,7 @@ the sister cannot get more than half.
 然后跟n/2比较，取二者之中的较小值返回即可*/
 
 
+#include <unordered_set>
 class Solution {
 public:
     int distributeCandies(vector<int>& candies) {
@@ -38,7 +40,6 @@ public:
             s.insert(c);
         }
         return min(s.size(), candies.size()/2);
-        
     }
 };
 

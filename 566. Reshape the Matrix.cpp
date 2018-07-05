@@ -36,6 +36,11 @@ Explanation:
 There is no way to reshape a 2 * 2 matrix to a 2 * 4 matrix. So output the original matrix.
 */
 
+/*这道题让我们实现矩阵大小的重塑，对于这种二维数组大小重新非配的问题的关键就是对应位置的坐标转换，最直接的办法就是先把
+原数组拉直，变成一条直线，然后再组成新的数组。所以这道题我们先判断给定数组是否能重塑成给定的大小，就是看两者的元素总数
+是否相同，直接行数乘以列数即可，然后我们新建一个目标大小的数组，并开始遍历，对于每个位置，我们先转为拉直后的一维坐标，
+然后在算出在原数组中的对应位置赋值过来即可*/
+
 class Solution {
 public:
     vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {

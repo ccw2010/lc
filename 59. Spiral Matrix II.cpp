@@ -1,5 +1,4 @@
 /*59. Spiral Matrix II
-DescriptionHintsSubmissionsDiscussSolution
 
 Given a positive integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
 
@@ -20,11 +19,10 @@ public:
         if (n<=0) return {};
         vector<vector<int> > res(n, vector<int>(n, 1));
 
-        // Normal Case
         int top = 0, right = n-1;
         int left = 0, bottom = n-1;
       
-        int val = 1; //change    
+        int val = 1;     
         while (top <= bottom && left <= right) {
             for (int i = left; i <= right; i++) {
                 res[top][i] = val++; //change
@@ -32,22 +30,38 @@ public:
             top++;
             
             for (int i = top; i <= bottom; i++) {
-                res[i][right] = val++; //change
+                res[i][right] = val++; 
             }
             right--;
             
             for (int i = right; i >= left; i--) {
                 if (top <= bottom)
-                    res[bottom][i] = val++; //change
+                    res[bottom][i] = val++; 
             }
             bottom--;
             
             for (int i = bottom; i >= top; i--) {
                 if (left <= right)
-                    res[i][left] = val++; //change
+                    res[i][left] = val++; 
             }
             left++;
         }
         return res;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

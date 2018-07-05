@@ -19,7 +19,7 @@ public:
     int subarraySum(vector<int>& nums, int k) {
         int n = nums.size();
         vector<int> sums = nums;
-        for (int i = 1; i < n; ++i) {
+        for (int i = 1; i < n; i++) {
             sums[i] = sums[i-1] + nums[i];
         }
         int res = 0;
@@ -50,7 +50,7 @@ public:
         int n = nums.size();
         int res = 0, sum = 0;
         unordered_map<int,int> m;
-        m[0]++;
+        m[0] = 1;
         for (int i = 0; i < n; i++) {
             sum += nums[i];
             if(m.count(sum-k)) res += m[sum-k];

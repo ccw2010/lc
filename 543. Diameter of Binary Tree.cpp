@@ -54,18 +54,23 @@ class Solution {
 public:
     int diameterOfBinaryTree(TreeNode* root) {
         int res = 0;
-        maxDepth(root, res);
+        unordered_map<TreeNode*, int> m;
+        maxDepth(root, res, m);
         return res;
     }
-    int maxDepth(TreeNode* node, int& res) {
+    int maxDepth(TreeNode* node, int &res, unordered_map<TreeNode*, int> &m){
         if (!node) return 0;
         if (m.count(node)) return m[node];
-        int left = maxDepth(node->left, res);
-        int right = maxDepth(node->right, res);
+        int left = maxDepth(node->left, res, m);
+        int right = maxDepth(node->right, res, m);
         res = max(res, left + right);
-        return m[node] = (max(left, right) + 1);
+        return m[node] = max(left, right) + 1;
     }
-
-private:
-    unordered_map<TreeNode*, int> m;
 };
+
+
+
+
+
+
+

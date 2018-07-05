@@ -22,17 +22,17 @@ otherwise the larger number is sacrificed. It's very similar to the bucket theor
 with the volume of water the shortest plank allows.
 */
 
-
-
+#include <vector>
 class Solution {
 public:
     int arrayPairSum(vector<int>& nums) {        
-        int ans = 0;
         sort(nums.begin(), nums.end());
-        for (int i=0; i<nums.size(); i+=2){
-            ans += nums[i];
+        int n = nums.size();
+        int res = 0;
+        for (int i=0; i<n; i+=2){
+            res += nums[i];
         }
-        return ans;
+        return res;
     }
 };
 

@@ -41,22 +41,26 @@ Given tree t:
  */
 class Solution {
 public:
-    bool isSame(TreeNode *s, TreeNode *t) {
-        if (!s && !t)
-            return true;
-        
-        if (!s && t || s && !t)
-            return false;
-        
-        return s->val == t->val && isSame(s->left, t->left) && isSame(s->right, t->right);
+    bool isSame(TreeNode* p, TreeNode* q) {
+        if (!p && !q) return true;
+        if (!p || !q) return false;
+        if (p->val != q->val) return false; 
+        return isSame(p->left, q->left) && isSame(p->right, q->right);
     }
 
     bool isSubtree(TreeNode* s, TreeNode* t) {
-        if (!s)
-            return !t;
-        return isSame(s, t) || isSubtree(s->left, t) || isSubtree(s->right, t);
+        if (!s) return !t;
+        if (isSame(s, t)) return true;
+        return isSubtree(s->left, t) || isSubtree(s->right, t);
     }
 };
+
+
+
+
+
+
+
 
 
 

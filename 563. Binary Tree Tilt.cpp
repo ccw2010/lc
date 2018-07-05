@@ -41,10 +41,10 @@ public:
 private:
     int postorder(TreeNode* node, int& res){
         if(!node) return 0;
-        int lsum = postorder(node->left,res);
-        int rsum = postorder(node->right,res);
-        res += abs(lsum - rsum);
-        return lsum + rsum + node->val;
+        int left = postorder(node->left, res);
+        int right = postorder(node->right, res);
+        res += abs(left - right);
+        return left + right + node->val;
         
     }
 };
