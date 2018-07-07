@@ -55,19 +55,19 @@ class Solution {
 public:
     void recoverTree(TreeNode* root) {
         vector<TreeNode*> list;
-        vector<int> nums;
-        inorder(root, list, nums);
-        sort(nums.begin(), nums.end());
+        vector<int> vals;
+        inorder(root, list, vals);
+        sort(vals.begin(), vals.end());
         for (int i = 0; i < list.size(); i++) {
-            list[i]->val = nums[i];
+            list[i]->val = vals[i];
         }
     }
-    void inorder(TreeNode *root, vector<TreeNode*> &list, vector<int> &nums) {
+    void inorder(TreeNode *root, vector<TreeNode*> &list, vector<int> &vals) {
         if (!root) return;
-        inorder(root->left, list, nums);
+        inorder(root->left, list, vals);
         list.push_back(root);
-        nums.push_back(root->val);
-        inorder(root->right, list, nums);
+        vals.push_back(root->val);
+        inorder(root->right, list, vals);
     }
 };
 
