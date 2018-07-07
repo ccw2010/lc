@@ -13,6 +13,11 @@ Input: "aaa"
 Output: 6
 Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa". */
 
+/*这道题给了我们一个字符串，让我们计算有多少个回文子字符串。我们直接将dp[i][j]定义成子字符串[i,j]是否是回文串，
+然后我们i从n-1往0遍历，j从i往n-1遍历，然后我们看s[i]和s[j]是否相等，这时候我们需要留意一下，有了s[i]和s[j]相等
+这个条件后，i和j的位置关系很重要，如果i和j相等了，那么dp[i][j]肯定是true；如果i和j是相邻的，那么dp[i][j]也是true；
+如果i和j中间只有一个字符，那么dp[i][j]还是true；如果中间有多余一个字符存在，那么我们需要看dp[i+1][j-1]是否为true，
+若为true，那么dp[i][j]就是true。赋值dp[i][j]后，如果其为true，结果res自增1*/
 
 class Solution {
 public:

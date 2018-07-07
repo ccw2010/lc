@@ -18,6 +18,8 @@ For the point (0,0), (0,2), (2,0), (2,2): floor(3/4) = floor(0.75) = 0
 For the point (0,1), (1,0), (1,2), (2,1): floor(5/6) = floor(0.83333333) = 0
 For the point (1,1): floor(8/9) = floor(0.88888889) = 0 */
 
+/* 这道题让我们给一个图片进行平滑处理，一般来说都是用算子来跟图片进行卷积，这道题我们直接用土办法就能解了，
+就直接对于每一个点统计其周围点的个数，然后累加像素值，做个除法 */
 
 class Solution {
 public:
@@ -34,8 +36,7 @@ public:
                 for (auto dir : dirs) {
                     int x = i + dir[0];
                     int y = j + dir[1];
-                    if (x < 0 || x >= row || y < 0 || y >= col) 
-                        continue;
+                    if (x < 0 || x >= row || y < 0 || y >= col) continue;
                     nbrs++;
                     total += m[x][y];
                 }
@@ -45,3 +46,13 @@ public:
         return res;
     }
 };
+
+
+
+
+
+
+
+
+
+
