@@ -54,20 +54,20 @@ Could you devise a constant space solution?
 class Solution {
 public:
     void recoverTree(TreeNode* root) {
-        vector<TreeNode*> list;
+        vector<TreeNode*> nodes;
         vector<int> vals;
-        inorder(root, list, vals);
+        inorder(root, nodes, vals);
         sort(vals.begin(), vals.end());
-        for (int i = 0; i < list.size(); i++) {
-            list[i]->val = vals[i];
+        for (int i = 0; i < nodes.size(); i++) {
+            nodes[i]->val = vals[i];
         }
     }
-    void inorder(TreeNode *root, vector<TreeNode*> &list, vector<int> &vals) {
+    void inorder(TreeNode *root, vector<TreeNode*> &nodes, vector<int> &vals) {
         if (!root) return;
-        inorder(root->left, list, vals);
-        list.push_back(root);
+        inorder(root->left, nodes, vals);
+        nodes.push_back(root);
         vals.push_back(root->val);
-        inorder(root->right, list, vals);
+        inorder(root->right, nodes, vals);
     }
 };
 
