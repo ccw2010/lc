@@ -72,19 +72,19 @@ class Solution {
 public:
     bool isValidBST(TreeNode *root) {
         if (!root) return true;
-        vector<int> nums;
-        inorder(root, nums);
-        int n = nums.size();
+        vector<int> vals;
+        inorder(root, vals);
+        int n = vals.size();
         for (int i = 0; i < n-1; i++) {
-            if (nums[i] >= nums[i+1])  return false;
+            if (vals[i] >= vals[i+1])  return false;
         }
         return true;
     }
-    void inorder(TreeNode *root, vector<int> &nums) {
+    void inorder(TreeNode *root, vector<int> &vals) {
         if (!root) return;
-        inorder(root->left, nums);
-        nums.push_back(root->val);
-        inorder(root->right, nums);
+        inorder(root->left, vals);
+        vals.push_back(root->val);
+        inorder(root->right, vals);
     }
 };
 

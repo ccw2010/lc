@@ -14,20 +14,35 @@ Input: [2,2,2,2,2]
 Output: 1
 Explanation: The longest continuous increasing subsequence is [2], its length is 1. */
 
+/*这道题让我们求一个数组的最长连续递增序列，由于有了连续这个条件，跟673.Number of Longest Increasing Subsequence
+比起来，难度就降低了很多。我们可以使用一个计数器，如果遇到大的数字，计数器自增1, 并update res；如果是一个小的数字，则
+计数器重置为1。最后返回res即可*/
 
 class Solution {
 public:
-    int findLengthOfLCIS(vector<int>& nums) {
+    int findLengthOfLCIS(vector<int> &nums) {
         int res = 0, count = 0;
         int n = nums.size();
         for (int i = 0; i < n; i++) {
-            if (i == 0 || nums[i - 1] < nums[i]) {
+            if (i == 0 || nums[i-1] < nums[i]) {
                 count++;
                 res = max(res, count);
+            } else {
+                count = 1;
             }
-            else count = 1;
         }
         return res;
-        
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+

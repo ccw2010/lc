@@ -50,14 +50,26 @@ public:
         int first = root->val;
         int second = INT_MAX;
         preorder(root, first, second);
-        return (second == first || second == INT_MAX) ? -1 : second;
+        if (second == first || second == INT_MAX) return -1;
+        else return second;
     }
+    
     void preorder(TreeNode* node, int& first, int& second) {
         if (!node) return;
-        if (node->val != first && node->val < second) {
+        if (node->val > first && node->val < second) {
             second = node->val;
         }
         preorder(node->left, first, second);
         preorder(node->right, first, second);
     }
 };
+
+
+
+
+
+
+
+
+
+
