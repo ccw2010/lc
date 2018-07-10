@@ -1,6 +1,6 @@
 /** 814. Binary Tree Pruning
 
-We are given the head node root of a binary tree, where additionally every node's value is either a0 or a1.
+We are given the head node root of a binary tree, where additionally every node's value is either 0 or 1.
 
 Return the same tree where every subtree (of the given tree) not containing a 1 has been removed.
 
