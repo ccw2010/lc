@@ -16,16 +16,18 @@ Given 1->1->2->3->3, return 1->2->3.*/
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode* cur = head;
-        while (cur){
-            while (cur->next && cur->val == cur->next->val){
-                cur->next = cur->next->next;
+        if (!head) return NULL;
+        for (ListNode* p = head; p; p = p->next) {
+            while (p->next && p->val == p->next->val){
+                p->next = p->next->next;
             }
-            cur = cur->next;
         }
         return head;
     }
 };
+
+
+
 
 
 
