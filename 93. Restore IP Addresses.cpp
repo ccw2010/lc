@@ -31,15 +31,11 @@ public:
     void restore(string s, int k, string solution, vector<string> &res) {
         if (k == 0) {
             if (s.empty()) res.push_back(solution);
-        }
-        else {
+        } else {
             for (int i = 1; i <= 3; i++) {
                 if (s.size() >= i && valid(s.substr(0,i))) {
-                    if (k==1){ 
-                        restore(s.substr(i), k-1, solution + s.substr(0,i), res);
-                    }else {
-                        restore(s.substr(i), k-1, solution + s.substr(0,i) + ".", res);
-                    }
+                    if (k==1) restore(s.substr(i), k-1, solution + s.substr(0,i), res);
+                    else restore(s.substr(i), k-1, solution + s.substr(0,i) + ".", res);
                 }
             }
         }

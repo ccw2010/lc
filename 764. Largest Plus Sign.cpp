@@ -97,7 +97,7 @@ public:
 	int orderOfLargestPlusSign(int N, vector<vector<int>>& mines) {
 	    vector<vector<int>> grid(N, vector<int>(N, N));
 	        
-	    for (auto& m : mines) {
+	    for (auto &m : mines) {
 	        grid[m[0]][m[1]] = 0;
 	    }
 	        

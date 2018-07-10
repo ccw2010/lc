@@ -92,7 +92,7 @@ public:
             subset.push_back(nums[i]);
             getSubsets(nums, i + 1, subset, res);
             subset.pop_back();
-            while (i + 1 < n && nums[i] == nums[i + 1]) {
+            while (i + 1 < n && nums[i] == nums[i+1]) {
                 i++;
             }
         }

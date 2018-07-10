@@ -18,6 +18,19 @@ Note: A and B will have length at most 100.
 class Solution {
 public:
     bool rotateString(string A, string B) {
-        return A.size() == B.size() && (A + A).find(B) != string::npos;
+    	if (A.size() != B.size()) return false;
+        return (A + A).find(B) != string::npos;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+

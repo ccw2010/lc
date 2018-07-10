@@ -1,4 +1,4 @@
-/*785. Is Graph Bipartite?
+/* 785. Is Graph Bipartite?
 
 Given an undirected graph, return true if and only if it is bipartite.
 
@@ -46,8 +46,9 @@ the same color. Initialize a color array for each node. Here are three states fo
 1: Red.
 
 For each node,
-If it hasn't been colored, use a color to color it. Then use the other color to color all its adjacent nodes (DFS).
-If it has been colored, check if the current color is the same as the color that is going to be used to color it. 
+If it hasn't been colored, use a color to color it. Then use the other color to color all its adjacent nodes 
+(DFS). If it has been colored, check if the current color is the same as the color that is going to be used 
+to color it. 
 */
 
 class Solution {
@@ -78,3 +79,11 @@ public:
         return true;
     }
 };
+
+
+
+
+
+
+
+

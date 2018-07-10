@@ -21,7 +21,7 @@ public:
         int n = tpr.size();
         vector<int> res(n, 0);
         stack<int> s;
-        for (int i = 0; i < tpr.size(); ++i) {
+        for (int i = 0; i < tpr.size(); i++) {
             while (!s.empty() && tpr[i] > tpr[s.top()]) {
                 auto t = s.top(); 
                 s.pop();
@@ -30,8 +30,7 @@ public:
             s.push(i);
         }
         return res;
-    }
-        
+    }       
 };
 
 

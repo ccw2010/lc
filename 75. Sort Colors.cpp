@@ -25,13 +25,13 @@ class Solution {
 public:
     void sortColors(vector<int>& nums) {
         int n = nums.size();
-        int m[3] = {0};
-        for (int i = 0; i < n; ++i) {
-            m[nums[i]]++;
+        int m[3] = {0,0,0};
+        for (int n : nums) {
+            m[n]++;
         }
         int k = 0;
-        for (int i = 0; i < 3; ++i) {
-            for (int j = 0; j < m[i]; ++j) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < m[i]; j++) {
                 nums[k++] = i;
             }
         }
@@ -40,22 +40,34 @@ public:
 
 /*题目中还要让只遍历一次数组来求解，那么我需要用双指针来做，分别从原数组的首尾往中心移动。
 - 定义red指针指向开头位置，blue指针指向末尾位置
-- 从头开始遍历原数组，如果遇到0，则交换该值和red指针指向的值，并将red指针后移一位。
-若遇到2，则交换该值和blue指针指向的值，并将blue指针前移一位。若遇到1，则继续遍历。*/
+- 从头开始遍历原数组:
+  1) 如果遇到0，则交换该值和red指针指向的值，并将red指针后移一位。
+  2) 若遇到2，则交换该值和blue指针指向的值，并将blue指针前移一位。
+  3) 若遇到1，则继续遍历。*/
 
 class Solution {
 public:
-    void sortColors(vector<int>& nums) {
+    void sortColors(vector<int> &nums) {
         int red = 0, blue = nums.size() - 1;
         for (int i = 0; i <= blue; i++) {
             if (nums[i] == 0) {
-                swap(nums[i], nums[red++]);
+                swap(nums[i], nums[red]);
                 red++;
             } else if (nums[i] == 2) {
                 swap(nums[i], nums[blue]);
-                i--;
-                blue--;
+                i--; blue--;
             } 
         }
     }
 };
+
+
+
+
+
+
+
+
+
+
+

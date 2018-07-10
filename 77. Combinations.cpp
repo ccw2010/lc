@@ -29,13 +29,14 @@ public:
         dfs(n, k, 1, solution, res);
         return res;
     }
-    void dfs(int n, int k, int level, vector<int>& solution, vector<vector<int>>& res) {
+    void dfs(int n, int k, int start, vector<int> &solution, vector<vector<int>> &res) {
         if (solution.size() == k){ 
             res.push_back(solution);
+            return;
         }
-        for (int i = level; i <= n; i++) {
+        for (int i = start; i <= n; i++) {
             solution.push_back(i);
-            dfs(n, k, i + 1, solution, res);
+            dfs(n, k, i+1, solution, res);
             solution.pop_back();
         }
     }

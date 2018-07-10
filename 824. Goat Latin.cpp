@@ -25,10 +25,10 @@ Output: "Imaa peaksmaaa oatGmaaaa atinLmaaaaa"
 
 Example 2:
 Input: "The quick brown fox jumped over the lazy dog"
-Output: "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa"
+Output: "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa 
+ogdmaaaaaaaaaa"
 
-Notes:
-S contains only uppercase, lowercase and spaces. Exactly one space between each word.
+Notes: S contains only uppercase, lowercase and spaces. Exactly one space between each word.
 1 <= S.length <= 150.
 */
 

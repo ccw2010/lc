@@ -16,20 +16,20 @@ Output: ["12345"]
 class Solution {
 public:
     vector<string> letterCasePermutation(string s) {
-            vector<string> res;
-            dfs(s, res, 0);
-            return res;
-        }
+        vector<string> res;
+        dfs(s, res, 0);
+        return res;
+    }
     
     void dfs(string& s, vector<string>& res, int i){
-        if(i == s.size()) {
+        if (i == s.size()) {
             res.push_back(s);
             return;
         }
-        if(islower(s[i])){
+        if (islower(s[i])){
             dfs(s, res, i+1);
             s[i] = toupper(s[i]);
-        }else if(isupper(s[i])){
+        } else if (isupper(s[i])){
             dfs(s, res, i+1);
             s[i] = tolower(s[i]);
         }

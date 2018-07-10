@@ -31,22 +31,23 @@ public:
     WordFilter(vector<string> words) {
         int n = words.size();
         for (int k = 0; k < n; k++) {
-            int len = words[k].size();
+            string word = words[k];
+            int len = word.size();
             for (int i = 0; i <= len; i++) {
                 for (int j = 0; j <= len; j++) {
-                    m[words[k].substr(0,i) + "/" + words[k].substr(len-j)] = k;
+                    m_[word.substr(0,i) + "/" + word.substr(len-j)] = k;
                 }
             }
         }
     }
 
     int f(string prefix, string suffix) {
-        if (!m.count(prefix + "/" + suffix)) return -1;
-        else return m[prefix + "/" + suffix];
+        if (!m_.count(prefix + "/" + suffix)) return -1;
+        else return m_[prefix + "/" + suffix];
     }
 
 private:
-    unordered_map<string, int> m;
+    unordered_map<string, int> m_;
 };
 
 /**
