@@ -60,9 +60,9 @@ public:
 
 /* 我们也可以用DP来解，定义一个二维的DP数组，其中dp[i][j]表示s[0,i)和p[0,j)是否match，然后有下面三种情况：
 
-1.  P[i][j] = P[i - 1][j - 1], if p[j - 1] != '*' && (s[i - 1] == p[j - 1] || p[j - 1] == '.');
-2.  P[i][j] = P[i][j - 2], if p[j - 1] == '*' and the pattern repeats for 0 times;
-3.  P[i][j] = P[i - 1][j] && (s[i - 1] == p[j - 2] || p[j - 2] == '.'), if p[j - 1] == '*' and the pattern
+1.  P[i][j] = P[i-1][j-1], if p[j-1] != '*' && (s[i-1] == p[j-1] || p[j-1] == '.');
+2.  P[i][j] = P[i][j-2], if p[j-1] == '*' and the pattern repeats for 0 times;
+3.  P[i][j] = P[i-1][j] && (s[i-1] == p[j-2] || p[j-2] == '.'), if p[j-1] == '*' and the pattern
 						                                  repeats for at least 1 times.
 */
 
@@ -73,8 +73,8 @@ public:
         int m = s.size(), n = p.size();
         vector<vector<bool>> dp(m + 1, vector<bool>(n + 1, false));
         dp[0][0] = true;
-        for (int i = 0; i <= m; ++i) {
-            for (int j = 1; j <= n; ++j) {
+        for (int i = 0; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
                 if (j > 1 && p[j-1] == '*') {
                     dp[i][j] = dp[i][j-2] || (i > 0 && (s[i-1] == p[j-2] || p[j-2] == '.') && dp[i-1][j]);
                 } else {

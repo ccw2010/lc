@@ -1,4 +1,5 @@
-/*Generate Parentheses 生成括号
+/* 22. Generate Parentheses 
+
 Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 For example, given n = 3, a solution set is:
 "((()))", "(()())", "(())()", "()(())", "()()()"
@@ -11,17 +12,28 @@ For example, given n = 3, a solution set is:
 3个右括号，且字符串合法，则存入结果中后返回。如果以上两种情况都不满足，若此时left大于0，则调用递归函数，注意参数的更新，
 若right大于0，则调用递归函数，同样要更新参数。代码如下：*/
 
-vector<string> generateParenthesis(int n) {
-    vector<string> res;
-    dfs("", n, n, res);
-    return res;
-}
-void dfs(string paren, int left, int right, vector<string> &res) {
-    if (left > right) return;
-    else if (left == 0 && right == 0) res.push_back(paren);
-    else {
-        if (left > 0) dfs(paren + '(', left - 1, right, res);
-        if (right > 0) dfs(paren + ')', left, right - 1, res);
-    }
-}
+class Solution {
+public:
+	vector<string> generateParenthesis(int n) {
+	    vector<string> res;
+	    dfs("", n, n, res);
+	    return res;
+	}
+	void dfs(string paren, int left, int right, vector<string> &res) {
+	    if (left > right) return;
+	    if (left == 0 && right == 0) res.push_back(paren);
+	    else {
+	        if (left > 0) dfs(paren + '(', left - 1, right, res);
+	        if (right > 0) dfs(paren + ')', left, right - 1, res);
+	    }
+	}
+};
+
+
+
+
+
+
+
+
 

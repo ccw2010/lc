@@ -24,7 +24,7 @@ Then invert the image: [[1,1,0,0],[0,1,1,0],[0,0,0,1],[1,0,1,0]]
 
 class Solution {
 public:
-    vector<vector<int>> flipAndInvertImage(vector<vector<int>>& img) {    
+    vector<vector<int>> flipAndInvertImage(vector<vector<int>> &img) {    
         for (auto &row : img) {
             reverse(row.begin(), row.end());
         }

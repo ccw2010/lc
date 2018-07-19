@@ -1,4 +1,6 @@
-/*Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+/* 101. Symmetric Tree
+
+Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
 
 For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
     1
@@ -31,10 +33,21 @@ public:
         if (!root) return true;
         return symmetric(root->left, root->right);
     }
+
     bool symmetric(TreeNode* p, TreeNode* q) {
-        if (!p && !q) return true;
-        if (p && !q || !p && q ) return false;
-        return p->val == q->val && symmetric(p->left, q->right) && symmetric(p->right, q->left);
+        if (!p || !q) return p==q;        
+        if (p->val != q->val) return false;
+        return symmetric(p->left, q->right) && symmetric(p->right, q->left);
     }    
 };
+
+
+
+
+
+
+
+
+
+
 

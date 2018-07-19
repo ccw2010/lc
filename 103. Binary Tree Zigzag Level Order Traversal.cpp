@@ -5,6 +5,7 @@ then right to left for the next level and alternate between).
 
 For example:
 Given binary tree [3,9,20,null,null,15,7],
+
     3
    / \
   9  20
@@ -12,12 +13,14 @@ Given binary tree [3,9,20,null,null,15,7],
    15   7
 
 return its zigzag level order traversal as:
+
 [
   [3],
   [20,9],
   [15,7]
 ]
 */
+
 
 /**
  * Definition for a binary tree node.
@@ -42,33 +45,36 @@ For example, for node(9), it's index in queue is 0, so its index in vector shoul
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        vector<vector<int>> res;    
-        if (!root) return res;
+        if (!root) return {};
+        vector<vector<int>> res;
+        deque<TreeNode*> q;
+        q.push_front(root);
 
-        queue<TreeNode*> q;
-        q.push(root);
-        bool left2right = true;
-
-        while (!q.empty()) {
-            int n = q.size();
-            vector<int> row(n);
-            for (int i = 0; i < n; i++) {
-                TreeNode* node = q.front();
-                q.pop();
-
-                int index = (left2right) ? i : (n-1-i);
-                row[index] = node->val;
-
-                if (node->left) q.push(node->left);
-                if (node->right) q.push(node->right);
+        for (int k = 0; !q.empty(); k++) {
+            res.push_back({});
+            bool left2right = (k % 2 == 0);
+            for (int i = q.size(); i > 0; i--) {
+                TreeNode* node;
+                if (left2right) {
+                    node = q.front();
+                    q.pop_front();
+                    if (node->left) q.push_back(node->left);
+                    if (node->right) q.push_back(node->right);
+                } else {
+                    node = q.back();
+                    q.pop_back();
+                    if (node->right) q.push_front(node->right);
+                    if (node->left) q.push_front(node->left);
+                }
+                res[k].push_back(node->val);
             }
-            // after each level
-            left2right = !left2right;
-            res.push_back(row);
         }
         return res;
     }
 };
+
+
+
 
 
 

@@ -49,7 +49,6 @@ public:
 /*下面这种解法利用了如果x是palindrome，反转后仍是原数字，就不可能溢出，只要溢出一定不是palindrome返回false就行。
 可以参考7.Reverse Integer这题, 直接调用reverse()。*/
  
-
 class Solution {
 public:
     bool isPalindrome(int x) {

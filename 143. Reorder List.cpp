@@ -19,42 +19,46 @@ Given 1->2->3->4->5, reorder it to 1->5->2->4->3.
  * };
  */
 
-/* 这道链表重排序问题可以拆分为以下三个小问题：
-1. 使用快慢指针来找到链表的中点，并将链表从中点处断开，形成两个独立的链表。
-2. 将第二个链翻转。
-3. 将第二个链表的元素间隔地插入第一个链表中。 */
-
  /*A concise O(n) time, O(1) in place solution*/
 class Solution {
 public:
-   void reorderList(ListNode *head) {
+    void reorderList(ListNode* head) {
         if (!head || !head->next) return;
-        ListNode *fast = head;
-        ListNode *slow = head;
-        while (fast->next && fast->next->next) {
-            slow = slow->next;
-            fast = fast->next->next;
+
+        // find the middle node: O(n)
+        ListNode *p1 = head;
+        ListNode *p2 = head->next;
+        while (p2 && p2->next) {
+            p1 = p1->next;
+            p2 = p2->next->next;
         }
-        ListNode *mid = slow->next;
-        slow->next = NULL;
-        ListNode *l2 = mid;
-        ListNode *pre = NULL;
-        while (l2) {
-            ListNode *next = l2->next;
-            l2->next = pre;
-            pre = l2;
-            l2 = next;
+
+        // cut from the middle and reverse the second half: O(n)
+        ListNode *head2 = p1->next;
+        p1->next = NULL;
+
+        p2 = head2->next;
+        head2->next = NULL;
+        while (p2) {
+            p1 = p2->next;
+            p2->next = head2;
+            head2 = p2;
+            p2 = p1;
         }
-        ListNode *revHead = pre;
-        while (head && revHead) {
-            ListNode *next = head->next;
-            head->next = revHead;
-            revHead = revHead->next;
-            head->next->next = next;
-            head = next;
+
+        // merge two lists: O(n)
+        for (p1 = head, p2 = head2; p1; ) {
+            auto t = p1->next;
+            p1 = p1->next = p2;
+            p2 = t;
         }
     }
 };
+
+
+
+
+
 
 
 
