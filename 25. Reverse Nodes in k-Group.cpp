@@ -43,6 +43,7 @@ public:
         head->next = reverseKGroup(cur, k);
         return newHead;
     }
+    
     ListNode* reverse(ListNode* head, ListNode* tail) {
         ListNode *pre = tail;
         while (head != tail) {
