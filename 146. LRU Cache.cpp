@@ -53,7 +53,7 @@ public:
         if (it != m_.end()) l_.erase(it->second);
         l_.push_front(make_pair(key, value));
         m_[key] = l_.begin();
-        if (m_.size() > cap) {
+        if (m_.size() > cap_) {
             int k = l_.rbegin()->first;
             l_.pop_back();
             m_.erase(k);
