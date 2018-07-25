@@ -1,4 +1,5 @@
-/*128. Longest Consecutive Sequence
+/* 128. Longest Consecutive Sequence
+
 Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
 Your algorithm should run in O(n) complexity.
 
@@ -21,8 +22,14 @@ public:
             if (!s.count(n)) continue;
             s.erase(n);
             int pre = n - 1, next = n + 1;
-            while (s.count(pre)) s.erase(pre--);
-            while (s.count(next)) s.erase(next++);
+            while (s.count(pre)) {
+                s.erase(pre);
+                pre--;
+            }
+            while (s.count(next)) {
+                s.erase(next);
+                next++;
+            }
             res = max(res, next - pre - 1);
         }
         return res;
@@ -52,3 +59,9 @@ public:
         return res;
     }
 };
+
+
+
+
+
+

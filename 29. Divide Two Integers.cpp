@@ -34,12 +34,9 @@ class Solution {
 public:
     int divide(int dividend, int divisor) {
         int sign;
-        if ((dividend < 0) ^ (divisor < 0)) {
-            sign = -1;
-        } else {
-            sign = 1;
-        }
-
+        if ((dividend < 0) ^ (divisor < 0)) sign = -1;
+        else sign = 1;
+        
         long dvd = abs((long)dividend);
         long dvs = abs((long)divisor);
         if (dvd < dvs) return 0;  

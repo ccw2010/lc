@@ -26,37 +26,45 @@ Explanation: In this case, no transaction is done, i.e. max profit = 0.
 */
 
 
-/*这道是买股票系列中最难最复杂的一道，前面121,122的思路都非常的简洁明了，算法也很简单。而这道是要求最多交易两次，
-找到最大利润，还是需要用动态规划Dynamic Programming来解，而这里我们需要两个递推公式来分别更新两个变量local和global，
-我们其实可以求至少k次交易的最大利润，找到通解后可以设定 k = 2，即为本题的解答。
+/* Comparing to I and II, III limits the number of transactions to 2. This can be solve by 
+"devide and conquer". We use left[i] to track the maximum profit for transactions before i, 
+and use right[i] to track the maximum profit for transactions after i. You can use the following 
+example to understand the solution:
 
-我们定义local[i][j]为在到达第i天时最多可进行j次交易并且最后一次交易在最后一天卖出的最大利润，此为局部最优。
-然后我们定义global[i][j]为在到达第i天时最多可进行j次交易的最大利润，此为全局最优。它们的递推式为：
+Prices: 1 4 5 7 6 3 2 9
+left = [0, 3, 4, 6, 6, 6, 6, 8]
+right= [8, 7, 7, 7, 7, 7, 7, 0]
 
-local[i][j]  = max(global[i-1][j-1] + max(diff, 0), local[i-1][j] + diff)
-global[i][j] = max(local[i][j], global[i-1][j])
-
-其中局部最优值是比较前一天并少交易一次的全局最优加上大于0的差值，和前一天的局部最优加上差值中取较大值，
-而全局最优比较局部最优和前一天的全局最优 */
+The maximum profit = 13
+*/
 
 class Solution {
 public:
-    int maxProfit(vector<int> &prices) {
+    int maxProfit(vector<int> &prices){
         if (prices.empty()) return 0;
         int n = prices.size();
-        int g[n][3] = {0};
-        int l[n][3] = {0};
-        int k = 2;
-        for (int i = 1; i < n; i++) {
-            int diff = prices[i] - prices[i-1];
-            for (int j = 1; j <= k; j++) {
-                l[i][j] = max(g[i-1][j-1] + max(diff, 0), l[i-1][j] + diff);
-                g[i][j] = max(l[i][j], g[i-1][j]);
-            }
+        vector<int> left(n, 0);
+        vector<int> right(n, 0);
+
+        int minPrice = prices[0];
+        for (int i = 1; i < n; i++){
+            minPrice = min(minPrice, prices[i]);
+            left[i] = max(left[i-1], prices[i] - minPrice);
         }
-        return g[n-1][2];
-    }
+        int maxPrice = prices[n-1];
+        for (int i = n-2; i > 0; i--){
+            maxPrice = max(maxPrice, prices[i]);
+            right[i] = max(right[i+1], maxPrice - prices[i]);
+        }
+        int res = 0;
+        for (int i = 0; i < n; i++){
+            res = max(res, left[i] + right[i]);
+        }
+        return res;
+    } 
 };
+
+
 
 
 

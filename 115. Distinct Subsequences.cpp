@@ -9,8 +9,8 @@ A subsequence of a string is a new string which is formed from the original stri
 Example 1:
 Input: S = "rabbbit", T = "rabbit"
 Output: 3
-Explanation:
 
+Explanation:
 As shown below, there are 3 ways you can generate "rabbit" from S.
 (The caret symbol ^ means the chosen letters)
 
@@ -24,8 +24,8 @@ rabbbit
 Example 2:
 Input: S = "babgbag", T = "bag"
 Output: 5
-Explanation:
 
+Explanation:
 As shown below, there are 5 ways you can generate "bag" from S.
 (The caret symbol ^ means the chosen letters)
 
@@ -40,10 +40,8 @@ babgbag
 babgbag
     ^^^
 
-
 看到有关字符串的子序列或者配准类的问题，首先应该考虑的就是用动态规划Dynamic Programming来求解，这个应成为条件反射。
 而所有DP问题的核心就是找出递推公式，想这道题就是递推一个二维的dp数组，下面我们从题目中给的例子来分析，这个二维dp数组应为：
-
 
   Ø r a b b b i t
 Ø 1 1 1 1 1 1 1 1
@@ -56,15 +54,15 @@ t 0 0 0 0 0 0 0 3
 
 首先，若原字符串和子序列都为空时，返回1，因为空串也是空串的一个子序列。若原字符串不为空，而子序列为空，也返回1，
 因为空串也是任意字符串的一个子序列。而当原字符串为空，子序列不为空时，返回0，因为非空字符串不能当空字符串的子序列。
-理清这些，二维数组dp的边缘便可以初始化了，下面只要找出递推式，就可以更新整个dp数组了。我们通过观察上面的二维数组可以发现，
-当更新到dp[i][j]时，dp[i][j] >= dp[i][j - 1] 总是成立，再进一步观察发现，当 T[i - 1] == S[j - 1] 时，
-dp[i][j] = dp[i][j - 1] + dp[i - 1][j - 1]，若不等， dp[i][j] = dp[i][j - 1]，所以，综合以上，递推式为：
+理清这些，二维数组dp的边缘便可以初始化了，下面只要找出递推式，就可以更新整个dp数组了。我们通过观察上面的二维数组
+可以发现，当更新到dp[i][j]时，dp[i][j] >= dp[i][j-1] 总是成立，再进一步观察发现，当 t[i-1] == s[j-1] 时，
+dp[i][j] = dp[i][j-1] + dp[i-1][j-1]，若不等， dp[i][j] = dp[i][j-1]，所以，综合以上，递推式为：
 
-dp[i][j] = dp[i][j - 1] + (t[i - 1] == s[j - 1] ? dp[i - 1][j - 1] : 0)
+dp[i][j] = dp[i][j-1] + dp[i-1][j-1], if t[i-1] == s[j-1] 
+dp[i][j] = dp[i][j-1]               , if t[i-1] != s[j-1] 
 
 根据以上分析，可以写出代码如下：*/
 
- 
 class Solution {
 public:
     int numDistinct(string s, string t) {
@@ -79,9 +77,9 @@ public:
  
         for (int i = 1; i <= m; i++) {
             for (int j = 1; j <= n; j++) {
-                if (t[i-1] == s[j-1] ){
+                if (t[i-1] == s[j-1]) {
                     dp[i][j] = dp[i][j-1] + dp[i-1][j-1];
-                }else{
+                } else {
                     dp[i][j] = dp[i][j-1];
                 }
             }
@@ -89,6 +87,9 @@ public:
         return dp[m][n];
     }
 };
+
+
+
 
 
 
