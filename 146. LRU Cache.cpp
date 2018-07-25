@@ -38,32 +38,32 @@ get和put，其中get函数是通过输入key来获得value，如果成功获得
 class LRUCache{
 public:
     LRUCache(int capacity) {
-        cap = capacity;
+        cap_ = capacity;
     }
     
     int get(int key) {
-        auto it = m.find(key);
-        if (it == m.end()) return -1;
-        l.splice(l.begin(), l, it->second);
+        auto it = m_.find(key);
+        if (it == m_.end()) return -1;
+        l_.splice(l_.begin(), l_, it->second);
         return it->second->second;
     }
     
     void put(int key, int value) {
-        auto it = m.find(key);
-        if (it != m.end()) l.erase(it->second);
-        l.push_front(make_pair(key, value));
-        m[key] = l.begin();
-        if (m.size() > cap) {
-            int k = l.rbegin()->first;
-            l.pop_back();
-            m.erase(k);
+        auto it = m_.find(key);
+        if (it != m_.end()) l_.erase(it->second);
+        l_.push_front(make_pair(key, value));
+        m_[key] = l_.begin();
+        if (m_.size() > cap) {
+            int k = l_.rbegin()->first;
+            l_.pop_back();
+            m_.erase(k);
         }
     }
     
 private:
-    int cap;
-    list<pair<int, int>> l;
-    unordered_map<int, list<pair<int, int>>::iterator> m;
+    int cap_;
+    list<pair<int, int>> l_;
+    unordered_map<int, list<pair<int, int>>::iterator> m_;
 };
 
 
