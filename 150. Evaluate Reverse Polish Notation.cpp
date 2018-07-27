@@ -36,21 +36,19 @@ Explanation:
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
-        int i = tokens.size() - 1;
-        return dfs(tokens, i);
+        int iop = tokens.size() - 1;
+        return dfs(tokens, iop);
     }
-    int dfs(vector<string> & tokens, int &i){
-        string s = tokens[i];
+    int dfs(vector<string> & tokens, int &iop){
+        string s = tokens[iop];
         unordered_set<string> ops{"+", "-", "*", "/"};
         if (ops.count(s)){
-            i--;
-            int n2 = dfs(tokens, i);
-            i--;
-            int n1 = dfs(tokens, i);
-            if (s == "+") return n1 + n2;
-            else if (s == "-") return n1 - n2;
-            else if (s == "*") return n1 * n2;
-            else if (s == "/") return n1 / n2;
+            int v2 = dfs(tokens, --iop);
+            int v1 = dfs(tokens, --iop);
+            if (s == "+") return v1 + v2;
+            else if (s == "-") return v1 - v2;
+            else if (s == "*") return v1 * v2;
+            else if (s == "/") return v1 / v2;
         }else{
             return stoi(s);
         }

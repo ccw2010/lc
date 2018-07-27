@@ -20,6 +20,9 @@ minStack.getMin();   --> Returns -2.
 
 
 class MinStack {
+private:
+    stack<int> s1, s2;
+
 public:
     /** initialize your data structure here. */
     MinStack() {    
@@ -27,15 +30,12 @@ public:
     
     void push(int x) {
         s1.push(x);
-        if(s2.empty()|| x <= s2.top()){
-            s2.push(x);
-        }
+        if (s2.empty()|| x <= s2.top()) s2.push(x);
     }
     
     void pop() {
-        if(s1.top()==s2.top()) s2.pop();
-        s1.pop();
-        
+        if (s1.top()==s2.top()) s2.pop();
+        s1.pop(); 
     }
     
     int top() {
@@ -45,8 +45,6 @@ public:
     int getMin() {
         return s2.top();
     }
-private:
-    stack<int> s1, s2;
 };
 
 class MinStack {
@@ -67,7 +65,8 @@ public:
     void pop() {
         int t = st.top(); st.pop();
         if (t == min_val) {
-            min_val = st.top(); st.pop();
+            min_val = st.top(); 
+            st.pop();
         }
     }
     

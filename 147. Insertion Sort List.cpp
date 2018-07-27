@@ -1,8 +1,9 @@
 /*147. Insertion Sort List
+
 Sort a linked list using insertion sort.
 The partial sorted list (black) initially contains only the first element in the list.
 With each iteration one element (red) is removed from the input data and inserted in-place into
- the sorted list
+the sorted list
  
 
 Algorithm of Insertion Sort:
@@ -30,22 +31,26 @@ Output: -1->0->3->4->5
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-ListNode* insertionSortList(ListNode* head) {
-    ListNode *dummy = new ListNode(-1);
-    ListNode *p = dummy;
-    ListNode *cur = head;
-    while (cur) {
-        ListNode *next = cur->next;
-        p = dummy;
-        while (p->next && p->next->val <= cur->val) {
-            p = p->next;
+class Solution {
+public:
+    ListNode* insertionSortList(ListNode* head) {
+        ListNode *dummy = new ListNode(-1);
+        ListNode *cur = dummy;
+        while (head) {
+            ListNode *t = head->next;
+            cur = dummy;
+            while (cur->next && cur->next->val <= head->val) {
+                cur = cur->next;
+            }
+            head->next = cur->next;
+            cur->next = head;
+            head = t;
         }
-        cur->next = p->next;
-        p->next = cur;
-        cur = next;
+        return dummy->next;      
     }
-    return dummy->next;
-}
+};
+
+
 
 
 

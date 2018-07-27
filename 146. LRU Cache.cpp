@@ -25,7 +25,7 @@ cache.get(3);       // returns 3
 cache.get(4);       // returns 4
 */
 
-/*这道题让我们实现一个LRU缓存器，LRU是Least Recently Used的简写，就是最近最少使用的意思。那么这个缓存器主要有两个成员函数，
+/**这道题让我们实现一个LRU缓存器，LRU是Least Recently Used的简写，就是最近最少使用的意思。那么这个缓存器主要有两个成员函数，
 get和put，其中get函数是通过输入key来获得value，如果成功获得后，这对(key, value)升至缓存器中最常用的位置（顶部），如果key
 不存在，则返回-1。而put函数是插入一对新的(key, value)，如果原缓存器中有该key，则需要先删除掉原有的，将新的插入到缓存器的顶部。
 如果不存在，则直接插入到顶部。若加入新的值后缓存器超过了容量，则需要删掉一个最不常用的值，也就是底部的值。具体实现时我们需要三个
@@ -36,6 +36,11 @@ get和put，其中get函数是通过输入key来获得value，如果成功获得
 
 
 class LRUCache{
+private:
+    int cap_;
+    list<pair<int, int>> l_;
+    unordered_map<int, list<pair<int, int>>::iterator> m_;
+
 public:
     LRUCache(int capacity) {
         cap_ = capacity;
@@ -59,15 +64,7 @@ public:
             m_.erase(k);
         }
     }
-    
-private:
-    int cap_;
-    list<pair<int, int>> l_;
-    unordered_map<int, list<pair<int, int>>::iterator> m_;
 };
-
-
-
 
 
 

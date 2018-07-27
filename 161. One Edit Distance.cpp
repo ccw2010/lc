@@ -45,18 +45,13 @@ public:
         if (s.size() < t.size()) swap(s, t);
         int m = s.size(), n = t.size();
         int diff = m - n;
-        if (diff >= 2) {
-            return false;
-        }else if (diff == 1) {
+        if (diff >= 2) return false;
+        else if (diff == 1) {
             for (int i = 0; i < n; ++i) {
-                if (s[i] == t[i]) {
-                    continue;
-                }else{
-                    return s.substr(i+1) == t.substr(i);
-                }
+                if (s[i] == t[i]) continue;
+                else return s.substr(i+1) == t.substr(i);
             }
-            return true;
-            
+            return true; 
         } else {
             int count = 0;
             for (int i = 0; i < n; i++) {
@@ -77,12 +72,14 @@ class Solution {
 public:
     bool isOneEditDistance(string s, string t) {
         int m = s.size(), n = t.size();
+        if (abs(m-n) >= 2) return false;
         int len = min(m, n);
         for (int i = 0; i < len; i++) {
-            if (s[i] != t[i]) {
-                if (m == n) return s.substr(i+1) == t.substr(i+1);
-                else if (m < n) return s.substr(i) == t.substr(i+1);
-                else return s.substr(i+1) == t.substr(i);
+            if (s[i] == t[i]) continue;
+            else{
+              if (m == n) return s.substr(i+1) == t.substr(i+1);
+              else if (m < n) return s.substr(i) == t.substr(i+1);
+              else return s.substr(i+1) == t.substr(i);
             }
         }
         return abs(m - n) == 1;

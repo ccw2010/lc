@@ -1,4 +1,5 @@
-/*154. Find Minimum in Rotated Sorted Array II
+/* 154. Find Minimum in Rotated Sorted Array II
+
 Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
 (i.e.,  [0,1,2,4,5,6,7] might become  [4,5,6,7,0,1,2]). Find the minimum element.
 The array may contain duplicates.
@@ -18,22 +19,22 @@ public:
     int findMin(vector<int> &num) {
         int left = 0;
         int right = num.size() - 1;
-        int mid = 0;
-        
         while(left < right) {
-            mid = left + (right - left) / 2;
-            
-            if (num[mid] > num[right]) {
-                left = mid + 1;
-            }
-            else if (num[mid] < num[right]) {
-                right = mid;
-            }
-            else { // when num[mid] and num[right] are same
-                right--;
-            }
+            int mid = left + (right - left) / 2;
+            if (num[mid] > num[right]) left = mid + 1;
+            else if (num[mid] < num[right])  right = mid;
+            else right--; // when num[mid] == num[right] 
         }
         return num[left];
     }
 };
+
+
+
+
+
+
+
+
+
 
