@@ -1,4 +1,5 @@
 /*278. First Bad Version
+
 You are a product manager and currently leading a team to develop a new product. Unfortunately, 
 the latest version of your product fails the quality check. Since each version is developed based 
 on the previous version, all the versions after a bad version are also bad.
@@ -13,15 +14,9 @@ call isBadVersion(3) -> false
 call isBadVersion(5) -> true
 call isBadVersion(4) -> true
 
-Then 4 is the first bad version. */
+Then 4 is the first bad version. 
 
-
-/*这道题说是有一系列版本，其中有一个版本是坏的，而且后面跟着的全是坏的，给了一个API函数可以用来判定当前版本是否是坏的，
-让我们尽可能少的调用这个API，找出第一个坏版本。那么这种搜索题最先开始考虑用二分查找法把，效率高嘛。由于这题很有规律，
-好版本和坏版本一定有个边界，那么我们用二分法来找这个边界，对mid值调用API函数，如果是坏版本，说明边界在左边，则把mid
-赋值给right，如果是好版本，则说明边界在右边，则把mid+1赋给left，最后返回left即可。需要注意的是，OJ里有个坑，那就是
-如果left和right都特别大的话，那么left+right可能会溢出，我们的处理方法就是变成left + (right - left) / 2，很好的
-避免的溢出问题 */
+*/
 
 // Forward declaration of isBadVersion API.
 bool isBadVersion(int version);
@@ -38,10 +33,6 @@ public:
         return left;   
     }
 };
-
-
-
-
 
 
 

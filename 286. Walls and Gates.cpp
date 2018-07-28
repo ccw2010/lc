@@ -1,12 +1,11 @@
-/*286. Walls and Gates 
+/* 286. Walls and Gates 
  
 You are given a m x n 2D grid initialized with these three possible values.
 
--1  - A wall or an obstacle.
- 0  - A gate.
-INF - An empty room. We use the value 2^31 - 1 = 2147483647 to represent INF as you may assume that 
-the distance to a gate is less than 2147483647.
-
+-1 - A wall or an obstacle.
+0 - A gate.
+INF - Infinity means an empty room. We use the value 231 - 1 = 2147483647 to represent INF as you may 
+assume that the distance to a gate is less than 2147483647.
 Fill each empty room with the distance to its nearest gate. If it is impossible to reach a gate, it 
 should be filled with INF.
 
@@ -15,14 +14,11 @@ INF  -1  0  INF
 INF INF INF  -1
 INF  -1 INF  -1
   0  -1 INF INF
-  
 After running your function, the 2D grid should be:
   3  -1   0   1
   2   2   1  -1
   1  -1   2  -1
-  0  -1   3   4
-  
-*/
+  0  -1   3   4*/
  
 
 /* 这道题类似一种迷宫问题，规定了-1表示墙，0表示门，让求每个点到门的最近的曼哈顿距离，这其实类似于求距离场Distance Map的问题，
@@ -36,21 +32,19 @@ public:
         if(rooms.empty()) return;
         size_t row = rooms.size();
         size_t col = rooms[0].size();
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
+        for (int i = 0; i < row; ++i) {
+            for (int j = 0; j < col; ++j) {
                 if (rooms[i][j] == 0) dfs(rooms, i, j, 0);
             }
         }
     }
     void dfs(vector<vector<int>>& rooms, int i, int j, int val) {
-        bool ivalid = (i >= 0 && i < rooms.size());
-        bool jvalid = (j >= 0 && j < rooms[i].size());
-        if (!ivalid || !jvalid || rooms[i][j] < val) return;
+        if (i < 0 || i >= rooms.size() || j < 0 || j >= rooms[i].size() || rooms[i][j] < val) return;
         rooms[i][j] = val;
-        dfs(rooms, i+1, j, val+1);
-        dfs(rooms, i-1, j, val+1);
-        dfs(rooms, i, j+1, val+1);
-        dfs(rooms, i, j-1, val+1);
+        dfs(rooms, i + 1, j, val + 1);
+        dfs(rooms, i - 1, j, val + 1);
+        dfs(rooms, i, j + 1, val + 1);
+        dfs(rooms, i, j - 1, val + 1);
     }
 };
 
@@ -64,9 +58,8 @@ public:
     void wallsAndGates(vector<vector<int>>& rooms) {
         if(rooms.empty()) return;
         queue<pair<int, int>> q;
-        vector<vector<int>> dirs{{0,-1}, {-1,0}, {0,1}, {1,0}};
-        size_t row = rooms.size();
-        size_t col = rooms[0].size();
+        vector<vector<int>> dirs{{0, -1}, {-1, 0}, {0, 1}, {1, 0}};
+        size_t row = rooms.size(), col = rooms[0].size();
         for (size_t i = 0; i < row; i++) {
             for (size_t j = 0; j < col; j++) {
                 if (rooms[i][j] == 0) q.push({i, j});   
@@ -79,13 +72,12 @@ public:
             for (size_t k = 0; k < dirs.size(); k++) {
                 int x = i + dirs[k][0];
                 int y = j + dirs[k][1];
-                bool xvalid = (x > 0 && x < row);
-                bool yvalid = (y > 0 && y < col);
-                if (!xvalid || !yvalid || rooms[x][y] < rooms[i][j] + 1) continue;
+                if (x < 0 || x >= row || y < 0 || y >= col || rooms[x][y] < rooms[i][j] + 1) continue;
                 rooms[x][y] = rooms[i][j] + 1;
                 q.push({x, y});
             }
-        } // end while loop
+        }
+        
     }
 };
 

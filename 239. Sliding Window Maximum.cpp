@@ -1,4 +1,4 @@
-/*239. Sliding Window Maximum
+/* 239. Sliding Window Maximum
 
 Given an array nums, there is a sliding window of size k which is moving from the very left of the array 
 to the very right. You can only see the k numbers in the window. Each time the sliding window moves right 
@@ -22,9 +22,7 @@ Window position                Max
 Note:
 You may assume k is always valid, 1 ≤ k ≤ input array's size for non-empty array.
 
-Follow up:
-Could you solve it in linear time?
-*/
+Follow up: Could you solve it in linear time? */
 
 
 /*这道题给定了一个数组，还给了一个窗口大小k，让我们每次向右滑动一个数字，每次返回窗口内的数字的最大值，而且要求我们代码的时间

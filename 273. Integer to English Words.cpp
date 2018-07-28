@@ -55,23 +55,25 @@ public:
         int units = num % 100;
 
         string res;
-        if(units < 20){
-            res = v1[units];
-        }else{
-            res = v2[units/10];
+        if(units < 20) res =  v1[units];
+        else{
+            res =  v2[units/10];
             if(tens) res = res + " " + v1[tens];
         }
         
         if (hundreds > 0) {
-            if(units) {
-                res = v1[hundreds] + " Hundred" +  " " + res;
-            }else{
-                res = v1[hundreds] + " Hundred";
-            }
+            if(units) res = v1[hundreds] + " Hundred" +  " " + res;
+            else res = v1[hundreds] + " Hundred";
         }
+
         return res;
     }
 };
+
+
+
+
+
 
 
 

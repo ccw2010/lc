@@ -1,4 +1,4 @@
-/*265. Paint House II
+/* 265. Paint House II
 
 There are a row of n houses, each house can be painted with one of the k colors. 
 The cost of painting each house with a certain color is different. You have to paint all the houses 

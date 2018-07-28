@@ -34,10 +34,10 @@ public:
             if(x.first < lastEnding) return false;
             else lastEnding = x.second;
         }
-        return true;
-        
+        return true;      
     }
 };
+
 
 /*我们可以先给所有区间排个序，用起始时间的先后来排，然后我们从第二个区间开始，如果开始时间早于前一个区间的结束时间，
 则说明会议时间有冲突，返回false，遍历完成后没有冲突，则返回true*/
@@ -45,7 +45,9 @@ public:
 class Solution {
 public:
     bool canAttendMeetings(vector<Interval>& intervals) {
-        sort(intervals.begin(), intervals.end(), [](const Interval &a, const Interval &b){return a.start < b.start;});
+        sort(intervals.begin(), intervals.end(), [](const Interval &a, const Interval &b)
+            { return a.start < b.start; }
+        );
         int n = intervals.size();
         for (int i = 1; i < n; i++) {
             if (intervals[i].start < intervals[i-1].end) {
@@ -55,6 +57,17 @@ public:
         return true;
     }
 };
+
+
+
+
+
+
+
+
+
+
+
 
 
 

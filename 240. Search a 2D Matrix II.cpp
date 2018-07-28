@@ -1,4 +1,5 @@
 /*240. Search a 2D Matrix II
+
 Write an efficient algorithm that searches for a value in an m x n matrix. This matrix has the 
 following properties:
 Integers in each row are sorted in ascending from left to right.
@@ -26,17 +27,6 @@ Output: false
 往右所有数增加，那么我们就可以和目标数相比较，如果目标数大，就往右搜，如果目标数小，就往左搜。这样就可以判断目标数是
 否存在。当然我们也可以把起始数放在右上角，往左和下搜，停止条件设置正确就行。*/
 
-/*
-      [
-        [1,   4,  7, 11, 15],
-        [2,   5,  8, 12, 19],
-        [3,   6,  9, 16, 22],
-        [10, 13, 14, 17, 24],
-    r-> [18, 21, 23, 26, 30]
-      ]  ^
-         c
-*/
-
 
 class Solution {
 public:
@@ -52,6 +42,8 @@ public:
         return false;
     }
 };
+
+
 
 
 

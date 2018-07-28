@@ -23,6 +23,7 @@ It doesn't matter what values are set beyond the returned length.
 如果两个指针指的数字相同，则快指针向前走一步，如果不同，则两个指针都向前走一步，
 这样当快指针走完整个数组后，慢指针当前的坐标加1就是数组中不同数组的个数*/
 
+
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {       
@@ -36,6 +37,9 @@ public:
         return j+1;
     }
 };
+
+
+
 
 
 

@@ -15,7 +15,6 @@ By calling next repeatedly until hasNext returns false, the order of elements re
 by next should be: [1,2,3,4,5,6].
 
 Hint:
-
 How many variables do you need to keep track?
 Two variables is all you need. Try with x and y.
 Beware of empty rows. It could be the first few rows.
@@ -33,6 +32,10 @@ As an added challenge, try to code it using only iterators in C++ or iterators i
 
 
 class Vector2D {
+private:
+    vector<int> nums;
+    int i = 0;
+    
 public:
     Vector2D(vector<vector<int>>& vec2d) {
         for (auto v : vec2d) {
@@ -47,10 +50,6 @@ public:
     bool hasNext() {
         return i < nums.size();
     }
-    
-private:
-    vector<int> nums;
-    int i = 0;
 };
 
 

@@ -7,19 +7,14 @@ Example:
 Input: nums = [3,5,2,1,6,4]
 Output: One possible answer is [3,5,1,6,2,4]*/
 
-/*这道题让我们求摆动排序，跟 324.Wiggle Sort II相比起来，这道题的条件宽松很多，只因为多了一个等号。
-由于等号的存在，当数组中有重复数字存在的情况时，也很容易满足题目的要求。这道题我们先来看一种时间复杂度为O(nlgn)的方法，
-思路是先给数组排个序，然后我们只要每次把第一个数和第二个数调换个位置，第三个数和第四个数调换个位置，以此类推直至数组末尾，
-这样我们就能完成摆动排序了*/
 
 // Time Complexity O(nlogn)
 class Solution {
 public:
     void wiggleSort(vector<int> &nums) {
-        int n = nums.size();
-    	if (n <= 2) return;
+    	if (nums.size() <= 2) return;
         sort(nums.begin(), nums.end());
-        for (int i = 2; i < n; i += 2) {
+        for (int i = 2; i < nums.size(); i += 2) {
             swap(nums[i], nums[i-1]);
         }
     }
@@ -34,12 +29,9 @@ public:
 class Solution {
 public:
     void wiggleSort(vector<int> &nums) {
-        int n = nums.size();
-        if (n <= 1) return;
-        bool isOdd;
-        for (int i = 1; i < n; i++) {
-            isOdd = (i&1)? true : false;
-            if ((isOdd && nums[i] < nums[i-1]) || (!isOdd && nums[i] > nums[i-1])) {
+        if (nums.size() <= 1) return;
+        for (int i = 1; i < nums.size(); i++) {
+            if ((i % 2 == 1 && nums[i] < nums[i-1]) || (i % 2 == 0 && nums[i] > nums[i-1])) {
                 swap(nums[i], nums[i-1]);
             }
         }
