@@ -1,4 +1,5 @@
 /*306. Additive Number
+
 Additive number is a string whose digits can form additive sequence.
 
 A valid additive sequence should contain at least three numbers. Except for the first two numbers, 
@@ -9,14 +10,12 @@ Given a string containing only digits '0'-'9', write a function to determine if 
 Note: Numbers in the additive sequence cannot have leading zeros, so sequence 1, 2, 03 or 1, 02, 3 is invalid.
 
 Example 1:
-
 Input: "112358"
 Output: true 
 Explanation: The digits can form an additive sequence: 1, 1, 2, 3, 5, 8. 
              1 + 1 = 2, 1 + 2 = 3, 2 + 3 = 5, 3 + 5 = 8
 
 Example 2:
-
 Input: "199100199"
 Output: true 
 Explanation: The additive sequence is: 1, 99, 100, 199. 
@@ -38,9 +37,9 @@ public:
         for (int i = 1; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
                 string s1 = num.substr(0, i);
-                string s2 = num.substr(i, j-i);
-                long d1 = stol(s1);
-                long d2 = stol(s2);
+                string s2 = num.substr(i, j - i);
+                long d1 = atol(s1.c_str());
+                long d2 = atol(s2.c_str());
                 if ((s1.size() >=2 && s1[0] == '0') || (s2.size() >=2 && s2[0] == '0')) 
                     continue;
                 long next = d1 + d2;
@@ -59,6 +58,10 @@ public:
         return false;
     }
 };
+
+
+
+
 
 
 

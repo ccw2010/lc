@@ -46,7 +46,7 @@ public:
 ends数组的长度就是我们要求的LIS的长度，注意的是ends数组的值可能不是一个真实的LIS，比如输入数组nums为{4, 2, 4，5，3，7}，
 那么算完后的ends数组为{2，3，5，7}，可以发现它不是一个原数组的LIS，只是长度相等而已，千万要注意这点。*/
  
-
+class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
         if (nums.empty()) return 0;

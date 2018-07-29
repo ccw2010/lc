@@ -27,7 +27,6 @@ public:
         restore(s, 4, "", res);
         return res;
     }
-    
     void restore(string s, int k, string solution, vector<string> &res) {
         if (k == 0) {
             if (s.empty()) res.push_back(solution);
@@ -39,14 +38,16 @@ public:
                 }
             }
         }
-    }
-    
+    }  
     bool valid(string s) {
         if (s.empty() || s.size() > 3 || (s.size() > 1 && s[0] == '0')) return false;
         int len = stoi(s);
         return len >= 0 && len <= 255; 
     }
 };
+
+
+
 
 
 

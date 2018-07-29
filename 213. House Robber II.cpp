@@ -1,4 +1,6 @@
-/* Note: This is an extension of House Robber.
+/* 213. House Robber II
+
+Note: This is an extension of House Robber.
 After robbing those houses on that street, the thief has found himself a new place for his thievery so that 
 he will not get too much attention. This time, all houses at this place are arranged in a circle. 
 That means the first house is the neighbor of the last one. Meanwhile, the security system for these houses 
@@ -14,26 +16,23 @@ amount of money you can rob tonight without alerting the police.*/
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        int n = nums.size();
-        if (n<=0) return 0;
-        if (n==1) return nums[0];
-        int x = rob(nums, 0, n-1);
-        int y = rob(nums, 1, n);
+        if (nums.size() <= 1) 
+            return nums.empty()? 0 : nums[0];
+        int x = rob(nums, 0, nums.size()-1);
+        int y = rob(nums, 1, nums.size());
         return max(x, y);
     }
     
     int rob(vector<int>& nums, int L, int R){
-        if (R <= L+1) return nums[L];
+        if (R - L <= 1) return nums[L];
         vector<int> dp(R, 0);
         dp[L] = nums[L];
-        dp[L+1] = max(nums[L], nums[L+1]);
-        for (int i=L+2; i< R; i++){
+        dp[L + 1] = max(nums[L], nums[L + 1]);
+        for (int i=2; i< R; i++){
             dp[i] = max(nums[i] + dp[i-2], dp[i-1]);
         }
         return dp[R-1];
     }
 };
-
-
 
 

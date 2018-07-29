@@ -12,15 +12,14 @@ Input: "abcd"
 Output: "dcbabcd"
 */
 
-
-/*这道题让我们求最短的回文串，LeetCode中关于回文串的其他的题目有 Palindrome Number， Validate Palindrome， 
+/* 这道题让我们求最短的回文串，LeetCode中关于回文串的其他的题目有 Palindrome Number， Validate Palindrome， 
 Palindrome Partitioning，Palindrome Partitioning II和 Longest Palindromic Substring。题目让我们在给定字符串s
 的前面加上最少个字符，使之变成回文串，那么我们来看题目中给的两个例子，最坏的情况下是s中没有相同的字符，那么最小需要添加
 字符的个数为s.size() - 1个，第一个例子的字符串包含一个回文串，只需再在前面添加一个字符即可，还有一点需要注意的是，前面
 添加的字符串都是从s的末尾开始，一位一位往前添加的，那么我们只需要知道从s末尾开始需要添加到前面的个数。这道题如果用brute 
 force无法通过OJ，所以我们需要用一些比较巧妙的方法来解。这里我们用到了KMP算法，KMP算法是一种专门用来匹配字符串的高效的算法，
 我们把s和其转置r连接起来，中间加上一个其他字符，形成一个新的字符串t，我们还需要一个和t长度相同的一位数组next，其中next[i]
-表示从t[i]到开头的子串的相同前缀后缀的个数，具体可参考KMP算法中解释。最后我们把不相同的个数对应的字符串添加到s之前即可*/
+表示从t[i]到开头的子串的相同前缀后缀的个数，具体可参考KMP算法中解释。最后我们把不相同的个数对应的字符串添加到s之前即可 */
 
 class Solution {
 public:

@@ -42,7 +42,7 @@ public:
             if (found) continue;
             for (int i = 0; i < t.size(); ++i) {
                 if (t[i] != '(' && t[i] != ')') continue;
-                string str = t.substr(0,i) + t.substr(i+1);
+                string str = t.substr(0, i) + t.substr(i + 1);
                 if (!visited.count(str)) {
                     q.push(str);
                     visited.insert(str);
@@ -79,9 +79,8 @@ public:
         vector<string> res;
         int count1 = 0, count2 = 0;
         for (char c : s) {
-            if (c == '(') {
-                count1++;
-            }else if (c == ')') {
+            if (c == '(') count1++;
+            else if (c == ')') {
                 if(count1 == 0) count2++;
                 else count1--;
             }
@@ -96,8 +95,7 @@ public:
             return;
         }
         for (int i = start; i < s.size(); i++) {
-            if (i > start && s[i] == s[i-1]) 
-                continue;
+            if (i > start && s[i] == s[i-1]) continue;
             if (count1 > 0 && s[i] == '(') {
                 dfs(s.substr(0,i) + s.substr(i+1), i, count1-1, count2, res);
             }
@@ -117,3 +115,11 @@ public:
         return count == 0;
     }
 };
+
+
+
+
+
+
+
+

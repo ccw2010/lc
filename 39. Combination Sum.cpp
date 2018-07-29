@@ -1,4 +1,4 @@
-/*39. Combination Sum
+/* 39. Combination Sum
 Given a set of candidate numbers (candidates) (without duplicates) and a target number (k), 
 find all unique combinations in candidates where the candidate numbers sums to k.
 
@@ -38,11 +38,9 @@ public:
     }
 
     void dfs(vector<int> &nums, int k, vector<vector<int>> &res, vector<int> &solution, int begin) {
-        if (k<0){
-            return;
-        } else if (k==0) {
-            res.push_back(solution);
-        } else {
+        if (k<0) return;
+        else if (k==0) res.push_back(solution);
+        else {
             for (int i = begin; i < nums.size() && nums[i]<=k; i++) {
                 solution.push_back(nums[i]);
                 dfs(nums, k - nums[i], res, solution, i);

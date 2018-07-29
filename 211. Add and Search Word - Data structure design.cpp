@@ -23,11 +23,11 @@ search("b..") -> true
 就是search的函数需要重新写一下，因为这道题里面'.'可以代替任意字符，所以一旦有了'.'，就需要查找所有的子树，只要
 有一个返回true，整个search函数就返回true，典型的DFS的问题，其他部分跟上一道实现字典树没有太大区别*/
 
+class WordDictionary {
+private:
+    TrieNode *root;
 
-class WordDictionary {
-class WordDictionary {
-public:
-    
+public:   
     struct TrieNode {
         TrieNode *child[26];
         bool isWord;
@@ -72,9 +72,6 @@ public:
             return p->child[c-'a'] && query(word, p->child[c-'a'], i + 1);
         }
     }
-    
-private:
-    TrieNode *root;
 };
 
 /**

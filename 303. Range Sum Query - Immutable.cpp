@@ -18,21 +18,22 @@ There are many calls to sumRange function.
 */
 
 class NumArray {
+private:
+    vector<int> dp_;
+    
 public:
     NumArray(vector<int> nums) {
-        cumsum = nums;
-        for(int i=1; i< nums.size(); i++){
-            cumsum[i] += cumsum[i-1];
+        dp_ = nums;
+        for (int i = 1; i < nums.size(); i++){
+            dp_[i] += dp_[i-1];
         }   
     }
     
     int sumRange(int i, int j) {
-        if(i==0) return cumsum[j];
-        else return cumsum[j] - cumsum[i-1];
+        if (i==0) return dp_[j];
+        else return dp_[j] - dp_[i-1];
     }
 
-private:
-    vector<int> cumsum;
 };
 
 /**
@@ -40,3 +41,10 @@ private:
  * NumArray obj = new NumArray(nums);
  * int param_1 = obj.sumRange(i,j);
  */
+
+
+
+
+
+
+
