@@ -35,9 +35,8 @@ public:
                 maxIdx = i + 1;
             }
         }
-        if (ok) {
-            return n;
-        } else {
+        if (ok) return n;
+        else {
             substr = s.substr(maxIdx, n-maxIdx);
             return max(res, longestSubstring(substr, k));
         }

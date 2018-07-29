@@ -42,6 +42,10 @@ directory.check(2);
 recycle里有没有数字，有的话先分配recycle里的数字，没有的话再分配next。记得更新相对应的isFree中的使用状态*/
 
 class PhoneDirectory {
+private:
+    int maxNum_, next_, index_;
+    vector<int> recycle_, isFree_;
+    
 public:
     /** Initialize your data structure here
         @param maxNumbers - The maximum numbers that can be stored in the phone directory. */
@@ -79,7 +83,15 @@ public:
             isFree_[number] = 1;
         }
     }
-private:
-    int maxNum_, next_, index_;
-    vector<int> recycle_, isFree_;
 };
+
+
+
+
+
+
+
+
+
+
+

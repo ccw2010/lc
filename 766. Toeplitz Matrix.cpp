@@ -1,4 +1,5 @@
 /*766. Toeplitz Matrix
+
 A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.
 
 Now given an M x N matrix, return True if and only if the matrix is Toeplitz.
@@ -30,7 +31,15 @@ public:
                 if (matrix[i][j] != matrix[i+1][j+1]) return false;
             }
         }
-        return true;
-        
+        return true;    
     }
 };
+
+
+
+
+
+
+
+
+

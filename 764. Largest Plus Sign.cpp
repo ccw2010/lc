@@ -95,12 +95,10 @@ comment below for a more clear explanation.*/
 class Solution {
 public:
 	int orderOfLargestPlusSign(int N, vector<vector<int>>& mines) {
-	    vector<vector<int>> grid(N, vector<int>(N, N));
-	        
+	    vector<vector<int>> grid(N, vector<int>(N, N));       
 	    for (auto &m : mines) {
 	        grid[m[0]][m[1]] = 0;
-	    }
-	        
+	    }  
 	    for (int i = 0; i < N; i++) {
 	    	int k = N - 1, l = 0, r = 0, u = 0, d = 0;
 	        for (int j = 0; j < N; j++, k--) {
@@ -113,18 +111,18 @@ public:
 	            d = (grid[k][i] == 0 ? 0 : d + 1);
 	            grid[k][i] = min(grid[k][i], d);
 	        }
-	    }
-	        
+	    }        
 	    int res = 0;
 	    for (int i = 0; i < N; i++) {
 	        for (int j = 0; j < N; j++) {
 	            res = max(res, grid[i][j]);
 	        }
-	    }
-	        
+	    }	        
 	    return res;
 	}
 };
+
+
 
 
 

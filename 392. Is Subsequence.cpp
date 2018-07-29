@@ -44,8 +44,8 @@ public:
     }
 };
 
-/* 一开始觉得可以用hash table做，先统计t中每个字符的个数，再遍历s，遇到字符将其在hash table中的次数减一，当m[c]<0时，则为false，
-遍历所有的字符后，则为true。可是遇到一下这种情况，即顺序颠倒后，这种解法仍然把它判断为true
+/* 一开始觉得可以用hash table做，先统计t中每个字符的个数，再遍历s，遇到字符将其在hash table中的次数减一，当m[c]<0时，
+则为false，遍历所有的字符后，则为true。可是遇到一下这种情况，即顺序颠倒后，这种解法仍然把它判断为true
 
 Input: "acb"
 "ahbgdc"
@@ -65,4 +65,9 @@ public:
         return true; 
     }
 };
+
+
+
+
+
 

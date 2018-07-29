@@ -30,9 +30,9 @@ public:
         if (!head) return NULL;
         int carry = plus(head);
         if (carry) {
-            ListNode *newHead = new ListNode(1);
-            newHead->next = head;
-            return newHead;
+            ListNode *dummy = new ListNode(1);
+            dummy->next = head;
+            return dummy;
         } else { 
             return head;
         }

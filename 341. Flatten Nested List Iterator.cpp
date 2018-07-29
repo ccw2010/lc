@@ -35,6 +35,8 @@ By calling next repeatedly until hasNext returns false, the order of elements re
  * };
  */
 class NestedIterator {
+private:
+    stack<NestedInteger> s;
 public:
     NestedIterator(vector<NestedInteger> &nestedList) {
         for (int i = nestedList.size() - 1; i >= 0; i--) {
@@ -59,9 +61,6 @@ public:
         }
         return false;
     }
-
-private:
-    stack<NestedInteger> s;
 };
 
 /**
@@ -69,3 +68,16 @@ private:
  * NestedIterator i(nestedList);
  * while (i.hasNext()) cout << i.next();
  */
+
+
+
+
+
+
+
+
+
+
+
+
+

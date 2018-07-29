@@ -31,7 +31,7 @@ snake.move("D"); -> Returns 0
 
 | | | |
 | |S|F|
-snake.move("R"); -> Returns 1 (Snake eats the first food and right after that, the second food appears at (0,1) )
+snake.move("R"); -> Returns 1 (Snake eats the first food and right after that, the second food appears at (0,1))
 
 | |F| |
 | |S|S|
@@ -48,6 +48,12 @@ snake.move("U"); -> Returns -1 (Game over because snake collides with border)
 */
 
 class SnakeGame {
+private:
+    int width_, height_;
+    int score_;
+    vector<pair<int, int>> food_;
+    vector<pair<int, int>> snake_;
+
 public:
     /** Initialize your data structure here.
         @param width - screen width
@@ -88,13 +94,8 @@ public:
         }
         return score_;
     }
-
-private:
-    int width_, height_;
-    int score_;
-    vector<pair<int, int>> food_;
-    vector<pair<int, int>> snake_;
 };
+
 /**
  * Your SnakeGame object will be instantiated and called as such:
  * SnakeGame obj = new SnakeGame(width, height, food);

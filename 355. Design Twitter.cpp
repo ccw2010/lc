@@ -1,4 +1,4 @@
-/*355. Design Twitter
+/* 355. Design Twitter
 
 Design a simplified version of Twitter where users can post tweets, follow/unfollow another user and is able 
 to see the 10 most recent tweets in the user's news feed. Your design should support the following methods:
@@ -47,6 +47,11 @@ twitter.getNewsFeed(1);*/
 那个消息，这样我们就可以找出最近10条消息了*/
 
 class Twitter {
+private:
+    int count;
+    unordered_map<int, set<int>> friends;
+    unordered_map<int, map<int, int>> tweets;
+    
 public:
     /** Initialize your data structure here. */
     Twitter() {
@@ -92,11 +97,6 @@ public:
             friends[followerId].erase(followeeId);
         }
     }
-    
-private:
-    int count;
-    unordered_map<int, set<int>> friends;
-    unordered_map<int, map<int, int>> tweets;
 };
 
 /**

@@ -1,4 +1,5 @@
-/** 538. Convert BST to Greater Tree
+/* 538. Convert BST to Greater Tree
+
 Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key 
 of the original BST is changed to the original key plus sum of all keys greater 
 than the original key in BST.
@@ -14,7 +15,7 @@ Output: The root of a Greater Tree like this:
              18
             /   \
           20     13
- */
+*/
 
 /*这道题让我们将二叉搜索树转为较大树，通过例子可以明白，是把每个结点值加上所有比它大的结点值总和当作新的结点值。
 仔细观察题目中的例子可以发现，2变成了20，而20是所有结点之和，因为2是最小结点值，要加上其他所有结点值，所以肯定

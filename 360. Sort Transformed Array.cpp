@@ -1,4 +1,4 @@
-/*360. Sort Transformed Array
+/* 360. Sort Transformed Array
 
 Given a sorted array of integers nums and integer values a, b and c. Apply a quadratic function of 
 the form f(x) = ax^2 + bx + c to each element x in the array.

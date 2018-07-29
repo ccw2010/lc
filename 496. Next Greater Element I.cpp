@@ -1,4 +1,4 @@
-/*496. Next Greater Element I
+/* 496. Next Greater Element I
 
 You are given two arrays (without duplicates) nums1 and nums2 where nums1’s elements are subset 
 of nums2. Find all the next greater numbers for nums1's elements in the corresponding places of nums2.
@@ -26,14 +26,16 @@ class Solution {
 public:
     vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
         vector<int> res(nums1.size());
+        int n1 = nums1.size();
+        int n2 = nums2.size();
         unordered_map<int, int> m;
-        for (int i = 0; i < nums2.size(); ++i) {
+        for (int i = 0; i < n2; i++) {
             m[nums2[i]] = i;
         }
-        for (int i = 0; i < nums1.size(); ++i) {
+        for (int i = 0; i < n1; i++) {
             res[i] = -1;
             int start = m[nums1[i]];
-            for (int j = start + 1; j < nums2.size(); ++j) {
+            for (int j = start + 1; j < n2; ++j) {
                 if (nums2[j] > nums1[i]) {
                     res[i] = nums2[j];
                     break;
@@ -41,7 +43,12 @@ public:
             }
         }
         return res;
-        
     }
 };
+
+
+
+
+
+
 

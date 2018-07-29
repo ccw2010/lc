@@ -38,6 +38,10 @@ What if the number of hits per second could be very large? Does your design scal
 
 
 class HitCounter {
+private:
+    queue<int> q_;
+    static constexpr int MAX_TIME = 300;
+    
 public:
     /** Initialize your data structure here. */
     HitCounter() {}
@@ -45,20 +49,17 @@ public:
     /** Record a hit.
         @param timestamp - The current timestamp (in seconds granularity). */
     void hit(int timestamp) {
-        q.push(timestamp);
+        q_.push(timestamp);
     }
     
     /** Return the number of hits in the past 5 minutes.
         @param timestamp - The current timestamp (in seconds granularity). */
     int getHits(int timestamp) {
-        while (!q.empty() && timestamp - q.front()>= MAX_TIME){
-            q.pop();
+        while (!q_.empty() && timestamp - q_.front()>= MAX_TIME){
+            q_.pop();
         }
-        return q.size();
+        return q_.size();
     }
-private:
-    queue<int> q;
-    static constexpr int MAX_TIME = 300;
 };
 
 /**

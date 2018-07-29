@@ -1,4 +1,5 @@
 /* 575. Distribute Candies
+
 Given an integer array with even length, where different numbers in this array represent different 
 kinds of candies. Each number means one candy of the corresponding kind. You need to distribute these 
 candies equally in number to brother and sister. Return the maximum number of kinds of candies the 
@@ -18,8 +19,7 @@ Explanation: For example, the sister has candies [2,3] and the brother has candi
 The sister has two different kinds of candies, the brother has only one kind of candies. 
 */
 
-/*
-Set - O(n) time, O(n) space
+/* Set - O(n) time, O(n) space
 We can use a set to count all unique kinds of candies, but even all candies are unique, 
 the sister cannot get more than half.
 */

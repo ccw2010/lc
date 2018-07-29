@@ -1,15 +1,15 @@
-/*494. Target Sum
+/* 494. Target Sum
+
 You are given a list of non-negative integers, a1, a2, ..., an, and a target, k. Now you have 
 2 symbols + and -. For each integer, you should choose one from + and - as its new symbol.
 
 Find out how many ways to assign symbols to make sum of integers equal to target k.
 
 Example 1:
-
 Input: nums is [1, 1, 1, 1, 1], k is 3. 
 Output: 5
-Explanation: 
 
+Explanation: 
 -1+1+1+1+1 = 3
 +1-1+1+1+1 = 3
 +1+1-1+1+1 = 3
@@ -20,8 +20,8 @@ There are 5 ways to assign symbols to make the sum of nums be target 3.*/
 
 /*这道题给了我们一个数组，和一个目标值，让我们给数组中每个数字加上正号或负号，然后求和要和目标值相等，
 求有多少中不同的情况。那么对于这种求多种情况的问题，我最想到的方法使用递归来做。我们从第一个数字，
-调用递归函数，在递归函数中，分别对目标值进行加上当前数字调用递归，和减去当前数字调用递归，这样会涵盖所有情况，
-并且当所有数字遍历完成后，我们看若目标值为0了，则结果res自增1*/
+调用递归函数，在递归函数中，分别对目标值进行加上当前数字调用递归，和减去当前数字调用递归，这样会涵盖
+所有情况，并且当所有数字遍历完成后，我们看若目标值为0了，则结果res自增1*/
 
 class Solution {
 public:

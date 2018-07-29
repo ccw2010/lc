@@ -10,7 +10,6 @@ The coins can form the following rows:
 ¤
 ¤ ¤
 ¤ ¤
-
 Because the 3rd row is incomplete, we return 2.
 
 
@@ -21,7 +20,6 @@ The coins can form the following rows:
 ¤ ¤
 ¤ ¤ ¤
 ¤ ¤
-
 Because the 4th row is incomplete, we return 3.*/
 
 
@@ -45,3 +43,11 @@ public:
         return row;
     }
 };
+
+
+
+
+
+
+
+

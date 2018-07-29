@@ -30,6 +30,15 @@ Tilt of binary tree : 0 + 0 + 1 = 1 */
 /*Solution: POSTORDER Tree traverse + DFS*/
 
 class Solution {
+private:
+    int postorder(TreeNode* node, int& res){
+        if(!node) return 0;
+        int left = postorder(node->left, res);
+        int right = postorder(node->right, res);
+        res += abs(left - right);
+        return left + right + node->val;    
+    }
+    
 public:
     int findTilt(TreeNode* root) {
         if(!root) return 0;
@@ -37,15 +46,10 @@ public:
         postorder(root, res);
         return res;
     }
-    
-private:
-    int postorder(TreeNode* node, int& res){
-        if(!node) return 0;
-        int left = postorder(node->left, res);
-        int right = postorder(node->right, res);
-        res += abs(left - right);
-        return left + right + node->val;
-        
-    }
 };
+
+
+
+
+
 

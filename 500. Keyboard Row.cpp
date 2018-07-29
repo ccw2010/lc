@@ -16,25 +16,27 @@ You may assume the input string will only contain letters of alphabet.
 
 class Solution {
 public:
-    vector<string> findWords(vector<string>& words) {
-        
-        vector<string> ans;
+    vector<string> findWords(vector<string>& words) {    
+        vector<string> res;
         unordered_set<char> row1 = {'q','w','e','r','t','y','u','i','o','p'};
         unordered_set<char> row2 = {'a','s','d','f','g','h','j','k','l'};
         unordered_set<char> row3 = {'z','x','c','v','b','n','m'};
         for (string word : words){
             int count1 = 0, count2 = 0, count3 = 0;
             for (char c : word){
-                if (c < 'a') c += 32;
-                if (row1.count(c)) count1 = 1;
-                if (row2.count(c)) count2 = 1;
-                if (row3.count(c)) count3 = 1;
+                if (row1.count(tolower(c))) count1 = 1;
+                if (row2.count(tolower(c))) count2 = 1;
+                if (row3.count(tolower(c))) count3 = 1;
                 if (count1 + count2 + count3 > 1) break;
             }
-            if (count1 + count2 + count3 == 1) ans.push_back(word);
+            if (count1 + count2 + count3 == 1) res.push_back(word);
         }
-        return ans;
+        return res;
     }
 };
+
+
+
+
 
 

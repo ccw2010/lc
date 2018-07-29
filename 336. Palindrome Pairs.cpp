@@ -59,12 +59,10 @@ public:
     
     bool valid(string t, int left, int right) {
         while (left < right) {
-            if (t[left] != t[right]) return false;
-            left++; right--;
+            if (t[left++] != t[right--]) return false;
         }
         return true;
-    }
-    
+    }  
 };
 
 
