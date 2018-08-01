@@ -1,4 +1,4 @@
-/*432. All O`one Data Structure
+/* 432. All O`one Data Structure
 
 Implement a data structure supporting the following operations:
 
@@ -49,6 +49,14 @@ row2: val = 1, keys = {"D"}
 
 
 class AllOne {
+private:
+    struct Bucket { 
+        int val; 
+        unordered_set<string> keys; 
+    };
+    list<Bucket> buckets;
+    unordered_map<string, list<Bucket>::iterator> m;
+    
 public:
     /** Initialize your data structure here. */
     AllOne() {}
@@ -109,19 +117,19 @@ public:
     string getMinKey() {
         return buckets.empty() ? "" : *(buckets.rbegin()->keys.begin());
     }
-private:
-    struct Bucket { 
-        int val; 
-        unordered_set<string> keys; 
-    };
-    list<Bucket> buckets;
-    unordered_map<string, list<Bucket>::iterator> m;
 };
 
 
 
 /*解法2: 用三个map实现 */
 class AllOne {
+    typedef multimap<int, string>::iterator m2it; 
+
+private:
+    unordered_map<string, int> m1;   // key to value map
+    multimap<int, string> m2;        // value to key map
+    unordered_map<string, m2it> m3;  // key to it in map2
+
 public:
     /** Initialize your data structure here. */
     AllOne() {
@@ -183,12 +191,6 @@ public:
         if(m2.size() == 0) return "";
         else return (m2.begin())->second;         
     }
-     
-private:
-    unordered_map<string, int> m1;   // key to value map
-    typedef multimap<int, string>::iterator m2it; 
-    multimap<int, string> m2;        // value to key map
-    unordered_map<string, m2it> m3;  // key to it in map2
 };
  
 /**

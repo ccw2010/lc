@@ -19,15 +19,15 @@ public:
         int n = nums.size();
         vector<string> res(n, "");
         priority_queue<pair<int,int>> q;
-        for(int i=0; i<n; i++){
+        for (int i=0; i<n; i++){
             q.push({nums[i], i});
         }
         int k = 1;
         while (!q.empty()){
             int i = q.top().second;
             q.pop();
-            if(k==1) res[i] = "Gold Medal";
-            else if(k==2) res[i] = "Silver Medal";
+            if (k==1) res[i] = "Gold Medal";
+            else if (k==2) res[i] = "Silver Medal";
             else if (k==3) res[i] = "Bronze Medal";
             else res[i] = to_string(k);
             k++;

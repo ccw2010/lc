@@ -1,8 +1,8 @@
-/*
-507. Perfect Number
-We define the Perfect Number is a positive integer that is equal to the sum of all its positive divisors except 
-itself. Now, given an integer n, write a function that returns true when it is a perfect number and false when it 
-is not.
+/* 507. Perfect Number
+
+We define the Perfect Number is a positive integer that is equal to the sum of all its positive 
+divisors except itself. Now, given an integer n, write a function that returns true when it is a 
+perfect number and false when it is not.
 
 Example:
 Input: 28
@@ -21,7 +21,7 @@ public:
     bool checkPerfectNumber(int n) {
         if (n == 1) return false;
         int sum = 1;
-        for (int i = 2; i * i <= n; ++i) {
+        for (int i = 2; i * i <= n; i++) {
             if (n % i == 0) sum += (i + n / i);
             if (i * i == n) sum -= i;
             if (sum > n) return false;
@@ -29,8 +29,6 @@ public:
         return sum == n;
     }
 };
-
-
 
 
 

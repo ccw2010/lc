@@ -26,22 +26,6 @@ should be stateless. */
  * };
  */
 class Codec {
-public:
-
-    // Encodes a tree to a single string.
-    string serialize(TreeNode* root) {
-        ostringstream oss;
-        serialize(root, oss);
-        return oss.str();
-        
-    }
-
-    // Decodes your encoded data to tree.
-    TreeNode* deserialize(string data) {
-        istringstream iss(data);
-        return deserialize(iss);
-        
-    }
 private:
     void serialize(TreeNode* root, ostringstream &oss){
         if(!root) oss << "# ";
@@ -59,6 +43,20 @@ private:
         root->left = deserialize(iss);
         root->right = deserialize(iss);
         return root;
+    }
+    
+public:
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        ostringstream oss;
+        serialize(root, oss);
+        return oss.str();    
+    }
+
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        istringstream iss(data);
+        return deserialize(iss);        
     }
 };
 

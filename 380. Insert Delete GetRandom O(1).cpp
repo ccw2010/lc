@@ -44,6 +44,10 @@ randomSet.getRandom();
 
 
 class RandomizedSet {
+private:
+    vector<int> nums;
+    unordered_map<int, int> m;
+    
 public:
     /** Initialize your data structure here. */
     RandomizedSet() {}
@@ -73,9 +77,6 @@ public:
     int getRandom() {
         return nums[rand() % nums.size()];
     }
-private:
-    vector<int> nums;
-    unordered_map<int, int> m;
 };
 
 /**

@@ -54,9 +54,7 @@ public:
         long first, second, third;
         first = second = third = LONG_MIN;
         for (auto n : nums) {
-            if (n <= third || n==second || n==first) {
-                continue;
-            }
+            if (n <= third || n==second || n==first) continue;
             third = n;
             if (third > second) swap(second, third);
             if (second > first) swap(first, second);
@@ -64,4 +62,6 @@ public:
         return third == LONG_MIN ? first : third;
     }
 };
+
+
 

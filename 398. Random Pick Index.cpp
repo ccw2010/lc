@@ -24,6 +24,9 @@ solution.pick(1);*/
 在[0, count)范围内随机生成一个数字，如果这个数字是count的倍数，我们将res赋值为i即可 */
 
 class Solution {
+private:
+    vector<int> v;
+    
 public:
     Solution(vector<int> nums)
         : v (nums) {
@@ -39,8 +42,6 @@ public:
         }
         return res;
     }
-private:
-    vector<int> v;
 };
 
 /**

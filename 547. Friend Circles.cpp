@@ -36,10 +36,10 @@ class Solution {
 public:
     int findCircleNum(vector<vector<int>>& m) {
         int n = m.size();
-        if (n<=1) return n;
+        if (n <= 1) return n;
         vector<bool> visited (n, false);
         int res = 0;
-        for (int i=0; i<n; i++){
+        for (int i = 0; i < n; i++){
             if (visited[i]) continue;
             dfs(m, i, visited);
             res++;
@@ -49,7 +49,7 @@ public:
     void dfs(vector<vector<int>> &m, int k, vector<bool> &visited){
         visited[k] = true;
         int n = m.size();
-        for (int i=0; i<n; i++){
+        for (int i = 0; i < n; i++){
             if (!m[k][i] || visited[i]) continue;
             dfs(m, i, visited);
         }

@@ -36,7 +36,7 @@ public:
     Solution(ListNode* head) {
         len = 0;
         ListNode *cur = head;
-        m_head = head;
+        head_ = head;
         while (cur) {
             len++;
             cur = cur->next;
@@ -46,7 +46,7 @@ public:
     /** Returns a random node's value. */
     int getRandom() {
         int n = rand() % len;
-        ListNode *cur = m_head;
+        ListNode *cur = head_;
         while (n) {
             n--;
             cur = cur->next;
@@ -55,7 +55,7 @@ public:
     }
 private:
     int len;
-    ListNode *m_head;
+    ListNode *head_;
 };
 
 /**
@@ -71,18 +71,21 @@ private:
 数字的概率相等*/
 
 class Solution {
+private:
+    ListNode *head_;
+    
 public:
     /** @param head The linked list's head. Note that the head is guanranteed to be not null, 
          so it contains at least one node. */
     Solution(ListNode* head) {
-        m_head = head;
+        head_ = head;
     }
     
     /** Returns a random node's value. */
     int getRandom() {
-        int res = m_head->val;
+        int res = head_->val;
         int i = 2;
-        ListNode *cur = m_head->next;
+        ListNode *cur = head_->next;
         while (cur) {
             int j = rand() % i;
             if (j==0) res = cur->val;
@@ -91,8 +94,6 @@ public:
         }
         return res;
     }
-private:
-    ListNode *m_head;
 };
 
 

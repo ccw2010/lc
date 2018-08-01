@@ -1,4 +1,4 @@
-/*525. Contiguous Array
+/* 525. Contiguous Array
 
 Given a binary array, find the maximum length of a contiguous subarray with equal number of 0 and 1.
 
@@ -25,7 +25,8 @@ public:
         int res = 0, sum = 0;
         unordered_map<int, int> m{{0,-1}};
         for (int i = 0; i < n; i++) {
-            sum += (nums[i] == 1) ? 1 : -1;
+            if (nums[i] == 1) sum += 1;
+            else sum -= 1;
             if (m.count(sum)) {
                 res = max(res, i - m[sum]);
             } else {

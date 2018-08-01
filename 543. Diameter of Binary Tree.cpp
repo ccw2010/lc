@@ -33,12 +33,12 @@ Note: The length of path between two nodes is represented by the number of edges
 
 class Solution {
 public:
-    int diameterOfBinaryTree(TreeNode* root) {
+    int diameterOfBinaryTree(TreeNode *root) {
         int res = 0;
         maxDepth(root, res);
         return res;
     }
-    int maxDepth(TreeNode* node, int &res){
+    int maxDepth(TreeNode *node, int &res){
         if(!node) return 0;
         int left = maxDepth(node->left, res);
         int right = maxDepth(node->right, res);
@@ -52,13 +52,13 @@ public:
 
 class Solution {
 public:
-    int diameterOfBinaryTree(TreeNode* root) {
+    int diameterOfBinaryTree(TreeNode *root) {
         int res = 0;
         unordered_map<TreeNode*, int> m;
         maxDepth(root, res, m);
         return res;
     }
-    int maxDepth(TreeNode* node, int &res, unordered_map<TreeNode*, int> &m){
+    int maxDepth(TreeNode *node, int &res, unordered_map<TreeNode*, int> &m){
         if (!node) return 0;
         if (m.count(node)) return m[node];
         int left = maxDepth(node->left, res, m);
@@ -67,7 +67,6 @@ public:
         return m[node] = max(left, right) + 1;
     }
 };
-
 
 
 

@@ -1,4 +1,4 @@
-/*408. Valid Word Abbreviation
+/* 408. Valid Word Abbreviation
 
 Given a non-empty string s and an abbreviation abbr, return whether the string matches with the given 
 abbreviation.

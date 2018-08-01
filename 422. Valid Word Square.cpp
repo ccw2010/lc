@@ -1,6 +1,5 @@
-/*422. Valid Word Square
+/* 422. Valid Word Square
  
-
 Given a sequence of words, check whether it forms a valid word square.
 
 A sequence of words forms a valid word square if the kth row and column read the exact same string, 
@@ -11,7 +10,6 @@ The number of words given is at least 1 and does not exceed 500.
 Word length will be at least 1 and does not exceed 500.
 Each word contains only lowercase English alphabet a-z.
  
-
 Example 1:
 Input:
 [
@@ -20,7 +18,6 @@ Input:
   "crmy",
   "dtye"
 ]
-
 Output: true
 
 Explanation:
@@ -40,7 +37,6 @@ Input:
   "crm",
   "dt"
 ]
-
 Output: true
 
 Explanation:
@@ -60,7 +56,6 @@ Input:
   "read",
   "lady"
 ]
-
 Output: false
 
 Explanation:

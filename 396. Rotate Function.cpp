@@ -1,4 +1,4 @@
-/*396. Rotate Function 
+/* 396. Rotate Function 
  
 Given an array of integers A and let n to be its length.
 
