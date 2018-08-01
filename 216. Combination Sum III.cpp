@@ -29,7 +29,7 @@ public:
         dfs(k, n, 1, solution, res);
         return res;
     }
-    void dfs(int k, int n, int level, vector<int> &solution, vector<vector<int> > &res) {
+    void dfs(int k, int n, int level, vector<int> &solution, vector<vector<int>> &res) {
         if (n < 0) return;
         if (n == 0 && solution.size() == k) {
             res.push_back(solution);
