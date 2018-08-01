@@ -40,7 +40,7 @@ public:
             indegree[p.first]++;
         }
         queue<int> q;
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; i++) {
             if (indegree[i] == 0) q.push(i);
         }
         while (!q.empty()) {
