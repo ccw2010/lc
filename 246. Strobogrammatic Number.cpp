@@ -15,9 +15,7 @@ Output: true
 Example 3:
 Input:  "962"
 Output: false
-
 */
-
 
 
 class Solution {
@@ -41,7 +39,6 @@ public:
 };
 
 
-
 class Solution {
 public:
     bool isStrobogrammatic(string num) {
@@ -53,14 +50,6 @@ public:
         return true;
     }
 };
-
-
-
-
-
-
-
-
 
 
 

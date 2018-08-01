@@ -1,4 +1,5 @@
 /* 266. Palindrome Permutation
+
 Given a string, determine if a permutation of the string could form a palindrome.
 
 Example 1:
@@ -14,7 +15,6 @@ Input: "carerac"
 Output: true */
 
 
-
 class Solution {
 public:
     bool canPermutePalindrome(string s) {
@@ -27,8 +27,6 @@ public:
         return count == 0 || (s.size() % 2 == 1 && count == 1);
     }
 };
-
-
 
 
 

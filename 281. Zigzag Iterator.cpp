@@ -32,25 +32,26 @@ Output: [1,4,8,2,5,9,3,6,7].
 那么我们就按顺序打印新数组中的值即可*/
 
 class ZigzagIterator {
+private:
+    vector<int> v_;
+    int i_;
+
 public:
-    ZigzagIterator(vector<int>& v1, vector<int>& v2) {
+    ZigzagIterator(vector<int> &v1, vector<int> &v2) {
         int n1 = v1.size();
         int n2 = v2.size();
         int n = max(n1, n2);
-        for (int i = 0; i < n; i++) {
-            if (i < n1) v.push_back(v1[i]);
-            if (i < n2) v.push_back(v2[i]);
+        for (int i_ = 0; i_ < n; i_++) {
+            if (i_ < n1) v_.push_back(v1[i_]);
+            if (i_ < n2) v_.push_back(v2[i_]);
         }
     }
     int next() {
-        return v[i++];
+        return v_[i_++];
     }
     bool hasNext() {
-        return i < v.size();
+        return i_ < v_.size();
     }
-private:
-    vector<int> v;
-    int i = 0;
 };
 /**
  * Your ZigzagIterator object will be instantiated and called as such:
@@ -66,6 +67,10 @@ private:
 当前位置的值。在hasNext()函数中，我们只需要看queue是否为空即可*/
 
 class ZigzagIterator {
+private:
+    typedef vector<int>::iterator vItr;
+    queue<pair<vItr, vItr>> q;
+
 public:
     ZigzagIterator(vector<int>& v1, vector<int>& v2) {
         if (!v1.empty()) {
@@ -87,12 +92,7 @@ public:
     bool hasNext() {
         return !q.empty();
     }
-private:
-    typedef vector<int>::iterator vItr;
-    queue<pair<vItr, vItr>> q;
 };
-
-
 
 
 

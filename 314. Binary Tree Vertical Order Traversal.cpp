@@ -82,36 +82,31 @@ Output:
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
-vector<vector<int>> verticalTraverse(TreeNode *root){
-    if(!root) return {};
-    map<int, vector<int>> m;
-    queue<pair<int, TreeNode*>> q;  
-    q.push({0,root});  
-    
-    while(!q.empty()){
-        pair<int, TreeNode*> t = q.front();
-        q.pop();
-        m[t.first].push_back(t.second->val);
-        if(t.second->left){
-            p.push({t.first - 1, t.second->left});
+class Solution {
+public:
+    vector<vector<int>> verticalOrder(TreeNode* root) {
+        if (!root) return {};
+        vector<vector<int>> res;
+        map<int, vector<int>> m;
+        queue<pair<int, TreeNode*>> q;
+        q.push({0, root});
+        while (!q.empty()) {
+            pair<int, TreeNode*> p = q.front(); 
+            q.pop();
+            m[p.first].push_back(p.second->val);
+            if (p.second->left) { 
+                q.push({p.first - 1, p.second->left});
+            }
+            if (p.second->right) {
+                q.push({p.first + 1, p.second->right});
+            }
         }
-        if(t.second->right){
-            q.push({t.first + 1, t.second->right});
+        for (auto x : m) {
+            res.push_back(x.second);
         }
+        return res;     
     }
-
-    vector<vector<int>> res;
-    for (auto &x : m){
-        res.push_back(x.second);
-    }
-    return res;
-}
-
-
-
-
-
-
+};
 
 
 

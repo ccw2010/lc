@@ -9,7 +9,6 @@ Assume a BST is defined as follows:
     Both the left and right subtrees must also be binary search trees.
 
 Example 1:
-
 Input:
     2
    / \
@@ -17,7 +16,6 @@ Input:
 Output: true
 
 Example 2:
-
     5
    / \
   1   4
@@ -110,11 +108,6 @@ public:
         return true;
     }
 };
-
-
-
-
-
 
 
 

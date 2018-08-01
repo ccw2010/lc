@@ -38,7 +38,7 @@ public:
         }
         return res;
     }
-    void dfs(vector<vector<char> > &grid, vector<vector<bool> > &visited, int x, int y) {
+    void dfs(vector<vector<char> > &grid, vector<vector<bool>> &visited, int x, int y) {
         if (x < 0 || x >= grid.size()) return;
         if (y < 0 || y >= grid[0].size()) return;
         if (grid[x][y] != '1' || visited[x][y]) return;

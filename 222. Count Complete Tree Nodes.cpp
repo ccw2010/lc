@@ -2,8 +2,6 @@
 
 Given a complete binary tree, count the number of nodes.
 
-Note:
-
 Definition of a complete binary tree from Wikipedia:
 In a complete binary tree every level, except possibly the last, is completely filled, 
 and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes 
@@ -31,27 +29,22 @@ class Solution {
 public:
     int countNodes(TreeNode* root) {
         int hLeft = 0, hRight = 0;
-        TreeNode *p1 = root;
-        TreeNode *p2 = root;
-        while (p1) {
+        TreeNode *pLeft = root, *pRight = root;
+        while (pLeft) {
             hLeft++;
-            p1 = p1->left;
+            pLeft = pLeft->left;
         }
-        while (p2) {
+        while (pRight) {
             hRight++;
-            p2 = p2->right;
+            pRight = pRight->right;
         }
-        if (hLeft == hRight) return pow(2, hLeft) - 1;
-        else return countNodes(root->left) + countNodes(root->right) + 1;
+        if (hLeft == hRight) {
+        	return pow(2, hLeft) - 1;
+        }else{
+        	return countNodes(root->left) + countNodes(root->right) + 1;
+        }
     }
 };
-
-
-
-
-
-
-
 
 
 

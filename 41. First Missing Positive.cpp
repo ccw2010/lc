@@ -1,4 +1,5 @@
 /*41. First Missing Positive
+
 Given an unsorted integer array, find the smallest missing positive integer.
 
 Example 1:
@@ -23,10 +24,15 @@ public:
                 val = max(val, n);
             }
         }
-        for (int i = 1; i <= val; ++i) {
+        for (int i = 1; i <= val; i++) {
             if (!s.count(i)) return i;
         }
         return val + 1;
         
     }
 };
+
+
+
+
+

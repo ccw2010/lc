@@ -33,6 +33,10 @@ public:
 下一个值，再调用原来的一些成员函数，就可以实现这个顶端迭代器了*/
 
 class PeekingIterator : public Iterator {
+private:
+    int nextVal_;
+    bool saveNext_;
+    
 public:
     PeekingIterator(const vector<int>& nums) : Iterator(nums) {
         // Initialize any member here.
@@ -66,18 +70,7 @@ public:
         else if (Iterator::hasNext()) return true;
         else return false;
     }
-    
-private:
-    int nextVal_;
-    bool saveNext_;
 };
-
-
-
-
-
-
-
 
 
 

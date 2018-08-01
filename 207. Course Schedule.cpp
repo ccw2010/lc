@@ -20,16 +20,14 @@ Explanation: There are a total of 2 courses to take.
              To take course 1 you should have finished course 0, and to take course 0 you should
              also have finished course 1. So it is impossible.
 
-Note:
 Hints:
-1. This problem is equivalent to finding if a cycle exists in a directed graph. If a cycle exists, no topological ordering 
-exists and therefore it will be impossible to take all courses.
-2. There are several ways to represent a graph. For example, the input prerequisites is a graph represented by a list of edges. 
-Is this graph representation appropriate?
-3. Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of Topological Sort.
-4. Topological sort could also be done via BFS.
-
-*/
+1. This problem is equivalent to finding if a cycle exists in a directed graph. If a cycle exists, no topological 
+ordering exists and therefore it will be impossible to take all courses.
+2. There are several ways to represent a graph. For example, the input prerequisites is a graph represented by a 
+list of edges. Is this graph representation appropriate?
+3. Topological Sort via DFS - A great video tutorial (21 minutes) on Coursera explaining the basic concepts of 
+Topological Sort.
+4. Topological sort could also be done via BFS. */
 
 /* 这道课程清单的问题给了很多提示，第一条就告诉我们了这道题的本质就是在有向图中检测环。 LeetCode中关于图的题很少，
 有向图的仅此一道，还有一道关于无向图的题是 Clone Graph 无向图的复制。图这种数据结构相比于树啊，链表啊什么的要更为复杂一些，
@@ -60,18 +58,17 @@ public:
                 if (indegree[x] == 0) q.push(x);
             }
         }
-        for (int i = 0; i < n; i++) {
-            if (indegree[i] != 0) return false;
+        for (int d : indegree) {
+            if (d) return false;
         }
         return true;
     }
 };
 
-/* 下面来看DFS的解法，也需要建立有向图，还是用二维数组来建立，和BFS不同的是，我们像现在需要一个一维数组visited来记录访问状态，
-这里有三种状态，0表示还未访问过，1表示已经访问了，-1表示有冲突。大体思路是，先建立好有向图，然后从第一个门课开始，找其可构成哪门课，
-暂时将当前课程标记为已访问，然后对新得到的课程调用DFS递归，直到出现新的课程已经访问过了，则返回false，没有冲突的话返回true，
-然后把标记为已访问的课程改为未访问。代码如下：
-*/
+/* 再来看DFS的解法，也需要建立有向图，还是用二维数组来建立，和BFS不同的是，我们像现在需要一个一维数组visited来记录访问状态，
+这里有三种状态，0表示还未访问过，1表示已经访问了，-1表示有冲突。大体思路是，先建立好有向图，然后从第一个门课开始，找其可构成
+哪门课，暂时将当前课程标记为已访问，然后对新得到的课程调用DFS递归，直到出现新的课程已经访问过了，则返回false，没有冲突的话
+返回true，然后把标记为已访问的课程改为未访问。*/
  
 
 class Solution {
@@ -98,8 +95,6 @@ public:
         return true;
     }
 };
-
-
 
 
 

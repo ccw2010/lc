@@ -52,7 +52,10 @@ public:
 指向位置数组中的某个位置，开始初始化都为0，然后比较位置数组中的数字，将较小的一个的指针向后移动一位，直至其中一个数
 组遍历完成即可*/
 
-class WordDistance {
+class WordDistance {    
+private:
+    unordered_map<string, vector<int>> m;
+    
 public:
     WordDistance(vector<string> words) {
         for (int i = 0; i < words.size(); ++i) {
@@ -71,9 +74,6 @@ public:
         }
         return res;
     }
-    
-private:
-    unordered_map<string, vector<int>> m;
 };
 
 

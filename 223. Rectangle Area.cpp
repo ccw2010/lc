@@ -1,14 +1,11 @@
-/*223. Rectangle Area
+/* 223. Rectangle Area
 
 Find the total area covered by two rectilinear rectangles in a 2D plane.
 https://leetcode.com/problems/rectangle-area/description/
 
 Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.
 
-Rectangle Area
-
 Example:
-
 Input: A = -3, B = 0, C = 3, D = 4, E = 0, F = -1, G = 9, H = 2
 Output: 45
 */
@@ -18,6 +15,7 @@ Output: 45
 之和中减去交集面积就是最终答案。求交集区域的长和宽也不难，由于交集都是在中间，所以横边的左端点是两个矩形左顶点横
 坐标的较大值，右端点是两个矩形右顶点的较小值，同理，竖边的下端点是两个矩形下顶点纵坐标的较大值，上端点是两个矩形
 上顶点纵坐标的较小值*/
+
 
 class Solution {
 public:
@@ -35,15 +33,6 @@ public:
         }
     }
 };
-
-
-
-
-
-
-
-
-
 
 
 

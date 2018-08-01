@@ -18,10 +18,10 @@ Output: false
 
 class Solution {
 public:
-    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+    bool containsNearbyDuplicate(vector<int> &nums, int k) {
         unordered_map<int, int> m;
-        int i= 0;
-        for (int n: nums) {
+        int i = 0;
+        for (int n : nums) {
             if (m.count(n) && i - m[n] <= k) return true;
             else m[n] = i;
             i++;

@@ -98,15 +98,9 @@ public:
 
     int countNodes(TreeNode* node) {
         if (!node) return 0;
-        return 1 + countNodes(node->left) + (countNodes->right);
+        return 1 + countNodes(node->left) + count(node->right);
     }
 };
-
-
-
-
-
-
 
 
 

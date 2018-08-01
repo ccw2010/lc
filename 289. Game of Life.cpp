@@ -1,5 +1,4 @@
-/* 289. Game of Life 生命游戏
- 
+/* 289. Game of Life 
 According to the Wikipedia's article: "The Game of Life, also known simply as Life, is a cellular 
 automaton devised by the British mathematician John Horton Conway in 1970."
 
@@ -18,7 +17,8 @@ Follow up:
 Could you solve it in-place? Remember that the board needs to be updated at the same time: You cannot 
 update some cells first and then use their updated values to update other cells.
 In this question, we represent the board using a 2D array. In principle, the board is infinite, which 
-would cause problems when the active area encroaches the border of the array. How would you address these problems?
+would cause problems when the active area encroaches the border of the array. How would you address these 
+problems?
 */
 
 class Solution {

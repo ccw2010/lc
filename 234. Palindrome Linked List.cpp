@@ -10,8 +10,7 @@ Example 2:
 Input: 1->2->2->1
 Output: true
 
-Follow up: Could you do it in O(n) time and O(1) space?
-*/
+Follow up: Could you do it in O(n) time and O(1) space? */
 
 
 /**

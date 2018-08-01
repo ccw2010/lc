@@ -30,12 +30,12 @@ pre指向奇节点，cur指向偶节点，然后把偶节点cur后面的那个�
 
 class Solution{
 public:
-    ListNode* oddEvenList(ListNode* head){
+    ListNode* oddEvenList(ListNode *head){
         if (!head || !head->next) return head;
-        ListNode* pre = head;
-        ListNode* cur = head->next;
+        ListNode *pre = head;
+        ListNode *cur = head->next;
         while(cur && cur->next){
-            ListNode* tmp = pre->next;
+            ListNode *tmp = pre->next;
             pre->next = cur->next;
             cur->next = cur->next->next;
             pre->next->next = tmp;
@@ -45,9 +45,6 @@ public:
         return head;
     }
 };
-
-
-
 
 
 

@@ -1,9 +1,9 @@
-/*333. Largest BST Subtree
+/* 333. Largest BST Subtree
 
-Given a binary tree, find the largest subtree which is a Binary Search Tree (BST), where largest means subtree with largest number of nodes in it.
+Given a binary tree, find the largest subtree which is a Binary Search Tree (BST), where largest means 
+subtree with largest number of nodes in it.
 
-Note:
-A subtree must include all of its descendants.
+Note: A subtree must include all of its descendants.
 Here's an example:
 
     10
@@ -19,8 +19,8 @@ Follow up:
 Can you figure out ways to solve it with O(n) time complexity? */
 
 /*这道题让我们求一棵Binary Tree的最大BST，所谓BST就是满足左<根<右的二分树，我们需要返回这个BST的节点个数。
-题目中给的提示说我们可以用98.Validate Binary Search Tree的方法来做，时间复杂度为O(n2)，这种方法是把每个节点都当做根节点，
-来验证其是否是二叉搜索数，并记录节点的个数，若是二叉搜索树，就更新最终结果*/
+题目中给的提示说我们可以用98.Validate Binary Search Tree的方法来做，时间复杂度为O(n2)，这种方法是把每个
+节点都当做根节点，来验证其是否是二叉搜索数，并记录节点的个数，若是二叉搜索树，就更新最终结果*/
 
 class Solution {
 public:
@@ -76,7 +76,6 @@ public:
         return false;
     }
 };
-
 
 
 

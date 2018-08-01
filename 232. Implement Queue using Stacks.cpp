@@ -25,50 +25,49 @@ operations of a stack. You may assume that all operations are valid (for example
 才将_new中所有元素移到_old中操作，提高了效率*/
 
 class MyQueue {
+private:
+    stack<int> old_, new_;
+    
 public:
     /** Initialize your data structure here. */
-    MyQueue() {
-    }
+    MyQueue() {}
     
     void shift(){
-        if(_new.empty()){
-            while(!_old.empty()){
-                _new.push(_old.top());
-                _old.pop();
+        if(new_.empty()){
+            while(!old_.empty()){
+                new_.push(old_.top());
+                old_.pop();
             }
         }
     }
     
     /** Push element x to the back of queue. */
     void push(int x) {
-        _old.push(x);
+        old_.push(x);
     }
     
     /** Removes the element from in front of queue and returns that element. */
     int pop() {
         shift();
         int res;
-        if(!_new.empty())
-            res = _new.top();
-            _new.pop();
+        if(!new_.empty())
+            res = new_.top();
+            new_.pop();
         return res;
     }
     
     /** Get the front element. */
     int peek() {
         shift();
-        if(!_new.empty())
-            return _new.top();
+        if(!new_.empty())
+            return new_.top();
         return 0;
     }
     
     /** Returns whether the queue is empty. */
     bool empty() {
-        return _new.empty() && _old.empty();
+        return new_.empty() && old_.empty();
     }
-    
-private:
-    stack<int> _old, _new;
 };
 
 /**

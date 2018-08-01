@@ -10,7 +10,6 @@ Given 2d vector =
   [4,5,6]
 ]
  
-
 By calling next repeatedly until hasNext returns false, the order of elements returned 
 by next should be: [1,2,3,4,5,6].
 
@@ -33,22 +32,23 @@ As an added challenge, try to code it using only iterators in C++ or iterators i
 
 class Vector2D {
 private:
-    vector<int> nums;
-    int i = 0;
+    vector<int> nums_;
+    int i_;
     
 public:
-    Vector2D(vector<vector<int>>& vec2d) {
+    Vector2D(vector<vector<int>>& vec2d) 
+        : i_ (0) {
         for (auto v : vec2d) {
-            nums.insert(nums.end(), v.begin(), v.end());
+            nums_.insert(nums_.end(), v.begin(), v.end());
         }    
     }
     
     int next() {
-        return nums[i++];
+        return nums_[i_++];
     }
     
     bool hasNext() {
-        return i < nums.size();
+        return i_ < nums_.size();
     }
 };
 

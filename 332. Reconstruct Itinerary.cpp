@@ -42,7 +42,7 @@ public:
         dfs(m, "JFK", res);
         return vector<string> (res.rbegin(), res.rend());
     }
-    void dfs(unordered_map<string, multiset<string>>& m, string s, vector<string>& res) {
+    void dfs(unordered_map<string, multiset<string>> &m, string s, vector<string> &res) {
         while (m[s].size()) {
             string t = *(m[s].begin());
             m[s].erase(m[s].begin());
@@ -51,13 +51,6 @@ public:
         res.push_back(s);
     }
 };
-
-
-
-
-
-
-
 
 
 

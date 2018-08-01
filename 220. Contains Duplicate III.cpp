@@ -32,7 +32,7 @@ public:
     bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t) {
         map<long, int> m;
         int j = 0;
-        for (int i = 0; i < nums.size(); ++i) {
+        for (int i = 0; i < nums.size(); i++) {
             if (i - j > k) m.erase(nums[j++]);
             map<long, int>::iterator it = m.lower_bound((long)nums[i] - t);
             if (it != m.end() && abs(it->first - nums[i]) <= t) return true;

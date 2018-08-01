@@ -6,9 +6,7 @@ less than or equal to n.
 Example:
 Input: 13
 Output: 6 
-Explanation: Digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.
-*/
-
+Explanation: Digit 1 occurred in the following numbers: 1, 10, 11, 12, 13. */
 
 /* The idea is check number of 1 for each 10,100,1000,10000 ... position. For example, for 312:
 
@@ -30,13 +28,6 @@ public:
         else return y + x * countDigitOne(y-1) + countDigitOne(n%y);
     }
 };
-
-
-
-
-
-
-
 
 
 

@@ -70,25 +70,25 @@ public:
 则suc赋为当前节点，然后将pre赋为root，那么在遍历下一个节点时，pre就起到记录上一个节点的作用*/
 
 class Solution {
+private:
+    TreeNode *pre_ = NULL;
+    TreeNode *suc_ = NULL;
+
 public:
     TreeNode* inorderSuccessor(TreeNode* root, TreeNode* p) {
         if (!p) return NULL;
         inorder(root, p);
-        return suc;
+        return suc_;
     }
     void inorder(TreeNode *root, TreeNode *p) {
         if (!root) return;
         inorder(root->left, p);
-        if (pre == p) suc = root;
-        pre = root;
+        if (pre_ == p) suc_ = root;
+        pre_ = root;
         inorder(root->right, p);
     }
-private:
-    TreeNode *pre = NULL;
-    TreeNode *suc = NULL;
 };
 
- 
 
 /*再来看一种更简单的方法，这种方法充分地利用到了BST的性质，我们首先看根节点值和p节点值的大小，
 如果根节点值大，说明p节点肯定在左子树中，那么此时我们先将res赋为root，然后root移到其左子节点，

@@ -11,27 +11,25 @@ Example 2:
 Input: [3,2,3,1,2,4,5,5,6] and k = 4
 Output: 4
 
-Note:
-You may assume k is always valid, 1 ≤ k ≤ array's length.
+Note: You may assume k is always valid, 1 ≤ k ≤ array's length.
 */
 
 /*这道题让我们求数组中第k大的数字，怎么求呢，当然首先想到的是给数组排序，然后求可以得到第k大的数字。
-先看一种利用c++的STL中的集成的排序方法，不用我们自己实现，这样的话这道题只要两行就完事了*/
+先看一种利用c++的STL中的集成的排序方法，排序后求倒数第k个数就可以了*/
 class Solution {
 public:
-    int findKthLargest(vector<int>& nums, int k) {
+    int findKthLargest(vector<int> &nums, int k) {
         sort(nums.begin(), nums.end());
         return nums[nums.size() - k];
     }
 };
 
-/*下面这种解法是利用了priority_queue的自动排序的特性，跟上面的解法思路上没有什么区别，
-当然我们也可以换成multiset来做，一个道理，*/
+/*下面这种解法是利用了priority_queue的自动排序的特性，跟上面的解法一个思路*/
 class Solution {
 public:
-    int findKthLargest(vector<int>& nums, int k) {
+    int findKthLargest(vector<int> &nums, int k) {
         priority_queue<int> q(nums.begin(), nums.end());
-        for (int i = 0; i < k - 1; ++i) {
+        for (int i = 0; i < k-1; i++) {
             q.pop();
         }
         return q.top();
@@ -47,7 +45,7 @@ Quick Sort的思想，这里排序的方向是从大往小排。核心思想是�
 
 class Solution {
 public:
-    int findKthLargest(vector<int>& nums, int k) {
+    int findKthLargest(vector<int> &nums, int k) {
         int left = 0, right = nums.size() - 1;
         while (true) {
             int pos = partition(nums, left, right);
@@ -56,14 +54,15 @@ public:
             else left = pos + 1;
         }
     }
-    int partition(vector<int>& nums, int left, int right) {
-        int pivot = nums[left], l = left + 1, r = right;
+    int partition(vector<int> &nums, int left, int right) {
+        int pivot = nums[left];
+        int l = left + 1, r = right;
         while (l <= r) {
             if (nums[l] < pivot && nums[r] > pivot) {
                 swap(nums[l++], nums[r--]);
             }
-            if (nums[l] >= pivot) ++l;
-            if (nums[r] <= pivot) --r;
+            if (nums[l] >= pivot) l++;
+            if (nums[r] <= pivot) r--;
         }
         swap(nums[left], nums[r]);
         return r;

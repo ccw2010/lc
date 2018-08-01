@@ -21,23 +21,24 @@ If you have figured out the O(n) solution, try coding another solution of which 
 // O(n)
 class Solution {
 public:
-    int minSubArrayLen(int k, vector<int>& nums) {
+    int minSubArrayLen(int s, vector<int>& nums) {
         if (nums.empty()) return 0;
         int i = 0, j = 0;
         int n = nums.size(), res = n + 1;
         int sum = 0;
         while (j < n) {
-            while (sum < k && j < n) {
+            while (sum < s && j < n) {
                 sum += nums[j];
                 j++;
             }
-            while (sum >= k) {
+            while (sum >= s) {
                 res = min(res, j - i);
                 sum -= nums[i];
                 i++;
             }
         }
-        return res == n + 1 ? 0 : res;
+        if (res > n) return 0;
+        else return res;
     }
 };
 

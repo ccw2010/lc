@@ -1,4 +1,4 @@
-/*353. Design Snake Game
+/* 353. Design Snake Game
 
 Design a Snake game that is played on a device with screen size = width x height. 
 Play the game online if you are not familiar with the game.
@@ -31,7 +31,8 @@ snake.move("D"); -> Returns 0
 
 | | | |
 | |S|F|
-snake.move("R"); -> Returns 1 (Snake eats the first food and right after that, the second food appears at (0,1))
+snake.move("R"); -> Returns 1 (Snake eats the first food and right after that, the second food appears 
+at (0,1))
 
 | |F| |
 | |S|S|

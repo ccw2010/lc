@@ -1,4 +1,4 @@
-/*205. Isomorphic Strings
+/* 205. Isomorphic Strings
 
 Given two strings s and t, determine if they are isomorphic.
 Two strings are isomorphic if the characters in s can be replaced to get t.
@@ -17,8 +17,7 @@ Example 3:
 Input: s = "paper", t = "title"
 Output: true
 
-Note:
-You may assume both s and t have the same length.
+Note: You may assume both s and t have the same length.
 
 这道题让我们求同构字符串，就是说原字符串中的每个字符可由另外一个字符替代，可以被其本身替代，相同的字符一定要被
 同一个字符替代，且一个字符不能被多个字符替代，即不能出现一对多的映射。根据一对一映射的特点，我们需要用两个哈希表
@@ -31,11 +30,11 @@ You may assume both s and t have the same length.
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
-        int m1[256] = {0}, m2[256] = {0};
+        unordered_map<char,int> m1, m2;
         int n = s.size();
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; i++) {
             if (m1[s[i]] != m2[t[i]]) return false;
-            else{
+            else {
                 m1[s[i]] = i + 1;
                 m2[t[i]] = i + 1;
             }
@@ -43,12 +42,6 @@ public:
         return true;
     }
 };
-
-
-
-
-
-
 
 
 

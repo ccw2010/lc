@@ -1,4 +1,4 @@
-/*214. Shortest Palindrome
+/* 214. Shortest Palindrome
 
 Given a string s, you are allowed to convert it to a palindrome by adding characters in front of it. 
 Find and return the shortest palindrome you can find by performing this transformation.
@@ -34,11 +34,8 @@ public:
             while (j > 0 && t[i] != t[j]) {
             	j = next[j-1];
             }
-            if (t[i] == t[j]){
-                next[i] = ++j;
-            }else{
-                next[i] = j;
-            }
+            if (t[i] == t[j]) next[i] = ++j;
+            else next[i] = j;
         }
         return r.substr(0, s.size() - next.back()) + s;
     }

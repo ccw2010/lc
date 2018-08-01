@@ -56,6 +56,9 @@ Could you do better than O(n2) per move() operation? */
 是否有三子相连的情况，有的话则返回对应的玩家，没有则返回0*/
 
 class TicTacToe {
+private:
+    vector<vector<int>> board;
+    
 public:
     /** Initialize your data structure here. */
     TicTacToe(int n) {
@@ -100,8 +103,6 @@ public:
         }
         return 0;
     }
-private:
-    vector<vector<int>> board;
 };
 
 /**

@@ -1,4 +1,4 @@
-/*225. [LeetCode] Implement Stack using Queues 
+/*225. Implement Stack using Queues 
 
 Implement the following operations of a stack using queues.
 
@@ -22,11 +22,11 @@ which means only push to back, pop from front, size, and is empty operations are
 tmp中的元素存回来，这样就是我们要的顺序了，其他三个操作也就直接调用队列的操作即可*/
 
 class MyStack {
+private:
+    queue<int> q;
 public:
     /** Initialize your data structure here. */
-    MyStack() {
-        
-    }
+    MyStack() {}
     
     /** Push element x onto stack. */
     void push(int x) {
@@ -40,7 +40,6 @@ public:
             q.push(tmp.front());
             tmp.pop();
         }
-        
     }
     
     /** Removes the element on top of the stack and returns that element. */
@@ -59,8 +58,6 @@ public:
     bool empty() {
         return q.empty();
     }
-    private:
-    queue<int> q;
 };
 
 /**

@@ -38,17 +38,13 @@ public:
             }
             m[t].insert(str);
         }
-        for (auto &x :m) {
+        for (auto &x : m) {
             vector<string> shift(x.second.begin(), x.second.end());
             res.push_back(shift);
         }
         return res;
     }
 };
-
-
-
-
 
 
 

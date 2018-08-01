@@ -48,7 +48,7 @@ head和p的位置，再返回上一层递归函数，再交换p和head的位置�
 // Recursive
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
+    ListNode* reverseList(ListNode *head) {
         if (!head || !head->next) return head;
         ListNode *p = head;
         head = reverseList(p->next);

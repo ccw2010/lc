@@ -10,8 +10,8 @@ Your algorithm should use only constant extra space.
 You may not modify the values in the list's nodes, only nodes itself may be changed.
  
 
-这道题要求成对交换节点， 是基本的链表操作题，我们可以分别用递归和迭代来实现。对于迭代实现，还是需要建立dummy节点，
-注意在连接节点的时候，最好画个图，以免把自己搞晕了 */
+这道题要求成对交换节点， 是基本的链表操作题，我们可以分别用递归和迭代来实现。
+对于迭代实现，还是需要建立dummy节点，注意在连接节点的时候，最好画个图，以免把自己搞晕了 */
  
 class Solution {
 public:
@@ -31,7 +31,7 @@ public:
 };
 
 
-/* 递归的写法就更简洁了，实际上利用了回溯的思想，递归遍历到链表末尾，然后先交换末尾两个，然后依次往前交换：*/
+/* 递归的写法利用了回溯的思想，递归遍历到链表末尾，然后先交换末尾两个，然后依次往前交换*/
 
 class Solution {
 public:
@@ -43,8 +43,6 @@ public:
         return t;
     }
 };
-
-
 
 
 
