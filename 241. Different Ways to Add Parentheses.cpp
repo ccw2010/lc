@@ -1,4 +1,4 @@
-/*241. Different Ways to Add Parentheses
+/* 241. Different Ways to Add Parentheses
 
 Given a string of numbers and operators, return all possible results from computing all the different 
 possible ways to group numbers and operators. The valid operators are +, - and *.
@@ -28,7 +28,7 @@ class Solution {
 public:
     vector<int> diffWaysToCompute(string s) {
         vector<int> res;
-        for (int i = 0; i < s.size(); ++i) {
+        for (int i = 0; i < s.size(); i++) {
             char c = s[i];
             if (c == '+' || c == '-' || c == '*') {
                 vector<int> left = diffWaysToCompute(s.substr(0, i));
@@ -42,7 +42,7 @@ public:
                 }
             }
         }
-        if (res.empty()) res.push_back(atoi(s.c_str()));
+        if (res.empty()) res.push_back(stoi(s));
         return res;
     }
 };
