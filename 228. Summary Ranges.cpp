@@ -22,20 +22,19 @@ Explanation: 2,3,4 form a continuous range; 8,9 form a continuous range. */
 
 class Solution {
 public:
-    vector<string> summaryRanges(vector<int>& nums) {
+    vector<string> summaryRanges(vector<int> &nums) {
         vector<string> res;
-        int i = 0, n = nums.size();
-        while (i < n) {
-            int j = 1;
-            while (i + j < n && nums[i+j] - nums[i] == j) j++;
-            if (j <= 1) res.push_back(to_string(nums[i]));
-            else res.push_back(to_string(nums[i]) + "->" + to_string(nums[i+j-1]));
-            i += j;
+        int n = nums.size();
+        int len;
+        for (int i = 0; i < n; i += len) {
+            len = 1;
+            while (i + len < n && nums[i+len] - nums[i] == len) len++;
+            if (len == 1) res.push_back(to_string(nums[i]));
+            else res.push_back(to_string(nums[i]) + "->" + to_string(nums[i+len-1]));
         }
         return res;
     }
 };
-
 
 
 
