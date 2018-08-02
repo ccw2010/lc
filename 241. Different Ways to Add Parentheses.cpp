@@ -30,15 +30,14 @@ public:
         vector<int> res;
         for (int i = 0; i < s.size(); i++) {
             char c = s[i];
-            if (c == '+' || c == '-' || c == '*') {
-                vector<int> left = diffWaysToCompute(s.substr(0, i));
-                vector<int> right = diffWaysToCompute(s.substr(i+1));
-                for (int x : left) {
-                    for (int y : right) {
-                        if (c == '+') res.push_back(x + y);
-                        else if (c == '-') res.push_back(x - y);
-                        else res.push_back(x * y);
-                    }
+            if (isdigit(c)) continue;
+            vector<int> left = diffWaysToCompute(s.substr(0, i));
+            vector<int> right = diffWaysToCompute(s.substr(i+1));
+            for (int x : left) {
+                for (int y : right) {
+                    if (c == '+') res.push_back(x + y);
+                    else if (c == '-') res.push_back(x - y);
+                    else if (c == '*') res.push_back(x * y);
                 }
             }
         }
@@ -46,8 +45,6 @@ public:
         return res;
     }
 };
-
-
 
 
 
