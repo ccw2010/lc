@@ -26,17 +26,17 @@ Output: 5 */
 class Solution {
 public:
     int calculate(string s) {
-        int res = 0, num = 0;
         int n = s.size();
         unordered_set<char> ops{'+', '-', '*', '/'};
         char op = '+';
         stack<int> t;
+        int num = 0;
         for (int i = 0; i < n; i++) {
             char c = s[i];
             if (isdigit(c)) {
                 num = num * 10 + c - '0';
             }
-            if (ops.count(c) || i == n - 1) {
+            if (ops.count(c) || i == n-1) {
                 if (op == '+') t.push(num);
                 if (op == '-') t.push(-num);
                 if (op == '*' || op == '/') {
@@ -50,15 +50,16 @@ public:
                 num = 0;
             } 
         }
+        int res = 0;
         while (!t.empty()) {
             res += t.top();
             t.pop();
         }
-        return res;
+        return res;    
     }
 };
-
  
+
 /*在做了Basic Calculator III之后，再反过头来看这道题，发现只要将处理括号的部分去掉直接就可以在这道题上使用*/
 
 class Solution {
@@ -92,13 +93,6 @@ public:
         return res;
     }
 };
-
-
-
-
-
-
-
 
 
 
