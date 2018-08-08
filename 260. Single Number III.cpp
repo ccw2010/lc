@@ -19,7 +19,7 @@ public:
         unordered_map<int, int> m;
         for (auto n : nums) m[n]++;
         for (auto c : m){
-            if(c.second == 1) res.push_back(c.first);
+            if (c.second == 1) res.push_back(c.first);
         }
         return res;
     }
