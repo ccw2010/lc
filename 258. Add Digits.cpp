@@ -13,16 +13,16 @@ Follow up: Could you do it without any loop/recursion in O(1) runtime?*/
 
 class Solution {
 public:
-    int addDigits(int num) {      
-        while (num >= 10){
+    int addDigits(int n) {      
+        while (n > 9){
             int sum = 0;
-            while (num>0){
-                sum += num % 10;
-                num /= 10;
+            while (n > 0){
+                sum += n % 10;
+                n /= 10;
             }
-            num = sum;
+            n = sum;
         }
-        return num;
+        return n;
     }
 };
 
@@ -51,17 +51,15 @@ public:
 
 根据上面的列举，我们可以得出规律，每9个一循环，所有大于9的数的树根都是对9取余，
 那么对于等于9的数对9取余就是0了，为了得到其本身，而且同样也要对大于9的数适用，
-我们就用 (n-1)%9+1 这个表达式来包括所有的情况，所以解法如下：
+我们就用 (n - 1) % 9 + 1 这个表达式来包括所有的情况，所以解法如下：
 */
 
 class Solution{
 public:
-    int addDigits(int num){
-        return (num-1) % 9 + 1;
+    int addDigits(int n){
+        return (n - 1) % 9 + 1;
     }
 };
-
-
 
 
 
