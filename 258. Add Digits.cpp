@@ -57,9 +57,11 @@ public:
 class Solution{
 public:
     int addDigits(int n){
-        return (n - 1) % 9 + 1;
+        return (n-1) % 9 + 1;
     }
 };
+
+
 
 
 

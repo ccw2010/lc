@@ -1,4 +1,4 @@
-/*259. 3Sum Smaller
+/* 259. 3Sum Smaller
 
 Given an array of n integers nums and a target, find the number of index triplets i, j, k with 
 0 <= i < j < k < n that satisfy the condition nums[i] + nums[j] + nums[k] < target.
@@ -18,13 +18,13 @@ class Solution {
 public:
     int threeSumSmaller(vector<int>& nums, int target) {
         int n = nums.size();
-        if (n<3) return 0;
+        if (n < 3) return 0;
         int res = 0;
         sort(nums.begin(), nums.end());
-        for (int i=0; i<n-2; i++){
+        for (int i = 0; i < n-2; i++){
             int left = i+1, right = n-1;
-            while (left<right){
-                if (nums[i]+nums[left]+nums[right] < target){
+            while (left < right){
+                if (nums[i] + nums[left] + nums[right] < target){
                     res += right - left;
                     left++; 
                 } else{

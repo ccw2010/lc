@@ -28,20 +28,22 @@ Output: 6
 class Solution {
 public:
     int countNodes(TreeNode* root) {
-        int hLeft = 0, hRight = 0;
-        TreeNode *pLeft = root, *pRight = root;
-        while (pLeft) {
-            hLeft++;
-            pLeft = pLeft->left;
+        if (!root) return 0;
+        if (!root->left && !root->right) return 1;
+        int h1 = 0, h2 = 0;
+        TreeNode *p1 = root, *p2 = root;
+        while (p1) {
+            h1++;
+            p1 = p1->left;
         }
-        while (pRight) {
-            hRight++;
-            pRight = pRight->right;
+        while (p2) {
+            h2++;
+            p2 = p2->right;
         }
-        if (hLeft == hRight) {
-        	return pow(2, hLeft) - 1;
+        if (h1 == h2) {
+            return pow(2, h1) - 1;
         }else{
-        	return countNodes(root->left) + countNodes(root->right) + 1;
+            return countNodes(root->left) + countNodes(root->right) + 1;
         }
     }
 };

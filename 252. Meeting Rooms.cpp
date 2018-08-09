@@ -21,7 +21,7 @@ Output: true*/
  */
 class Solution {
 public:
-    bool canAttendMeetings(vector<Interval>& intervals) {
+    bool canAttendMeetings(vector<Interval> &intervals) {
         map<int, int> m;
         for(auto &x : intervals){
             m[x.start] = x.end; 
@@ -44,7 +44,7 @@ public:
 
 class Solution {
 public:
-    bool canAttendMeetings(vector<Interval>& intervals) {
+    bool canAttendMeetings(vector<Interval> &intervals) {
         sort(intervals.begin(), intervals.end(), [](const Interval &a, const Interval &b)
             { return a.start < b.start; }
         );

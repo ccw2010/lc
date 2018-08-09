@@ -21,8 +21,8 @@ Output: false
 class Solution {
 public:
     bool isStrobogrammatic(string num) {
-        int i = 0, j = num.size() - 1;
-        while (i <= j) {
+        int len = num.size();
+        for (int i = 0, j = len-1; i <= j; i++, j--) {
             if (num[i] == num[j]) {
                 if (num[i] != '1' && num[i] != '0' && num[i] != '8'){
                     return false;
@@ -32,7 +32,6 @@ public:
                     return false;
                 }
             }
-            i++; j--;
         }
         return true;
     }
