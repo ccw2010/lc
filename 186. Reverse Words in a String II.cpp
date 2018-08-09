@@ -14,7 +14,8 @@ The words are always separated by a single space.
 Follow up: Could you do it in-place without allocating extra space? */
 
 /*这道题让我们翻转一个字符串中的单词，跟151.everse Words in a String没有区别，之前那道题就是用in-place的方法做的，
-而这道题反而更简化了题目，因为不考虑首尾空格了和单词之间的多空格了，方法还是很简单，先把整个字符串翻转一遍，再把每个单词翻转一遍*/
+而这道题反而更简化了题目，因为不考虑首尾空格了和单词之间的多空格了，方法还是很简单，先把整个字符串翻转一遍，再把每个单词
+翻转一遍*/
 
 class Solution {
 public:
