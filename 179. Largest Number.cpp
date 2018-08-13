@@ -14,21 +14,20 @@ Output: "9534330"
 
 class Solution {
 public:
-    string largestNumber(vector<int> &nums) {
-        
-        sort(nums.begin(), nums.end(), [](int a, int b) {
-           return to_string(a) + to_string(b) > to_string(b) + to_string(a); 
-        });
-        
-        string res;
-        for (int n : nums) {
+    static bool compare(int a, int b){
+      return to_string(a) + to_string(b) > to_string(b) + to_string(a);
+    }
+
+    string largestNumber(vector<int>& nums) {
+          sort(nums.begin(), nums.end(), compare);
+          string res;
+          for (int n : nums){
             res += to_string(n);
-        }
-        return res[0] == '0' ? "0" : res;
+          }
+          if (res[0] == '0') return "0";
+          else return res; 
     }
 };
-
-
 
 
 
