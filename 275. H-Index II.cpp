@@ -38,7 +38,7 @@ public:
         int left = 0, right = n - 1;
         while (left <= right) {  
             int mid = (left + right) / 2;
-            if (citations[mid] < n - mid) {
+            if (citations[mid] == n - mid) {
                 return n - mid;
             } else if (citations[mid] > n - mid) {
                 left = mid + 1;
