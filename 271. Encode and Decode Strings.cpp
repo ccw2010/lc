@@ -37,16 +37,16 @@ encode/decode algorithm.
 就行了，具体变换方法我们自己设计。由于我们需要把一个字符串集变成一个字符串，然后把这个字符串再还原成原来的字符串集，最开始
 我想能不能在每一个字符串中间加个空格把它们连起来，然后再按空格来隔开，但是这种方法的问题是原来的一个字符串中如果含有空格，
 那么还原的时候就会被分隔成两个字符串，所以我们必须还要加上长度的信息，我们的加码方法是长度+"/"+字符串，比如对于"a","ab",
-"abc"，我们就变成"1/a2/ab3/abc"，那么我们解码的时候就有规律可寻，先寻找"/"，然后之前的就是要取出的字符个数，从“/"后取出
-相应个数即可，以此类推直至没有"/"了，这样我们就得到高清无码的字符串集了*/
+"abc"，我们就变成"1/a2/ab3/abc"，那么我们解码的时候就有规律可寻，先寻找"/"，然后之前的就是要取出的字符个数，从“/"后取
+出相应个数即可，以此类推直至没有"/"了，这样我们就得到原字符串集了*/
 
 class Codec {
 public:
     // Encodes a list of strings to a single string.
-    string encode(vector<string>& strs) {
+    string encode(vector<string> &strs) {
         string res = "";
-        for (auto &s : strs){
-            res.append(to_string(s.size())).append("/").append(s);
+        for (const auto &s : strs){
+            res += to_string(s.size()) + "/" + s;
         }
         return res;
     }
@@ -56,19 +56,15 @@ public:
         vector<string> res;
         int i = 0;
         int n = s.size();
-        while (i<n){
-            int found = s.find("/", i);
-            int len = stoi(s.substr(i,found));
-            res.push_back(s.substr(found+1,len));
-            i = found + len + 1;
+        while (i < n){
+            int found = s.find("/", i); // search after i
+            int len = stoi(s.substr(i, found));
+            res.push_back(s.substr(found + 1, len));
+            i = found + 1 + len;
         }
         return res;
     }
 };
-
-// Your Codec object will be instantiated and called as such:
-// Codec codec;
-// codec.decode(codec.encode(strs));
 
 
 
