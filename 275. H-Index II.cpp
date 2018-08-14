@@ -27,21 +27,26 @@ Could you solve it in logarithmic time complexity?
 到应该用二分查找法，我们最先初始化left和right为0和数组长度len-1，然后取中间值mid，用citations[mid]和len-mid做比较，如果
 前者大，则right移到mid之前，反之right移到mid之后，终止条件是left>right，最后返回len-left即可*/
 
+/*设数组长度为n，那么n-i就是引用次数大于等于citations[i]的文章数。如果citations[i]<n-i，说明i是有效的H-Index, 如果一个
+数是H-Index，那么最大的H-Index一定在它后面（因为是升序的），根据这点就可以进行二分搜索了。*/
+
 
 class Solution {
 public:
-    int hIndex(vector<int>& citations) {
+    int hIndex(vector<int> &citations) {
         int n = citations.size();
         int left = 0, right = n - 1;
-        while (left <= right) {
+        while (left <= right) {  
             int mid = (left + right) / 2;
-            if (citations[mid] == n - mid){ 
-            	return n - mid;
-            }else if (citations[mid] > n - mid) {
-            	right = mid - 1;
-            }else left = mid + 1;
+            if (citations[mid] < n - mid) {
+                return n - mid;
+            } else if (citations[mid] > n - mid) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
         }
-        return n - left;
+       return n - left;
     }
 };
 
