@@ -24,12 +24,13 @@ Explanation: [3,0,6,1,5] means the researcher has 5 papers in total and each of 
 
 class Solution {
 public:
-    int hIndex(vector<int>& citations) {
+    int hIndex(vector<int> &citations) {
         sort(citations.begin(), citations.end(), greater<int>());
-        for (int i = 0; i < citations.size(); i++) {
-            if (citations[i] <=i ) return i;
+        int nPapers = citations.size();
+        for (int i = 0; i < nPapers; i++) {
+            if (citations[i] <= i ) return i;
         }
-        return citations.size();   
+        return nPapers;   
     }
 };
 
