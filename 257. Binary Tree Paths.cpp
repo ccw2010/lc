@@ -11,8 +11,7 @@ For example, given the following binary tree:
   5
 All root-to-leaf paths are:
 
-["1->2->5", "1->3"]
-*/
+["1->2->5", "1->3"] */
 
 /*这道题给我们一个二叉树，让我们返回所有根到叶节点的路径，跟113.Path Sum II很类似，比那道稍微简单一些，
 不需要计算路径和，只需要返回所有的路径即可，那么思路还是用递归来解，树的题目，十有八九都是递归，而递归的
@@ -23,20 +22,20 @@ All root-to-leaf paths are:
 
 class Solution {
 public:
-    vector<string> binaryTreePaths(TreeNode* root) {
+    vector<string> binaryTreePaths(TreeNode *root) {
+        if (!root) return {};
         vector<string> res;
-        if (root) dfs(root, "", res);
+        dfs(root, "", res);
         return res;
     }
     void dfs(TreeNode *root, string path, vector<string> &res) {
         path += to_string(root->val);
         if (!root->left && !root->right) res.push_back(path);
-        else {
-            if (root->left) dfs(root->left, path + "->", res);
-            if (root->right) dfs(root->right, path + "->", res);
-        }
+        if (root->left) dfs(root->left, path + "->", res);
+        if (root->right) dfs(root->right, path + "->", res);
     }
 };
+
 
 
 
