@@ -33,26 +33,28 @@ Output: [1,4,8,2,5,9,3,6,7].
 
 class ZigzagIterator {
 private:
-    vector<int> v_;
-    int i_;
+    vector<int> v;
+    int i;
 
 public:
     ZigzagIterator(vector<int> &v1, vector<int> &v2) {
         int n1 = v1.size();
         int n2 = v2.size();
         int n = max(n1, n2);
-        for (int i_ = 0; i_ < n; i_++) {
-            if (i_ < n1) v_.push_back(v1[i_]);
-            if (i_ < n2) v_.push_back(v2[i_]);
+        for (int i = 0; i < n; i++) {
+            if (i < n1) v.push_back(v1[i]);
+            if (i < n2) v.push_back(v2[i]);
         }
     }
     int next() {
-        return v_[i_++];
+        return v[i++];
     }
     bool hasNext() {
-        return i_ < v_.size();
+        return i < v.size();
     }
 };
+
+
 /**
  * Your ZigzagIterator object will be instantiated and called as such:
  * ZigzagIterator i(v1, v2);
