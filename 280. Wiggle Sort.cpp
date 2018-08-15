@@ -12,9 +12,10 @@ Output: One possible answer is [3,5,1,6,2,4]*/
 class Solution {
 public:
     void wiggleSort(vector<int> &nums) {
-    	if (nums.size() <= 2) return;
+        int n = nums.size();
+    	if (n <= 2) return;
         sort(nums.begin(), nums.end());
-        for (int i = 2; i < nums.size(); i += 2) {
+        for (int i = 2; i < n; i += 2) {
             swap(nums[i], nums[i-1]);
         }
     }
