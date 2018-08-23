@@ -9,12 +9,14 @@ nums should be [1, 3, 12, 0, 0]. */
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
+        if (nums.empty()) return;
+        int n = nums.size();
         int j = 0;
         // move all the nonzero elements advance
-        for (int i = 0; i < nums.size(); i++) {
+        for (int i = 0; i < n; i++) {
             if (nums[i]) nums[j++] = nums[i];
         }
-        for (; j < nums.size(); j++) {
+        for (; j < n; j++) {
             nums[j] = 0;
         }
     }
