@@ -31,29 +31,28 @@ Special thanks to @Louis1992 for adding this problem and creating all test cases
 
 class MedianFinder {
 private:
-    priority_queue<int> small_;
-    priority_queue<int> large_;
+    priority_queue<int> small;
+    priority_queue<int> large;
 
 public:
     /** initialize your data structure here. */
-    MedianFinder() {       
-    }
+    MedianFinder(){}
     
     void addNum(int num) {
-        small_.push(num);
-        large_.push(-small_.top());
-        small_.pop();
-        if (small_.size() < large_.size()) {
-            small_.push(-large_.top());
-            large_.pop();
+        small.push(num);
+        large.push(-small.top());
+        small.pop();
+        if (small.size() < large.size()) {
+            small.push(-large.top());
+            large.pop();
         }
     }
     
     double findMedian() {
-        if(small_.size() > large_.size()){
-            return small_.top(); 
+        if(small.size() > large.size()){
+            return small.top(); 
         }else{
-            return (small_.top() - large_.top()) / 2.0f;
+            return (small.top() - large.top()) / 2.0f;
         }
     }
 };
