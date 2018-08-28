@@ -32,8 +32,8 @@ public:
         if(rooms.empty()) return;
         size_t row = rooms.size();
         size_t col = rooms[0].size();
-        for (int i = 0; i < row; ++i) {
-            for (int j = 0; j < col; ++j) {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
                 if (rooms[i][j] == 0) dfs(rooms, i, j, 0);
             }
         }
@@ -80,21 +80,6 @@ public:
         
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
