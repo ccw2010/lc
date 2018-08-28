@@ -28,10 +28,10 @@ This solution read words on the fly*/
 
 class Solution {
 public:
-    bool wordPattern(string pattern, string str) {
+    bool wordPattern(string pattern, string words) {
         map<char, int> m1;
         map<string, int> m2;
-        istringstream in(str);
+        istringstream in(words);
         int i = 0, n = pattern.size();
         for (string word; in >> word; i++) {
             char c = pattern[i];
