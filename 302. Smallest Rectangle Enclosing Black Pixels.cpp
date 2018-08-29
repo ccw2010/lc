@@ -15,28 +15,32 @@ Input:
 ]
 and x = 0, y = 2
 
-Output: 6*/
+Output: 6 */
 
+/* 这道题给我们一个二维矩阵，表示一个图片的数据，其中1代表黑像素，0代表白像素，现在让我们找出一个最小的矩阵
+可以包括所有的黑像素，还给了我们一个黑像素的坐标，我们先来看Brute Force的方法，这种方法的效率不高，遍历了
+整个数组，如果遇到了1，就更新矩形的返回 */
 
-
-// Brute force
+/* Brute force, O(n^2) complexity */
 class Solution {
 public:
-    int minArea(vector<vector<char>>& image, int x, int y) {
+    int minArea(vector<vector<char>> &image, int x, int y) {
+        if (image.empty()) return 0;
+        int top = x, bottom = x;
         int left = y, right = y;
-        int up = x, down = x;
-        int row = image.size(), col = image[0].size();
+        int row = image.size();
+        int col = image[0].size();
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 if (image[i][j] == '1') {
+                    top = min(top, i);
+                    bottom = max(bottom, i);
                     left = min(left, j);
                     right = max(right, j);
-                    up = min(up, i);
-                    down = max(down, i);
                 }
             }
         }
-        return (right - left + 1) * (down - up + 1);
+        return (bottom - top + 1) * (right - left + 1);
     }
 };
 
