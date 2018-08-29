@@ -54,10 +54,10 @@ public:
 
     bool isValid(string s) {
         int count = 0;
-        for (int i = 0; i < s.size(); i++) {
-            if (s[i] == '(') count++;
-            else if (s[i] == ')') count--;
-            if (count<0) return false;
+        for (char c : s) {
+            if (c == '(') count++;
+            else if (c == ')') count--;
+            if (count < 0) return false;
         }
         return count == 0;
     }
@@ -107,10 +107,10 @@ public:
     
     bool isValid(string s) {
         int count = 0;
-        for (int i = 0; i < s.size(); i++) {
-            if (s[i] == '(') count++;
-            else if (s[i] == ')') count--;
-            if (count<0) return false;
+        for (char c : s) {
+            if (c == '(') count++;
+            else if (c == ')') count--;
+            if (count < 0) return false;
         }
         return count == 0;
     }
