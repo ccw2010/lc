@@ -18,11 +18,12 @@ public:
         unordered_set<char> t;
         int res = 0;
         int left = 0, right = 0;
-        while (right < s.size()){
+        int n = s.size();
+        while (right < n){
             if (!t.count(s[right])){
                 t.insert(s[right++]);
                 res = max(res, (int) t.size());
-            }else{
+            } else {
                 t.erase(s[left++]);
             }
         }
