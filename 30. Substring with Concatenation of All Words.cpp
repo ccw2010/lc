@@ -28,18 +28,19 @@ break，如果有，则加入第二个哈希表，但相同的词只能出现一
 class Solution {
 public:
     vector<int> findSubstring(string s, vector<string>& words) {
+        if (s.empty() || words.empty()) return {};
         vector<int> res;
-        if (s.empty() || words.empty()) return res;
         int n = words.size();
         int len = words[0].size();
         unordered_map<string, int> m1;
-        for (auto &w : words) {
+        for (const auto &w : words) {
             m1[w]++;
         }
-        for (int i = 0; i <= (int)s.size() - n * len; i++) {
+        int size = s.size();
+        for (int i = 0; i + n * len <= size; i++) {
             unordered_map<string, int> m2;
             int j = 0; 
-            for (j = 0; j < n; ++j) {
+            for (; j < n; j++) {
                 string t = s.substr(i + j * len, len);
                 if (!m1.count(t)) break;
                 m2[t]++;
