@@ -50,21 +50,23 @@ public:
     int lengthOfLIS(vector<int>& nums) {
         if (nums.empty()) return 0;
         vector<int> ends {nums[0]};
-        for (auto n : nums) {
-            if (n < ends[0]) {
-                ends[0] = n;
-            } else if (n > ends.back()) {
-                ends.push_back(n);
+        for (auto num : nums) {
+            if (num < ends[0]) {
+                ends[0] = num;
+            } else if (num > ends.back()) {
+                ends.push_back(num);
             } else {
                 int left = 0;
                 int right = ends.size();
                 while (left < right) {
                     int mid = left + (right - left) / 2;
-                    if (ends[mid] < n) {
+                    if (ends[mid] < num) {
                         left = mid + 1;
-                    } else right = mid;
+                    } else {
+                        right = mid;
+                    }
                 }
-                ends[right] = n;
+                ends[right] = num;
             }
         }
         return ends.size();
