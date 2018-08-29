@@ -41,7 +41,7 @@ Longest consecutive sequence path is 2-3,not3-2-1, so return 2. */
  */
 class Solution {
 public:
-    int longestConsecutive(TreeNode* root) {
+    int longestConsecutive(TreeNode *root) {
         if (!root) return 0;
         int res = 0;
         preorder(root, root->val, 0, res);
