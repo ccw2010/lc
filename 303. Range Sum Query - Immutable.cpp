@@ -19,19 +19,20 @@ There are many calls to sumRange function.
 
 class NumArray {
 private:
-    vector<int> dp_;
+    vector<int> dp;
     
 public:
-    NumArray(vector<int> nums) {
-        dp_ = nums;
-        for (int i = 1; i < nums.size(); i++){
-            dp_[i] += dp_[i-1];
+    NumArray(vector<int> &nums) {
+        dp = nums;
+        int n = nums.size();
+        for (int i = 1; i < n; i++){
+            dp[i] += dp[i-1];
         }   
     }
     
     int sumRange(int i, int j) {
-        if (i==0) return dp_[j];
-        else return dp_[j] - dp_[i-1];
+        if (i==0) return dp[j];
+        else return dp[j] - dp[i-1];
     }
 
 };
