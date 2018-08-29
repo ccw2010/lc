@@ -48,14 +48,14 @@ public:
                 }
             }
         }
-        return minTotalDistance(rows) + minTotalDistance(cols);
+        return minTota1D(rows) + minTotal1D(cols);
     }
-    int minTotalDistance(vector<int> v) {
+    int minTotal1D(vector<int> &nums) {
         int res = 0;
-        sort(v.begin(), v.end());
-        int n = v.size();
+        sort(nums.begin(), nums.end());
+        int n = nums.size();
         for (int i=0, j=n-1; i < j; i++, j--) {
-            res += v[j] - v[i];
+            res += nums[j] - nums[i];
         }
         return res;
     }
