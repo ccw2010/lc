@@ -41,19 +41,17 @@ Given matrix = {
 };
 
 dp = {
-   {0, 0, 0, 0, 0, 0},
-   {0, 3, 3, 4, 8, 10},
-   {0, 8, 14, 18, 24, 27},
-   {0, 9, 17, 21, 28, 36},
-   {0, 13, 22, 26, 34, 49},
-   {0, 14, 23, 30, 38, 58}
+  {3, 3, 4, 8, 10},
+  {8, 14, 18, 24, 27},
+  {9, 17, 21, 28, 36},
+  {13, 22, 26, 34, 49},
+  {14, 23, 30, 38, 58}
 }
 
 
-sumRegion(2, 1, 4, 3) -> dp[2][1]8
-sumRegion(1, 1, 2, 2) -> 11
-sumRegion(1, 2, 2, 4) -> 12
-
+sumRegion(2, 1, 4, 3) -> dp[4][3] - dp[1][3] - dp[4][0] + dp[1][0] = 38 - 24 - 14 + 8 = 8
+sumRegion(1, 1, 2, 2) -> dp[2][2] - dp[0][2] - dp[2][0] + dp[0][0] = 21 - 4  -  9 + 3 = 11
+sumRegion(1, 2, 2, 4) -> dp[2][4] - dp[0][4] - dp[2][1] + dp[0][1] = 36 - 10 - 17 + 3 = 12
 
 */
 
@@ -61,35 +59,43 @@ sumRegion(1, 2, 2, 4) -> 12
 class NumMatrix {
 private:
     vector<vector<int>> dp;
-
+ 
 public:
-    NumMatrix(vector<vector<int>> &matrix) {
+    NumMatrix(vector<vector<int>> matrix) {
         if (matrix.empty() || matrix[0].empty()) return;
-        int row = matrix.size(), col = matrix[0].size();
+        int row = matrix.size();
+        int col = matrix[0].size();
         dp = matrix;
-        for (int i = 1; i <= row; i++) {
-            for (int j = 1; j <= col; j++) {
-                dp[i][j] = dp[i][j-1] + dp[i-1][j] - dp[i-1][j-1] + m[i-1][j-1];
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (i == 0 && j == 0) {
+                    dp[i][j] = matrix[0][0];
+                } else if (i == 0){
+                    dp[i][j] = dp[i][j-1] + matrix[i][j];
+                } else if (j == 0){
+                    dp[i][j] = dp[i-1][j] + matrix[i][j];
+                } else{
+                    dp[i][j] = dp[i][j-1] + dp[i-1][j] - dp[i-1][j-1] + matrix[i][j];
+                }
             }
         }
     }
     int sumRegion(int row1, int col1, int row2, int col2) {
-        return dp[row2+1][col2+1] - dp[row1][col2+1] - dp[row2+1][col1] + dp[row1][col1];
+        int res = 0;
+        if (row1 == 0 && col1 == 0) res = dp[row2][col2];
+        else if (row1 == 0) res = dp[row2][col2] - dp[row2][col1-1];
+        else if (col1 == 0) res = dp[row2][col2] - dp[row1-1][col2];
+        else res = dp[row2][col2] - dp[row1-1][col2] - dp[row2][col1-1] + dp[row1-1][col1-1];
+        return res;
     }
 };
+
+
 /**
  * Your NumMatrix object will be instantiated and called as such:
  * NumMatrix obj = new NumMatrix(matrix);
  * int param_1 = obj.sumRegion(row1,col1,row2,col2);
  */
-
-
-
-
-
-
-
-
 
 
 
