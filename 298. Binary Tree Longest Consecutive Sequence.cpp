@@ -47,12 +47,12 @@ public:
         preorder(root, root->val, 0, res);
         return res;
     }
-    void dfs(TreeNode *root, int val, int count, int &res){
+    void preorder(TreeNode *root, int val, int count, int &res){
         if (!root) return;
         if (root->val == val+1) count++;
-        else count=1;
+        else count = 1;
         res = max(res, count);
-        preorder(root->left, root->val, count, res);
+        preorder(root->left,  root->val, count, res);
         preorder(root->right, root->val, count, res);   
     }
 };
