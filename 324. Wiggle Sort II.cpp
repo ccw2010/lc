@@ -44,7 +44,7 @@ public:
         int j = n; 
         sort(tmp.begin(), tmp.end());
         for (int i = 0; i < n; i++) {
-            nums[i] = i & 1 ? tmp[--j] : tmp[--k];
+            nums[i] = (i % 2 == 0) ? tmp[--k] : tmp[--j];
         }
     }
 };
