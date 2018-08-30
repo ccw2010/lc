@@ -37,7 +37,8 @@ wiggleSorted : {2, 3, 1, 3, 1, 2}
 // O(n) space
 class Solution {
 public:
-    void wiggleSort(vector<int>& nums) {
+    void wiggleSort(vector<int> &nums) {
+        if (nums.empty()) return;
         vector<int> tmp = nums;
         int n = nums.size();
         int k = (n + 1) / 2;
