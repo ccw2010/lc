@@ -59,23 +59,23 @@ public:
     bool isValidSerialization(string preorder) {
         istringstream iss(preorder);
         
-        vector<string> v;
-        string t = "";
-        while (getline(iss, t, ',')) {
-            v.push_back(t);
+        vector<string> str;
+        string c = "";
+        while (getline(iss, c, ',')) {
+            str.push_back(c);
         }
         
         int count = 0;
-        int len = v.size();
+        int len = str.size();
         for (int i = 0; i < len - 1; i++) {
-            if (v[i] == "#") {
+            if (str[i] == "#") {
                 if (count == 0) return false;
                 count--;
             } else {
                 count++;
             }
         }
-        return count == 0 && v.back() == "#";
+        return count == 0 && str.back() == "#";
     }
 };
 
