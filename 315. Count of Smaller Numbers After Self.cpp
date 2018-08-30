@@ -15,7 +15,18 @@ To the right of 1 there is 0 smaller element.
 
 /*这道题给定我们一个数组，让我们计算每个数字右边所有小于这个数字的个数，目测我们不能用brute force，那么为了提高运算效率，
 首先可以使用用二分搜索法，思路是将给定数组从最后一个开始，用二分法插入到一个新的数组，这样新数组就是有序的，那么此时该数字
-在新数组中的坐标就是原数组中其右边所有较小数字的个数*/
+在新数组中的坐标就是原数组中其右边所有较小数字的个数
+
+i = 3, left = 0, right = 0, mid = 0, t = {1}
+i = 2, left = 1, right = 1, mid = 0, t = {1, 6}
+i = 1, left = 1, right = 1, mid = 0, t = {1, 2, 6}
+i = 0, left = 2, right = 2, mid = 2, t = {1, 2, 5, 6}
+
+res = {2, 1, 1, 0}
+ 
+*/
+
+
 
 // Binary Search
 class Solution {
@@ -37,6 +48,11 @@ public:
         return res;
     }
 };
+
+
+
+
+
 
 
 
