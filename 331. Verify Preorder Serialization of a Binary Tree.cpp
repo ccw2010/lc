@@ -62,6 +62,7 @@ public:
         vector<string> str;
         string c = "";
         while (getline(iss, c, ',')) {
+            /* Get node value one by one */
             str.push_back(c);
         }
         
