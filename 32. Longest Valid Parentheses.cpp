@@ -24,6 +24,7 @@ Explanation: The longest valid parentheses substring is "()()"*/
 class Solution {
 public:
     int longestValidParentheses(string s) {
+        if (s.emtpy()) return 0;
         int res = 0, start = 0;
         int n = s.size();
         stack<int> t;
