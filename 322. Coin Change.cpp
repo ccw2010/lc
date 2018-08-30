@@ -34,7 +34,7 @@ class Solution {
 public:
     int coinChange(vector<int> &coins, int num) {
         if (coins.empty()) return 0;
-        vector<int> dp(num+1, num+1);
+        vector<int> dp(num + 1, INT_MAX);
         dp[0] = 0;
         int nCoins = coins.size();
         for (int i = 1; i <= num; i++) {
@@ -44,7 +44,8 @@ public:
                 }
             }
         }
-        return dp[num] > num ? -1 : dp[num];
+        if (dp[num] > num) return -1;
+        else return dp[num];
     }
 };
 
