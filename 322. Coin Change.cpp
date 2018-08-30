@@ -18,19 +18,23 @@ You may assume that you have an infinite number of each kind of coin.
 
 class Solution {
 public:
-    int coinChange(vector<int> &coins, int n) {
-        vector<int> dp(n+1, n+1);
+    int coinChange(vector<int> &coins, int num) {
+        if (coins.empty()) return 0;
+        vector<int> dp(num+1, num+1);
         dp[0] = 0;
-        for (int i = 1; i <= n; i++) {
-            for (int j = 0; j < coins.size(); j++) {
+        int nCoins = coins.size();
+        for (int i = 1; i <= num; i++) {
+            for (int j = 0; j < nCoins; j++) {
                 if (coins[j] <= i) {
                     dp[i] = min(dp[i], dp[i - coins[j]] + 1);
                 }
             }
         }
-        return dp[n] > n ? -1 : dp[n];
+        return dp[num] > num ? -1 : dp[num];
     }
 };
+
+
 
 
 
