@@ -45,10 +45,14 @@ Lockers 切换锁的状态。
 
 那么问题就简化为了求1到n之间完全平方数的个数，我们可以用force brute来比较从1开始的完全平方数和n的大小 */
 
+
+#include <math.h> 
+
 class Solution {
 public:
     int bulbSwitch(int n) {
-        return sqrt(n); 
+        int res = sqrt(n);
+        return res; 
     }
 };
 
