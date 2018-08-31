@@ -15,7 +15,7 @@ amount of money you can rob tonight without alerting the police.*/
 
 class Solution {
 public:
-    int rob(vector<int>& nums) {
+    int rob(vector<int> &nums) {
         int n = nums.size();
         if (n==0) return 0;
         if (n==1) return nums[0];
@@ -24,7 +24,7 @@ public:
         return max(x, y);
     }
     
-    int rob(vector<int>& nums, int L, int R){
+    int rob(vector<int> &nums, int L, int R){
         if (R - L <= 1) return nums[L];
         vector<int> dp(R, 0);
         dp[L] = nums[L];
@@ -35,5 +35,16 @@ public:
         return dp[R-1];
     }
 };
+
+
+
+
+
+
+
+
+
+
+
 
 
