@@ -27,17 +27,17 @@ tab的情况，还存在abcd和cba，dcb和abcd这些情况需要考虑，这就
 
 class Solution {
 public:
-    vector<vector<int>> palindromePairs(vector<string>& words) {
+    vector<vector<int>> palindromePairs(vector<string> &words) {
         vector<vector<int>> res;
         unordered_map<string, int> m;
         set<int> s;
         int i = 0;
-        for (string &w : words) {
+        for (const string &w : words) {
             m[w] = i++;
             s.insert(w.size());
         }
         int n = words.size();
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; i++) {
             string t = words[i];
             int len = t.size();
             reverse(t.begin(), t.end());
