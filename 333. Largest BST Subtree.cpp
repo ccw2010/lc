@@ -27,20 +27,20 @@ Follow up: Can you figure out ways to solve it with O(n) time complexity? */
 
 class Solution {
 public:
-    int largestBSTSubtree(TreeNode* root) {
+    int largestBSTSubtree(TreeNode *root) {
         if (!root) return 0;
-        if (isValidBST(root, INT_MIN, INT_MAX)) {
+        if (isValidBST(root, INT_MIN, INT_MAX)){
             return countNodes(root);
-        }else{
+        } else {
             return max(largestBSTSubtree(root->left), largestBSTSubtree(root->right));
         }
     }
-    bool isValidBST(TreeNode* root, int lower, int upper) {
+    bool isValidBST(TreeNode *root, int lower, int upper) {
         if (!root) return true;
         if (root->val <= lower || root->val >= upper) return false;
         return isValidBST(root->left, lower, root->val) && isValidBST(root->right, root->val, upper);
     }
-    int countNodes(TreeNode* root) {
+    int countNodes(TreeNode *root) {
         if (!root) return 0;
         return countNodes(root->left) + countNodes(root->right) + 1;
     }
