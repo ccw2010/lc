@@ -29,16 +29,16 @@ class Solution {
 public:
     int largestBSTSubtree(TreeNode* root) {
         if (!root) return 0;
-        if (validBST(root, INT_MIN, INT_MAX)) {
+        if (isValidBST(root, INT_MIN, INT_MAX)) {
             return countNodes(root);
         }else{
             return max(largestBSTSubtree(root->left), largestBSTSubtree(root->right));
         }
     }
-    bool validBST(TreeNode* root, int lower, int upper) {
+    bool isValidBST(TreeNode* root, int lower, int upper) {
         if (!root) return true;
         if (root->val <= lower || root->val >= upper) return false;
-        return validBST(root->left, lower, root->val) && validBST(root->right, root->val, upper);
+        return isValidBST(root->left, lower, root->val) && isValidBST(root->right, root->val, upper);
     }
     int countNodes(TreeNode* root) {
         if (!root) return 0;
