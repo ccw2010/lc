@@ -1,7 +1,7 @@
 /* 333. Largest BST Subtree
 
-Given a binary tree, find the largest subtree which is a Binary Search Tree (BST), where largest means 
-subtree with largest number of nodes in it.
+Given a binary tree, find the largest subtree which is a Binary Search Tree (BST), 
+where largest means subtree with largest number of nodes in it.
 
 Note: A subtree must include all of its descendants.
 Here's an example:
@@ -12,14 +12,17 @@ Here's an example:
   / \   \ 
  1   8   7
 
-The Largest BST Subtree in this case is the highlighted one.
+The Largest BST Subtree in this case is 
+   5  
+  / \   
+ 1   8 
+ 
 The return value is the subtree's size, which is 3.
 
-Follow up:
-Can you figure out ways to solve it with O(n) time complexity? */
+Follow up: Can you figure out ways to solve it with O(n) time complexity? */
 
-/*这道题让我们求一棵Binary Tree的最大BST，所谓BST就是满足左<根<右的二分树，我们需要返回这个BST的节点个数。
-题目中给的提示说我们可以用98.Validate Binary Search Tree的方法来做，时间复杂度为O(n2)，这种方法是把每个
+/* 这道题让我们求一棵Binary Tree的最大BST，所谓BST就是满足左<根<右的二分树，我们需要返回这个BST的节点个数。
+题目中给的提示说我们可以用98.Validate Binary Search Tree的方法来做，时间复杂度为O(n^2)，这种方法是把每个
 节点都当做根节点，来验证其是否是二叉搜索数，并记录节点的个数，若是二叉搜索树，就更新最终结果*/
 
 class Solution {
@@ -54,25 +57,26 @@ public:
 class Solution {
 public:
     int largestBSTSubtree(TreeNode* root) {
-        int res = 0, mn = INT_MIN, mx = INT_MAX;
-        bool d = isValidBST(root, mn, mx, res);
+        int res = 0, minVal = INT_MIN, maxVal = INT_MAX;
+        bool valid = isValidBST(root, minVal, maxVal, res);
         return res;
     }
-    bool isValidBST(TreeNode *root, int &mn, int &mx, int &res) {
+    bool isValidBST(TreeNode *root, int &minVal, int &maxVal, int &res) {
         if (!root) return true;
-        int left_n = 0, right_n = 0, left_mn = INT_MIN;
-        int right_mn = INT_MIN, left_mx = INT_MAX, right_mx = INT_MAX;
-        bool left = isValidBST(root->left, left_mn, left_mx, left_n);
-        bool right = isValidBST(root->right, right_mn, right_mx, right_n);
+        int nLeft = 0, nRight = 0;
+        int leftMin  = INT_MIN, leftMax  = INT_MAX;
+        int rightMin = INT_MIN, rightMax = INT_MAX;
+        bool left = isValidBST(root->left, leftMin, leftMax, nLeft);
+        bool right = isValidBST(root->right, rightMin, rightMax, nRight);
         if (left && right) {
-            if ((!root->left || root->val > left_mx) && (!root->right || root->val < right_mn)) {
-                res = left_n + right_n + 1;
-                mn = root->left ? left_mn : root->val;
-                mx = root->right ? right_mx : root->val;
+            if ((!root->left || root->val > leftMax) && (!root->right || root->val < rightMin)) {
+                res = nLeft + nRight + 1;
+                minVal = root->left ? leftMin : root->val;
+                maxVal = root->right ? rightMax : root->val;
                 return true;
             }
         }
-        res = max(left_n, right_n);
+        res = max(nLeft, nRight);
         return false;
     }
 };
