@@ -26,7 +26,7 @@ first，那么将当前数字赋给first，一旦first被更新了，说明一�
 class Solution {
 public:
     bool increasingTriplet(vector<int> &nums) {
-    	if (nums.size() < 3) return false;
+    	 if (nums.size() < 3) return false;
         int first = INT_MAX, second = INT_MAX;
         for (auto n : nums) {
             if ( n <= second) second = n;
