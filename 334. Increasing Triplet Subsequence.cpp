@@ -55,7 +55,7 @@ backward:    8  6  6  6  6
 class Solution {
 public:
     bool increasingTriplet(vector<int>& nums) {
-    	int n = nums.size();
+    	 int n = nums.size();
         if (n < 3) return false;
         vector<int> forward(n, nums[0]);
         vector<int> backward(n, nums[n-1]);
