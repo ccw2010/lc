@@ -15,6 +15,7 @@ For example, given n = 3, a solution set is:
 class Solution {
 public:
 	vector<string> generateParenthesis(int n) {
+		if (n <= 0) return {};
 	    vector<string> res;
 	    dfs("", n, n, res);
 	    return res;
@@ -22,10 +23,8 @@ public:
 	void dfs(string paren, int left, int right, vector<string> &res) {
 	    if (left > right) return;
 	    if (left == 0 && right == 0) res.push_back(paren);
-	    else {
-	        if (left > 0) dfs(paren + '(', left - 1, right, res);
-	        if (right > 0) dfs(paren + ')', left, right - 1, res);
-	    }
+        if (left > 0) dfs(paren + '(', left - 1, right, res);
+        if (right > 0) dfs(paren + ')', left, right - 1, res);
 	}
 };
 

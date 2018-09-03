@@ -22,9 +22,9 @@ cur为最后一个元素时停止，此时pre指向要移除元素的前一个�
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        if (!head->next) return NULL;
+        if (!head || !head->next) return NULL;
         ListNode *cur = head;
-        for (int i = 0; i < n; i++) {
+        while (n--) {
             cur = cur->next;
         }
         if (!cur) return head->next;

@@ -16,21 +16,17 @@ used3: check each sub-boxes
 
 class Solution {
 public:
-    bool isValidSudoku(vector<vector<char>>& board) {
+    bool isValidSudoku(vector<vector<char>> &board) {
         if (board.empty() || board[0].empty()) return false;
-        
+        int m = board.size(), n = board[0].size();
         int used1[9][9] = {0}, used2[9][9] = {0}, used3[9][9] = {0};
-        
-        for(int i = 0; i < board.size(); i++){
-            for(int j = 0; j < board[i].size(); j++){
-                if(board[i][j] != '.'){
-                    int num = board[i][j] - '0' - 1;
-                    int k = 3 * (i / 3) + j / 3;
-                    if(used1[i][num] || used2[j][num] || used3[k][num]){
-                        return false;
-                    }
-                    used1[i][num] = used2[j][num] = used3[k][num] = 1;
-                }
+        for (int i=0; i<m; i++){
+            for (int j=0; j<n; j++){
+                if (!isdigit(board[i][j])) continue;
+                int num = board[i][j] - '1';
+                int k = 3 * (i/3) + j/3;
+                if (used1[i][num] || used2[j][num] || used3[k][num]) return false;
+                used1[i][num] = used2[j][num] = used3[k][num] = 1;     
             }
         }
         return true;
