@@ -25,7 +25,7 @@ class Solution {
 public:
     bool validTree(int n, vector<pair<int, int>> &edges) {
         vector<unordered_set<int>> graph(n, unordered_set<int>());
-        unordered_set<int> s{0};
+        unordered_set<int> visited{0};
         queue<int> q;
         q.push(0);
         for (auto x : edges) {
@@ -36,13 +36,13 @@ public:
             int t = q.front(); 
             q.pop();
             for (auto nbr : graph[t]) {
-                if (s.count(nbr)) return false;
-                s.insert(nbr);
+                if (visited.count(nbr)) return false;
+                visited.insert(nbr);
                 q.push(nbr);
                 graph[nbr].erase(t);
             }
         }
-        return s.size() == n;
+        return visited.size() == n;
     }
 };
 
