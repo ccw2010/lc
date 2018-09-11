@@ -23,7 +23,7 @@ set，如果已经存在，则返回false，还有就是在遍历邻接链表的
 
 class Solution {
 public:
-    bool validTree(int n, vector<pair<int, int>>& edges) {
+    bool validTree(int n, vector<pair<int, int>> &edges) {
         vector<unordered_set<int>> graph(n, unordered_set<int>());
         unordered_set<int> s{0};
         queue<int> q;
