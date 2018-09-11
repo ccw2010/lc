@@ -14,8 +14,7 @@ It doesn't matter what you leave beyond the returned length.
 Example 2:
 Given nums = [0,0,1,1,1,2,2,3,3,4],
 Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, 
-and 4 respectively.
-It doesn't matter what values are set beyond the returned length.
+and 4 respectively. It doesn't matter what values are set beyond the returned length.
 
 这道题要我们从有序数组中去除重复项，和Remove Duplicates from Sorted List(移除有序链表中的重复项) 
 的题很类似，但是要简单一些，因为数组的值可以通过下标直接访问，而链表不行。那么这道题的解题思路是，
@@ -37,6 +36,9 @@ public:
         return j+1;
     }
 };
+
+
+
 
 
 
