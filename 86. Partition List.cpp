@@ -30,7 +30,7 @@ New:　    1 -> 2 -> 2 -> 4 -> 3 -> 5
 
 class Solution {
 public:
-    ListNode *partition(ListNode *head, int x) {
+    ListNode* partition(ListNode *head, int x) {
         if (!head) return head;
         ListNode *dummy = new ListNode(-1);
         ListNode *newDummy = new ListNode(-1);
