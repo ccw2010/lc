@@ -25,7 +25,7 @@ Explanation: Paint house 0 into color 0, paint house 1 into color 2. Minimum cos
 
 class Solution {
 public:
-    int minCostII(vector<vector<int>>& costs) {
+    int minCostII(vector<vector<int>> &costs) {
         if (costs.empty()||costs[0].empty()) return 0;
         int n = costs.size(), k = costs[0].size();
         vector<vector<int>> dp = costs;
