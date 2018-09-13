@@ -53,12 +53,12 @@ The height of a rooted tree is the number of edges on the longest downward path 
 
 class Solution {
 public:
-    vector<int> findMinHeightTrees(int n, vector<pair<int, int>>& edges) {
+    vector<int> findMinHeightTrees(int n, vector<pair<int,int>> &edges) {
         if (n == 1) return {0};
         vector<int> res;
         vector<unordered_set<int>> graph(n);
         queue<int> q;
-        for (pair<int, int> &edge : edges) {
+        for (const pair<int,int> &edge : edges) {
             graph[edge.first].insert(edge.second);
             graph[edge.second].insert(edge.first);
         }
