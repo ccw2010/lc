@@ -101,7 +101,7 @@ public:
                 q.push({p.first + 1, p.second->right});
             }
         }
-        for (auto x : m) {
+        for (const auto &x : m) {
             res.push_back(x.second);
         }
         return res;     
