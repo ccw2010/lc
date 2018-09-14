@@ -36,8 +36,8 @@ public:
                     start = i + 1;
                 } else {
                     t.pop();
-                    if (t.empty()) res = max(res, i-start+1) ;
-                    else res = max(res, i-t.top());
+                    if (t.empty()) res = max(res, i - start + 1) ;
+                    else res = max(res, i - t.top());
                 }
             }
         }
