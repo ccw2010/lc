@@ -23,7 +23,7 @@ public:
     bool containsDuplicate(vector<int> &nums) {
         unordered_map<int,int> m;
         for (int n : nums){
-            if(m.count(n)) return true;
+            if (m.count(n)) return true;
             else m[n]++;
         }
         return false;
