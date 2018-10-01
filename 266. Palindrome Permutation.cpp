@@ -29,6 +29,20 @@ public:
 };
 
 
+/* 解法二： 这种方法用到了一个set，我们遍历字符串，如果某个字母不在set中，我们加入这个字母，
+   若字母已经存在，则删除该字母，那么最终如果set中没有字母或是只有一个字母时，说明是回文串 */
+
+bool canPermutePalindrome(string s) {
+    unordered_set<char> t;
+    for (auto c : s) {
+        if (!t.count(c)) t.insert(c);
+        else t.erase(c);
+    }
+    return t.empty() || t.size() == 1;
+}
+
+
+
 
 
 
