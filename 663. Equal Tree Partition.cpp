@@ -61,15 +61,17 @@ The range of tree node value is in the range of [-100000, 100000].
 #include <unordered_map>
 class Solution {
 public:
-    bool checkEqualTree(TreeNode* root) {
+    bool checkEqualTree(TreeNode *root) {
+        if (!root) return true;
         unordered_map<int,int> m;
-        int sum = traverse(root, m);
+        int sum = dfs(root, m);
         if (sum == 0) return m[0] >= 2;
         return sum % 2 == 0 && m.count(sum / 2);
     }
-    int traverse(TreeNode* node, unordered_map<int,int> &m) {
+    
+    int dfs(TreeNode *node, unordered_map<int,int> &m) {
         if (!node) return 0;
-        int cur = node->val + traverse(node->left, m) + traverse(node->right, m);
+        int cur = node->val + dfs(node->left, m) + dfs(node->right, m);
         m[cur]++;
         return cur;
     }
