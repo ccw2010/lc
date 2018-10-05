@@ -38,10 +38,10 @@ class Solution {
 public:
     int minDiffInBST(TreeNode* root) {
         if (!root) return 0;
-        int res = INT_MAX;
         vector<int> vals;
         inorder(root, vals);
         int n = vals.size();
+        int res = INT_MAX;
         for (int i = 1; i < n; i++) {
             res = min(res, vals[i] - vals[i-1]);
         }
