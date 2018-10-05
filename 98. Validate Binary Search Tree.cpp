@@ -73,12 +73,12 @@ public:
         vector<int> vals;
         inorder(root, vals);
         int n = vals.size();
-        for (int i = 0; i < n-1; i++) {
-            if (vals[i] >= vals[i+1])  return false;
+        for (int i=1; i < n; i++){
+            if (vals[i] <= vals[i-1]) return false;
         }
         return true;
     }
-    void inorder(TreeNode *root, vector<int> &vals) {
+    void inorder(TreeNode *root, vector<int> &vals){
         if (!root) return;
         inorder(root->left, vals);
         vals.push_back(root->val);
