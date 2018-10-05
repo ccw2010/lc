@@ -20,10 +20,9 @@ node 3 and node 2.
 
 /*这道题给了我们一棵二叉搜索树，让我们求任意个节点值之间的最小绝对差。由于BST的左<根<右的性质可知，如果按照中序遍历
 会得到一个有序数组，那么最小绝对差肯定在相邻的两个节点值之间产生。所以我们的做法就是对BST进行中序遍历，然后当前节点值
-和之前节点值求绝对差并更新结果res。这里需要注意的就是在处理第一个节点值时，由于其没有前节点，所以不能求绝对差。这里用
-变量pre来表示前节点值，这里由于题目中说明了所以节点值不为负数，所以我们给pre初始化-1，这样我们就知道pre是否存在。
-如果没有题目中的这个非负条件，那么就不能用int变量来，必须要用指针，通过来判断是否为指向空来判断前结点是否存在。
-还好这里简化了问题，用-1就能搞定了，这里我们先来看中序遍历的递归写法*/
+和之前节点值求绝对差并更新结果res。这道题跟 530.Minimum Absolute Difference in BST没有任何区别，解法完全可以共
+用。方法很直接，通过中序遍历按顺序从小到大将所有的结点值都存入到一个数组中，然后就遍历这个数组，找相邻的两个的差值最小
+的返回即可*/
 
 /**
  * Definition for a binary tree node.
@@ -37,17 +36,21 @@ node 3 and node 2.
 class Solution {
 public:
     int minDiffInBST(TreeNode* root) {
-        int res = INT_MAX, pre = -1;
-        inorder(root, pre, res);
+        if (!root) return 0;
+        int res = INT_MAX;
+        vector<int> vals;
+        inorder(root, vals);
+        int n = vals.size();
+        for (int i = 1; i < n; i++) {
+            res = min(res, vals[i] - vals[i-1]);
+        }
         return res;
     }
-    void inorder(TreeNode* root, int& pre, int& res) {
-        if (!root) return;
-        inorder(root->left, pre, res);
-        if (pre != -1) 
-            res = min(res, root->val - pre);
-        pre = root->val;
-        inorder(root->right, pre, res);
+    void inorder(TreeNode *node, vector<int> &vals) {
+        if (!node) return;
+        inorder(node->left, vals);
+        vals.push_back(node->val);
+        inorder(node->right, vals);
     }
 };
 
