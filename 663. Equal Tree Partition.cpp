@@ -66,7 +66,8 @@ public:
         unordered_map<int,int> m;
         int sum = dfs(root, m);
         if (sum == 0) return m[0] >= 2;
-        return sum % 2 == 0 && m.count(sum / 2);
+        if (sum & 1) return false;
+        return m.count(sum/2);
     }
     
     int dfs(TreeNode *node, unordered_map<int,int> &m) {
